@@ -1,0 +1,15 @@
+<?php 
+//var_dump($this->document);
+?>
+
+<header>
+<h1><?php if (empty($this->document[0]->owning_organisation)) { throw new Exception("Organisation name not found"); } else { echo $this->document[0]->owning_organisation; } ?></h1>
+</header>
+
+<div role="main">
+<?php if (empty($this->document[0]->non_disclosed_summary)) echo "<p>" . nl2br($this->document[0]->description) . "</p>"; ?>
+<p><?php if (!empty($this->document[0]->non_disclosed_summary)) echo nl2br($this->document[0]->non_disclosed_summary); ?></p>
+</div>
+
+</div>
+</div>

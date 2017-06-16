@@ -1,0 +1,24 @@
+<h1>Spidering index page</h1>
+<p>This page allows HTTrack to find all the javascript enabled redirected filtering</p>
+
+<ul>
+<?php foreach ($this->organisations as $org) : ?>
+
+<li><a href="<?php echo $this->baseUrl('catalogue/index/organisation/' . $org->dir_name . '/outofscope/all/perpage/20/page/1'); ?>"><?php echo $org->lextranet_title ?></a>
+<ul>
+
+<?php /*
+<li><a href="<?php echo $this->baseUrl('catalogue/index/organisation/' . $org['dir_name'] . '/outofscope/yes/perpage/20'); ?>">Out of scope</a></li>
+*/
+
+foreach ($this->outofscopes as $scope) : ?>
+
+<?php //if ($scope->owning_organisation == $org->lextranet_title) : ?>
+<li><a href="<?php echo $this->baseUrl('catalogue/index/organisation/' . $org->dir_name . '/outofscope/' . $scope->dir_name . '/perpage/20/page/1'); ?>"><?php echo $scope->dir_name ?></a></li>
+<?php //endif; ?>
+<?php endforeach;  ?>
+</ul>
+</li>
+
+<?php endforeach; ?>
+</ul>

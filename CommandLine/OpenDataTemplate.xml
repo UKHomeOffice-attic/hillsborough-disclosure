@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<hillsborough_disclosure_index>
+	<metadata>
+		<package_name>Hillsborough-Disclosure</package_name>
+		<title>Hillsborough Disclosure document index</title>
+		<notes>This dataset provides an index of the documents relating to the Hillsborough tragedy as disclosed by the Hillsborough Independent Panel in conjunction with their Report into how the disclosed material adds to public understanding of the disaster. The dataset contains metadata about the disclosed materials, and links to the documents on the Panel's Website.</notes>
+		<date_released>2012-09-12</date_released>
+		<date_updated template_action="today"></date_updated>
+		<update_frequency>Infrequent</update_frequency>
+		<geographical_granularity>National</geographical_granularity>
+		<geographic_coverage>England</geographic_coverage>
+		<temporal_coverage>01/01/1980 - 31/12/2001</temporal_coverage>
+		<file_format>XML</file_format>
+		<categories>None</categories>
+		<national_statistic>No</national_statistic>
+		<precision>None</precision>
+		<url>http://hillsborough.independent.gov.uk/open-data/</url>
+		<download_url>http://hillsborough.independent.gov.uk/open-data/</download_url>
+		<taxonomy_url>http://hillsborough.independent.gov.uk/open-data/taxonomy/</taxonomy_url>
+		<department>Hillsborough Independent Panel</department>
+		<agency_responsible>Hillsborough Independent Panel</agency_responsible>
+		<author>editor-in-chief@hillsborough.gsi.gov.uk</author>
+		<maintainer>editor-in-chief@hillsborough.gsi.gov.uk</maintainer>
+		<licence>UK Crown Copyright</licence>
+		<tags>hillsborough disclosure football disaster</tags>
+	</metadata>
+	<disclosed_material>
+		<document template_action="repeating_group" template_comment="Repeated per record">
+			<unique_id>`disclosed_material`.`begin_doc_id`</unique_id>
+			<title>`disclosed_material`.`short_title`</title>
+			<description>`disclosed_material`.`description`</description>
+			<contributor_reference>`disclosed_material`.`archive_ref_id`</contributor_reference>
+			<start_date template_format="date">`disclosed_material`.`date_start`</start_date>
+			<end_date template_format="date">`disclosed_material`.`date_end`</end_date>
+			<names_of_the_deceased template_format="lookup">`disclosed_material`.`ap_victim_name`</names_of_the_deceased>
+			<persons_involved template_format="lookup">`disclosed_material`.`ap_person`</persons_involved>
+			<organisations_involved template_format="lookup">`disclosed_material`.`ap_corporate_body`</organisations_involved>
+			<contributor>`disclosed_material`.`owning_organisation`</contributor>
+			<folder_title>`disclosed_material`.`series_title`</folder_title>
+			<sub_folder_title>`disclosed_material`.`series_sub_title`</sub_folder_title>
+			<original_format>`disclosed_material`.`originalformat`</original_format>
+			<format>`disclosed_material`.`format`</format>
+			<disclosure_status>`disclosed_material`.`formatted_outofscope`</disclosure_status>
+			<reason_not_disclosed_on_site>`disclosed_material`.`out_of_scope_reason`</reason_not_disclosed_on_site>
+			<duplicate>`disclosed_material`.`duplicate`</duplicate>
+			<document_landing_page_url template_format="page_url">`disclosed_material`.`begin_doc_id`</document_landing_page_url>
+			<document_url template_format="file_url" template_comment="xyz.pdf/.mp4">`disclosed_material`.`is_av`</document_url>
+			<copyright>Hillsborough Fair Use Licence</copyright>
+		</document>
+	</disclosed_material>
+</hillsborough_disclosure_index>

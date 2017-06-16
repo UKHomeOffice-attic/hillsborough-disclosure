@@ -1,0 +1,286 @@
+/* ==========================================================
+
+Visual design and front-end development: Andy Clarke
+
+Stuff and Nonsense Ltd.
+The Studio, Eversleigh, Lon Capel
+Gwaenysgor
+Flintshire, North Wales
+LL18 6EJ
+
+Phone: 44 01745 851848
+FaceTime: @stuffandnonsense.co.uk
+Follow: @malarkey
+
+=================================================== */
+
+body {
+max-width : 1332px; }
+
+/* 2.HEADINGS */
+
+
+/* 3.TYPOGRAPHY */
+/* 4.LINKS */
+/* 5.FIGURES & IMAGES */
+/* 6.TABLES */
+
+/* 7.FORMS (See css/mylibs/forms.css) */
+
+div.victim-box { 
+width : 100%; }
+
+/* 8.BANNER */
+
+header[role="banner"] { 
+padding : 1em 12px; }
+
+header[role="banner"] h1 {
+position : relative;
+top : 1.05em;
+float : left;
+margin : 0; 
+width : 58%; 
+font-size : 1.75em; }
+
+header[role="banner"] nav {
+float : right; 
+width : 360px; }
+
+header[role="banner"] form p:last-child {
+text-align : right; 
+padding-right : 12px; }
+
+header[role="banner"] hgroup h1 {
+position : relative;
+top : .6em; 
+margin : 0;
+width : auto;
+font-size : 1.75em; }
+
+header[role="banner"] hgroup h2 {
+position : relative;
+top : 0.8em;
+margin : 0;
+width : auto; }
+
+header[role="banner"] nav  { 
+clear : none; }
+
+/* 9.NAVIGATION */
+
+nav[role="navigation"] {
+float : left;
+width : 17.85%; /* 160 / 896 = .1785% */
+margin : 0 2% 0 0; /* 25 / 896 = .0279% */
+padding-bottom : 0; 
+border-bottom-width : 0; }
+
+nav[role="navigation"] li {
+margin-bottom : .75em; }
+
+/* 10.CONTENT */
+
+.content {
+float : right;
+width : 79.46%; /* 712 / 896 = .7946 */ }
+
+.content-full {
+float : none;
+width : 100%; }
+
+/* 11.MAIN */
+
+.main {
+float : left;
+width : 64%; /* 528 / 896 = .5892 */ }
+
+[role="main"] {
+width : 61.23%; /* 436 / 712 = .6123 */ }
+
+ol.supporters li {
+float : left; 
+width : 25%; 
+margin : 0 2% 1.5em 0; }
+
+.memorial { 
+background : url(/error/assets/img/pic-memorial-abstract.jpg) left top no-repeat; 
+height : 360px; }
+
+/* 12.COMPLIMENTARY */
+
+.sub {
+float : right;
+width : 28.12%; /* 252 / 896 = .2812 */ }
+
+*[role="complementary"] {
+width : 35.39%; /* 252 / 712 = .3539 */ }
+
+.box_content { 
+overflow : auto; 
+position : fixed; 
+z-index : 1002; 
+top : 5%; 
+left : 20%; 
+right : 20%; 
+width : 60%; 
+padding : 16px; }
+
+/* 13.CONTENTINFO */
+
+/* 14.GLOBAL OBJECTS */
+
+.callout .main p {
+font-size : 1.5em; /* 22 / 16 = 1.125 */ 
+margin-bottom : 0; }
+
+.callout .sub .action { 
+display : block;
+float : none; 
+margin-right : 0;
+text-align : center; }
+
+.callout .sub .social {
+position : static;
+top : 0; }
+
+/* callout */
+
+.callout .main { 
+width : 69%;
+margin-bottom : 0; 
+padding-right : 4.5%;
+border-right : 3px solid rgb(225,219,211); }
+
+.callout .sub { 
+padding-top : .75em; }
+
+.index .callout .download-btn { width: 100%;}
+
+/* copy of download-btn */
+
+.index .callout .action { width: 100%;}
+
+/* box/col */
+
+.col {
+float : left;
+width : 28.12%; /* 252 / 896 = .2812 */
+margin-right : 7.812%; /* 70 / 896 = .07812 */ 
+padding : 0;
+background-color : transparent; 
+border-width : 0; }
+
+.col:last-child {
+float : right;
+margin-right : 0; }
+
+.col figure {
+float : none;
+width : auto; }
+
+.col h2,
+.col ul {
+margin-right : 0; }
+
+.box.nocolor {
+margin-bottom : 1.5em; 
+padding : 0; 
+width : 100%;
+background : none; 
+border : none; }
+
+/* 15.VENDOR-SPECIFIC */
+
+/* 16.TEMPLATE SPECIFICS */
+
+.index .content {
+float : none;
+width : auto; 
+margin : 0; }
+
+.index .main .col {
+width : 44%; }
+
+/* 17.MODERNIZR */
+
+/* 18.FULL SITE IE FIXES */
+
+.ie6 body, 
+.ie7 body, 
+.ie8 body { width : 960px; }
+
+.ie6 header[role="banner"] nav, 
+.ie7 header[role="banner"] nav, 
+.ie8 header[role="banner"] nav { position : relative; top : 5px; width : 340px; }
+
+.ie6 .callout .sub .action, 
+.ie7 .callout .sub .action, 
+.ie8 .callout .sub .action { padding-top : 6px; padding-bottom : 6px; }
+
+.ie6 .direction .next, 
+.ie7 .direction .next, 
+.ie8 .direction .next { right : 0; }
+
+.ie6 .direction .previous, 
+.ie7 .direction .previous, 
+.ie8 .direction .previous { left : 0; }
+
+.ie7 .two-col select + button, 
+.ie8 .two-col select + button { position : relative; top : 10px; padding : 6px 4px; }
+
+.ie6 .two-col input + button, 
+.ie7 .two-col input + button, 
+.ie8 .two-col input + button { position : relative;  top : 2px; padding : 6px 4px; }
+
+.ie6 form p, .ie7 form p, 
+.ie8 form p { margin-bottom : .5em; }
+
+.ie6 .options a, 
+.ie7 .options a, 
+.ie8 .options a { padding-top : 4px; }
+
+/* ie6 */
+
+.ie6 header[role="banner"] ul { overflow : hidden; }
+.ie6 header[role="banner"] li { display : inline; }
+.ie6 header[role="banner"] input { height : auto; }
+.ie6 .social h3 { position : relative; top : -3px; }
+.ie6 .callout .main { width : 550px; }
+.ie6 .callout .sub { width : 225px; }
+.ie6 figure img, .ie6 figure object, .ie6 figure embed { width : 100%; }
+.ie6 .content { margin-bottom : 1.5em; }
+.ie6 .col { width : 250px; }
+.ie6 header[role="banner"] form p:last-child { text-align : left; }
+.ie6 .two-col { margin-top : -10px; }
+.ie6 .two-col select { position : relative; top : 10px; }
+.ie6 .two-col input { position : relative; top : 15px; }
+.ie6 .inline, .ie6 .inline-block { overflow : hidden; }
+.ie6 .inline li, .ie6 .inline-block li { float : left; display : block; }
+.ie6 .inline li a, .ie6 .inline-block li a { border-width : 0; }
+.ie6 footer[role="contentinfo"] { padding-bottom : 1.5em; }
+.ie6 footer[role="contentinfo"] nav ul { overflow : hidden; }
+.ie6 footer[role="contentinfo"] nav li { float : left; display : block; margin-right : 24px; }
+
+/* ie7 */
+
+.ie7 header[role="banner"] ul { overflow : hidden; }
+.ie7 header[role="banner"] li { display : inline; }
+.ie7 header[role="banner"] input { padding : 2px; height : 20px; }
+.ie7 .social h3 { position : relative; top : -3px; }
+.ie7 .callout .main { width : 575px; }
+.ie7 .callout .sub { width : 225px; }
+.ie7 figure img, .ie7 figure object, .ie7 figure embed { width : 100%; }
+.ie7 .content { margin-bottom : 1.5em; }
+.ie7 .col { width : 250px; }
+.ie7 *[role="complementary"] .two-col select { position : relative; top : 6px; }
+.ie7 *[role="complementary"] .two-col button { margin-bottom : 15px; }
+.ie7 .inline, .ie7 .inline-block { overflow : hidden; }
+.ie7 .inline li, .ie7 .inline-block li { float : left; display : block; }
+.ie7 .inline li a, .ie7 .inline-block li a { border-width : 0; }
+.ie7 footer[role="contentinfo"] { padding-bottom : 1.5em; }
+.ie7 footer[role="contentinfo"] nav ul { overflow : hidden; }
+.ie7 footer[role="contentinfo"] nav li { float : left; display : block; margin-right : 24px; }
+
+/* ie8 */
+/* ie9 */

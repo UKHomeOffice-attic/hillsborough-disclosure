@@ -1,0 +1,5 @@
+<?php if ($this->pageCount): ?>
+
+<?php echo Zend_Locale_Format::toNumber($this->firstItemNumber)?>&#8211;<?php echo Zend_Locale_Format::toNumber($this->lastItemNumber)?> of <?php echo Zend_Locale_Format::toNumber($this->totalItemCount)?>
+
+<?php endif; ?>

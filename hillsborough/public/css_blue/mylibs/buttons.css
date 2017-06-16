@@ -1,0 +1,38 @@
+/* Buttons
+
+_____________________________________________________
+
+320 and Up boilerplate extension
+
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup/
+_____________________________________________________ */
+
+button {  
+display : block;
+padding : 4px;
+width : auto;
+overflow : visible; 
+background-color : rgb(66,111,132);
+border-width : 0;
+font-family : "Helvetica Neue", Helvetica, Arial;
+font-size : 1em;
+font-weight : 700;
+text-align : center; 
+line-height : 1; 
+color : rgb(255,255,255);
+text-shadow : 0 1px 0 rgb(0,0,0); }
+
+.borderimage button {
+-webkit-border-image : 6 stretch;
+-moz-border-image : 6 stretch;
+-o-border-image : 6 stretch;
+border-image : 6 stretch;
+border-style : solid;
+border-width : 4px; }
+
+.no-borderimage button {
+-webkit-border-radius : 2px;
+-moz-border-radius : 2px;
+border-radius : 2px; }

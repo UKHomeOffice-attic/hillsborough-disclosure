@@ -1,0 +1,1 @@
+c:\wamp\bin\mysql\mysql5.5.16\bin\mysql --user=root < insertAutolookup.sql

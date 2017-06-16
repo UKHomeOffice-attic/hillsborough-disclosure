@@ -1,0 +1,304 @@
+<script>
+function sslvpn_cssurl_rewrite(s)
+{
+var re=/(.*\s+)?url\s*\((.*)\)(.*)/i;
+var r=re.exec(s);
+
+if(r!=null)
+{
+if(!r[1])r[1]="";
+s=r[1]+"url("+sslvpn_url_rewrite(r[2])+")"+r[3];
+
+}
+
+return s;
+
+}
+
+
+function sslvpn_url_rewrite(s)
+{
+
+	var hr = 'https://extsl01.theclubuk.com/proxy/http/site400.theclubuk.com/repository/AGO000000610001.html';
+	var i;
+	if(s&&typeof(s)=="string"&&s.length)
+	{
+		//var host=window.location.host;      //"extsl01.theclubuk.com";
+		//var prot=window.location.protocol;  //"https:";
+		var host="extsl01.theclubuk.com";
+		var prot="https:";
+		var re;
+		var rprot;
+		var rhost;
+		var rpath;
+		var ruser;
+		var r;
+		var colon=host.indexOf(":");
+		var base_url=prot+"//"+host;
+		
+		if(s.charAt(0)=='#')
+			return s;
+
+		re=/^(https?:\/\/[^\/]*).*/;
+		r=re.exec(s);
+
+		if(r&&r[1]==base_url)
+			return s;
+
+		if(colon!=-1)
+		{
+			var hport=host.substr(colon+1);
+			if((prot.length==5&&parseInt(hport)==80)||(prot.length==6&&parseInt(hport)==443))
+			{
+				host=host.substring(0,colon);
+			}
+
+		}
+
+		re=/^\/?proxy\/https?\/.*/;
+		if(re.test(s))
+		{
+			//alert('still here');
+
+			return s;
+		}
+		
+		re=/^https?:\/\/([^\/]*)(\/proxy\/https?\/([^\/]*).*)/;
+		r=re.exec(s);
+		if(r)
+		{
+			if(r[1]==r[3])
+			{
+				//alert('still here');
+
+				return prot+"//"+host+r[2];
+			}
+		}
+
+		
+		re=/^(https?):\/\/([^\/]+)\/(.*)/;
+		if((r=re.exec(s))!=null)
+		{
+			rprot=r[1];
+			rhost=r[2];
+			rpath=r[3];
+			ruser="";
+			re=/^([^@]+@)(.*)/;
+			if((r=re.exec(rhost))!=null)
+			{
+				ruser=r[1];
+				rhost=r[2];
+
+			}
+
+			re=/^proxy\/https?\/.+/;
+			if(re.test(rpath))
+			{
+				if(rhost==host)
+				{
+					re=/^proxy\/(https?)\/([^\/]+)\/(.*)/;
+					if((r=re.exec(rpath))!=null)
+					{
+						rhost=r[2];
+						rprot=r[1];
+						rpath=r[3];
+
+					}
+
+				}
+
+				if(fgt_sslvpn_var3)
+				{
+					if(!sslvpn_is_encoded_host(rhost))
+					{
+						rhost="Z"+fgt_sslvpn_byteArrayToHex(fgt_sslvpn_aes_Encrypt(rhost));
+
+					}
+
+				}
+
+
+
+				s=prot+"//"+ruser+host+"/proxy/"+rprot+"/"+rhost+"/"+rpath;
+				return s;
+
+			}
+
+			if(fgt_sslvpn_var3)
+			{
+				if(!sslvpn_is_encoded_host(rhost))
+				{
+					rhost="Z"+fgt_sslvpn_byteArrayToHex(fgt_sslvpn_aes_Encrypt(rhost));
+
+				}
+
+			}
+
+			s=prot+"//"+ruser+host+"/proxy/"+rprot+"/"+rhost+"/"+rpath;
+			return s;
+
+		}
+
+
+		re=/^(https?):\/\/([^\/]+)/;
+		if((r=re.exec(s))!=null)
+		{
+			rprot=r[1];
+			rhost=r[2];
+			ruser="";
+			re=/^([^@]+@)(.*)/;
+			if((r=re.exec(rhost))!=null)
+			{
+				ruser=r[1];
+				rhost=r[2];
+
+			}
+
+			if(rhost==host)
+			{
+				re=/^(https?):\/\/([^\/]+)\/proxy\/(https?)\/([^\/]+)\/(.*)/;
+				if((r=re.exec(hr))!=null)
+				{
+					rhost=r[4];
+					rprot=r[3];
+
+				}
+
+			}
+
+
+			if(fgt_sslvpn_var3)
+			{
+				if(!sslvpn_is_encoded_host(rhost))
+				{
+					rhost="Z"+fgt_sslvpn_byteArrayToHex(fgt_sslvpn_aes_Encrypt(rhost));
+
+				}
+
+				alert("rhost 3: "+rhost);
+
+			}
+
+			return prot+"//"+ruser+host+"/proxy/"+rprot+"/"+rhost;
+
+		}
+		else
+		{
+				//alert('We got a https');
+
+		}
+
+		re=/^\/(.*)/;
+		if(re.test(s))
+		{
+			re=/^\/https?\/.+/;
+
+			if(!re.test(s))
+			{
+
+			var pn = "/proxy/http/site400.theclubuk.com/repository/AGO000000610001.html";
+			//alert(window.location.pathname);
+				path=pn;
+				re=/^(\/[^\/]+\/[^\/]+\/[^\/\\]+)\/?/;
+
+				if((r=re.exec(path))!=null)
+				{
+					return r[1]+s;
+
+				}
+
+				re=/^(https?\/[^\/]+\/[^\/\\]+)\/?/;
+				if((r=re.exec(path))!=null)
+				{
+					return"/"+r[1]+s;
+
+				}
+
+				re=/^(proxy?\/https?\/[^\/]+)\/[^\/\\]+\/?/;
+				if((r=re.exec(path))!=null)
+				{
+					return"/"+r[1]+s;
+
+				}
+
+			}
+
+			// KH
+			return s;
+
+		}
+
+		re=/^\.\.\//;
+		if(re.test(s))
+		{
+		r=pn.match(/\//g);
+		var depth=0;
+		if(r&&r.length>4)depth=r.length-4;
+		re=/^((\.\.\/)+)(.*)/;
+		function return_full_path(path,in_dir,depth)
+		{
+		var i;
+		ret="/";
+		sp_path=path.split("/");
+		for(i=0;
+		i<depth+4;
+		++i)
+		{
+		ret+=sp_path[i]+"/";
+
+		}
+
+		return ret+in_dir;
+
+		}
+
+		if((r=re.exec(s))!=null)
+		{
+		var dotdot=r[1];
+		s=r[r.length-1];
+		path=document.location.pathname;
+		if(depth==0)
+		return return_full_path(path,s,0);
+		r=dotdot.match(/\.\.\//g);
+		if(r)
+		{
+		if(r.length>depth)
+		return return_full_path(path,s,0);
+		else
+		return return_full_path(path,s,depth-r.length);
+		if(r.length<depth)depth=r.length;
+
+		}
+
+		}
+
+		}
+
+	}
+
+	return s;
+
+}
+
+function parseStyleSheet( content ) {
+	if (url) {
+		return loadStyleSheet(url).replace(RE_COMMENT, EMPTY_STRING).
+		replace(RE_IMPORT, function( match, quoteChar, importUrl, quoteChar2, importUrl2 ) { 
+			return parseStyleSheet(resolveUrl(importUrl || importUrl2, url));
+		}).
+		replace(RE_ASSET_URL, function( match, quoteChar, assetUrl ) { 
+			quoteChar = quoteChar || EMPTY_STRING;
+			return " url(" + quoteChar + resolveUrl(assetUrl, url) + quoteChar + ") "; 
+		});
+	}
+	return EMPTY_STRING;
+};
+
+
+
+var test = sslvpn_cssurl_rewrite(".format-video {padding-right : 40px; background : transparent url(/img/format-video.png) no-repeat 100% 25px; }");
+alert(test);
+
+
+
+</script>

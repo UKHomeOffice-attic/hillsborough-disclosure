@@ -1,0 +1,518 @@
+# the asf licenses this file to you under the apache license, version 2.0
+# (the "license"); you may not use this file except in compliance with
+# the license.  you may obtain a copy of the license at
+#
+#     http://www.apache.org/licenses/license-2.0
+#
+# unless required by applicable law or agreed to in writing, software
+# distributed under the license is distributed on an "as is" basis,
+# without warranties or conditions of any kind, either express or implied.
+# see the license for the specific language governing permissions and
+# limitations under the license.
+#-----------------------------------------------------------------------
+
+# hillsborough terms (taken from "search thesaurus v0 2_inc pgm comments.xlsx")
+
+#group 0
+# tbc
+
+#group 1
+crush barrier, crush barriers, dividing barrier, dividing barriers => crush barrier, dividing barrier, barrier 124, 124 a
+#boost:
+barrier 124, 124 a => crush barrier, dividing barrier, barrier 124 barrier 124, 124 a 124 a
+
+fan, fans, supporter, supporters, spectator, spectators, speccie, kopite, kopites => fan, supporter, spectator, speccie, kopite
+
+pen, pens, cage, cages, enclosure, enclosures => pen, cage, enclosure
+
+1989 semi final, 1989 fa cup semi final => match, game, 1989 semi final, 1989 fa cup semi final
+
+match, game => match, game
+
+gate c, exit gate, concertina gate, blue gate => gate c, exit gate, concertina gate, blue gate
+
+exit gate c => exit gate c, concertina gate, blue gate
+
+signage, sign, signs => signage, sign
+
+west stand, away stand, away terrace, liverpool end, west terrace => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3, pen 4, pen 5, pen 6, pen 7
+#boost:
+leppings lane, leppings ln => leppings lane leppings lane, leppings ln leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3, pen 4, pen 5, pen 6, pen 7
+pen 1 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1 pen 1, pen 2, pen 3, pen 4, pen 5, pen 6, pen 7
+pen 2 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2 pen 2, pen 3, pen 4, pen 5, pen 6, pen 7
+pen 3 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3 pen 3, pen 4, pen 5, pen 6, pen 7
+pen 4 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3, pen 4 pen 4, pen 5, pen 6, pen 7
+pen 5 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3, pen 4, pen 5 pen 5, pen 6, pen 7
+pen 6 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3, pen 4, pen 5, pen 6 pen 6, pen 7
+pen 7 => leppings lane, leppings ln, west stand, away stand, away terrace, liverpool end, west terrace, pen 1, pen 2, pen 3, pen 4, pen 5, pen 6, pen 7 pen 7
+
+liverpool supporters end, west stand terrace, pens 1 7 => liverpool supporters end, west stand terrace, pens 1 7
+
+spion kop, forest end, hillsborough kop, home terrace => spion kop, forest end, penistone road, hillsborough kop, home terrace
+#boost:
+penistone road => spion kop, forest end, penistone road penistone road, hillsborough kop, home terrace
+
+nottingham forest supporters end, penistone road end, sheffield wednesday kop => kop, forest end, nottingham forest supporters end, penistone road end, hillsborough kop, sheffield wednesday kop, home terrace
+
+1988 semi final, 1988 fa cup semi final, 1988 semi, previous semi final, last years semi final => 1988 semi final, 1988 fa cup semi final, 1988 semi, previous semi final, last years semi final
+
+ground, stadium, stadia => ground, stadium, stadia
+
+ticketless, without ticket, no ticket, ticket tout => ticketless, without ticket, no ticket, ticket tout
+
+control box, control room => control box, control room
+
+security, cctv, closed circuit television, video tape, cameras => security, cctv, closed circuit television, video tape, cameras, missing footage, missing tapes, stolen tapes
+#boost:
+missing footage, missing tapes => security, cctv, closed circuit television, video tape, cameras, missing footage missing footage, missing tapes missing tapes, stolen tapes
+stolen tapes => security, cctv, closed circuit television, video tape, cameras, missing footage, missing tapes, stolen tapes stolen tapes
+
+
+#group 2
+autopsy, autopsies, post mortem, morgue => autopsy, post mortem, morgue
+
+coroners report, coroner report, inquest, coroners inquest, coroner inquest, coroners verdict, coroner verdict => coroner report, inquest, coroner inquest, coroner verdict
+
+3 15 cut off => coroner report, inquest, coroner inquest, 3 15 cut off, coroner verdict
+
+asphyxia, suffocation, smothering, choking => asphyxia, suffocation, smothering, choking
+
+heart attack, heart failure, cardiac arrest => heart attack, heart failure, cardiac arrest
+
+cardio pulmonary arrest => cardio pulmonary arrest, heart attack, heart failure, cardiac arrest
+
+gymnasium, temporary mortuary, gym => gymnasium, temporary mortuary, gym
+
+victim, victims, deceased, body, bodies, fatality, fatalities, dead, death, deaths => victim, deceased, body, fatality, dead, death
+
+survivor, survivors, injured, wounded, traumatised, unconscious, injuries => survivor, injured, wounded, traumatised, unconscious, injuries
+
+post traumatic stress => survivor, injured, wounded, traumatised, unconscious, post traumatic stress, injuries
+
+accident emergency, a e => accident emergency, a e
+
+intensive care unit, icu, i c u, intensive care => intensive care unit, icu, i c u, intensive care
+
+cardiac intensive therapy unit, citu, c i t u =>cardiac intensive therapy unit, citu, c i t u
+
+histology, tissue blocks, blocks slides, tissue samples, retained tissue, tissue retention, blood samples, tissue sample, blood sample => histology, tissue blocks, blocks slides, tissue samples, retained tissue, tissue retention, blood samples
+
+cpr, mouth mouth, kiss life, heart massage, intubation, cardiac massage => resuscitation, cpr, mouth mouth, kiss life, heart massage, defibrillator, intubation, oxygen, cardiac massage
+resuscitation => resuscitation resuscitation, cpr, mouth mouth, kiss life, heart massage, defibrillator, intubation, oxygen, cardiac massage
+defibrillator => resuscitation, cpr, mouth mouth, kiss life, heart massage, defibrillator defibrillator, intubation, oxygen, cardiac massage
+oxygen => resuscitation, cpr, mouth mouth, kiss life, heart massage, defibrillator, intubation, oxygen oxygen, cardiac massage
+
+c p r => resuscitation, cpr, c p r , mouth mouth, kiss life, heart massage, defibrillator, intubation, oxygen, cardiac massage
+
+doctor, dr => doctor, dr
+
+ambulance, ambulanceman, ambulancemen => ambulance, ambulanceman
+
+national union public employees, nupe => national union public employees, nupe
+
+
+#group 3
+constable, pc, wpc => constable, pc, wpc
+
+policewoman, policewomen => policewoman, cop, officer, bissies, bizzies, police, bobby, bobbies
+
+policeman, policemen => policeman, cop, officer, bissies, bizzies, police, bobby, bobbies
+
+cop, officer, bissies, bizzies, police, bobby => cop, officer, bissies, bizzies, police, bobby, bobbies, policeman, policewoman
+#boost:
+bobbies => cop, officer, bissies, bizzies, police, bobby, bobbies bobbies, policeman, policewoman
+
+crowd => crowd, overcrowding
+#boost:
+overcrowding => crowd, overcrowding overcrowding
+
+radio transmissions, radio transmission, vhf => radio transmissions, vhf
+
+fireman, sub officer, station manager, station officer, firefighter, fire officer, divisional officer, firemen, sub officers, station managers, station officers, firefighters, fire officers, divisional officers => fireman, sub officer, station manager, station officer, firefighter, fire officer, divisional officer
+
+dog handler, officer with dog, police dog, dog section, dog handlers, officers dogs, police dogs, dogs section => dog handler, officer dog, police dog, dog section
+
+mounted police, police horse, officer horse, police horse, horseback, police horses, officers horses, police horses => mounted police, police horse, officer horse, police horse, horseback
+
+major incident plan, major accident procedure, majax, major incident plans, major accident procedures => major incident plan, major accident procedure, majax
+
+police liaison officer, plo, p l o, police liaison officers => police liaison officer, plo, p l o
+
+public address system, pa system, p a system, tannoy, loud hailer, loud speaker, public address systems, pa systems, p a systems, loud hailers, loud speakers => public address system, pa system, p a system, tannoy, loud hailer, loud speaker
+
+
+#group 4
+media, tv, television, telly, itv, newspaper, local paper, national paper, local press, national press, press report, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, not closed circuit television, not cctv => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report, first tuesday, panorama, jimmy mcgovern
+#boost:
+bbc => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report, first tuesday, panorama, jimmy mcgovern
+press council => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report, first tuesday, panorama, jimmy mcgovern
+cook report => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report cook report, first tuesday, panorama, jimmy mcgovern
+first tuesday => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report, first tuesday first tuesday, panorama, jimmy mcgovern
+panorama => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report, first tuesday, panorama panorama, jimmy mcgovern
+jimmy mcgovern => media, tv, television, telly, bbc, itv, newspaper, local paper, national paper, local press, national press, press report, press council, press association, reporter, journalist, newsman, newsmen, radio, presenter, editor, cook report, first tuesday, panorama, jimmy mcgovern jimmy mcgovern
+
+granada => tv, television, telly, bbc, itv, cook report, first tuesday, panorama, jimmy mcgovern, presenter, granada
+
+#group 5
+home secretary, home sec, douglas hurd => home secretary, home sec, douglas hurd
+
+sport minister, sports minister, minister sport, colin moynihan => sport minister, minister sport, colin moynihan
+
+prime minister, mrs thatcher, margaret thatcher, maggie thatcher => prime minister, mrs thatcher, margaret thatcher, maggie thatcher
+
+taylor inquiry, taylor report, hillsborough disaster report, hillsborough stadium disaster report, hillsborough inquiry report, taylor interim report, taylor final report, lj taylor report, taylor lj report, lord justice taylor inquiry, public inquiry => taylor inquiry, taylor report, hillsborough disaster report, hillsborough stadium disaster report, hillsborough inquiry report, taylor interim report, taylor final report, lj taylor report, taylor lj report, lord justice taylor inquiry, public inquiry
+
+stuart smith scrutiny, stuart smith scrutiny evidence, stuart smith judicial scrutiny, hillsborough scrutiny, scrutiny evidence rt hon lord justice stuart smith => stuart smith scrutiny, stuart smith scrutiny evidence, stuart smith judicial scrutiny, hillsborough scrutiny, scrutiny evidence rt hon lord justice stuart smith
+
+inquiry, enquiry, inquiries, enquiries => inquiry, enquiry
+
+
+#group 6
+alcohol, booze, boozing, drinking, drunk, drunken, drunkenness, pissed, beer, lager, pint, cans, tinnies, bevies, bevied up, off licence, offie => alcohol, booze, boozing, drinking, drunk, drunken, drunkenness, pissed, beer, lager, pint, cans, tinnies, bevies, offie
+
+bevied up => alcohol, booze, boozing, drinking, drunk, drunken, drunkenness, pissed, beer, lager, pint, cans, tinnies, bevies, bevied up, off licence, offie
+#boost:
+off licence => alcohol, booze, boozing, drinking, drunk, drunken, drunkenness, pissed, beer, lager, pint, cans, tinnies, bevies, bevied up, off licence off licence, offie
+
+licensed premises, pub, public house, tavern, inn, ph => licensed premises, pub, public house, tavern, inn, ph
+
+food, snack, burger, hot dog, sandwich, chips => food, snack, burger, hot dog, sandwich, chips
+
+kfc, kentucky fried chicken => food, snack, burger, hot dog, sandwich, chips, kfc, kentucky fried chicken
+
+negligence, neglect duty, dereliction => negligence, neglect duty, dereliction
+
+
+#group 7
+#Names of the deceased from Deceased Lookup - Huddle version 1 (02/05/2012)
+John Alfred Anderson, John A Anderson, John Anderson, J A Anderson, J Anderson, Anderson John Alfred, Anderson John A, Anderson John, Anderson J A, Anderson J, JA Anderson, Anderson JA, body number 76, body 76, body no 76, body 76, Jack Anderson, Anderson Jack => Jack Anderson, Anderson Jack, John Alfred Anderson, John A Anderson, John Anderson, J A Anderson, J Anderson, Anderson John Alfred, Anderson John A, Anderson John, Anderson J A, Anderson J, JA Anderson, Anderson JA, body number 76, body 76, body no 76
+
+Colin Mark Ashcroft, Colin M Ashcroft, Colin Ashcroft, C M Ashcroft, C Ashcroft, Ashcroft Colin Mark, Ashcroft Colin M, Ashcroft Colin, Ashcroft C M, Ashcroft C, CM Ashcroft, Ashcroft CM, body number 5, body 5, body no 5, body 5 => Colin Mark Ashcroft, Colin M Ashcroft, Colin Ashcroft, C M Ashcroft, C Ashcroft, Ashcroft Colin Mark, Ashcroft Colin M, Ashcroft Colin, Ashcroft C M, Ashcroft C, CM Ashcroft, Ashcroft CM, body number 5, body 5, body no 5
+
+James Gary Aspinall, James G Aspinall, James Aspinall, J G Aspinall, J Aspinall, Aspinall James Gary, Aspinall James G, Aspinall James, Aspinall J G, Aspinall J, JG Aspinall, Aspinall JG, body number 9, body 9, body no 9, body 9 => James Gary Aspinall, James G Aspinall, James Aspinall, J G Aspinall, J Aspinall, Aspinall James Gary, Aspinall James G, Aspinall James, Aspinall J G, Aspinall J, JG Aspinall, Aspinall JG, body number 9, body 9, body no 9
+
+Kester Roger Marcus Ball, Kester RM Ball, Kester Ball, K R M Ball, K Ball, Ball Kester Roger Marcus, Ball Kester RM, Ball Kester, Ball K R M, Ball K, KRM Ball, Ball KRM, body number 74, body 74, body no 74, body 74 => Kester Roger Marcus Ball, Kester RM Ball, Kester Ball, K R M Ball, K Ball, Ball Kester Roger Marcus, Ball Kester RM, Ball Kester, Ball K R M, Ball K, KRM Ball, Ball KRM, body number 74, body 74, body no 74
+
+Gerard Bernard Patrick Baron, Gerard BP Baron, Gerard Baron, G B P Baron, G Baron, Baron Gerard Bernard Patrick, Baron Gerard BP, Baron Gerard, Baron G B P, Baron G, GBP Baron, Baron GBP, body number 69, body 69, body no 69, body 69, Gerard Baron Snr, Baron Snr Gerard => Gerard Baron Snr, Baron Snr Gerard, Gerard Bernard Patrick Baron, Gerard BP Baron, Gerard Baron, G B P Baron, G Baron, Baron Gerard Bernard Patrick, Baron Gerard BP, Baron Gerard, Baron G B P, Baron G, GBP Baron, Baron GBP, body number 69, body 69, body no 69
+
+Simon Bell, S Bell, Bell Simon, Bell S, body number 52, body 52, body no 52, body 52 => Simon Bell, S Bell, Bell Simon, Bell S, body number 52, body 52, body no 52
+
+Barry Sidney Bennett, Barry S Bennett, Barry Bennett, B S Bennett, B Bennett, Bennett Barry Sidney, Bennett Barry S, Bennett Barry, Bennett B S, Bennett B, BS Bennett, Bennett BS, body number 88, body 88, body no 88, body 88 => Barry Sidney Bennett, Barry S Bennett, Barry Bennett, B S Bennett, B Bennett, Bennett Barry Sidney, Bennett Barry S, Bennett Barry, Bennett B S, Bennett B, BS Bennett, Bennett BS, body number 88, body 88, body no 88
+
+David John Benson, David J Benson, David Benson, D J Benson, D Benson, Benson David John, Benson David J, Benson David, Benson D J, Benson D, DJ Benson, Benson DJ, body number 80, body 80, body no 80, body 80 => David John Benson, David J Benson, David Benson, D J Benson, D Benson, Benson David John, Benson David J, Benson David, Benson D J, Benson D, DJ Benson, Benson DJ, body number 80, body 80, body no 80
+
+David William Birtle, David W Birtle, David Birtle, D W Birtle, D Birtle, Birtle David William, Birtle David W, Birtle David, Birtle D W, Birtle D, DW Birtle, Birtle DW, body number 47, body 47, body no 47, body 47 => David William Birtle, David W Birtle, David Birtle, D W Birtle, D Birtle, Birtle David William, Birtle David W, Birtle David, Birtle D W, Birtle D, DW Birtle, Birtle DW, body number 47, body 47, body no 47
+
+Tony Bland, T Bland, Bland Tony, Bland T, body number 96, body 96, body no 96, body 96, Anthony Bland, A M Bland, Bland Anthony, Bland A M, Bland A, AM Bland, Bland AM => Tony Bland, T Bland, Bland Tony, Bland T, body number 96, body 96, body no 96, Anthony Bland, A M Bland, A Bland, Bland Anthony, Bland A M, Bland A, AM Bland, Bland AM
+
+Paul David Brady, Paul D Brady, Paul Brady, P D Brady, P Brady, Brady Paul David, Brady Paul D, Brady Paul, Brady P D, Brady P, PD Brady, Brady PD, body number 84, body 84, body no 84, body 84 => Paul David Brady, Paul D Brady, Paul Brady, P D Brady, P Brady, Brady Paul David, Brady Paul D, Brady Paul, Brady P D, Brady P, PD Brady, Brady PD, body number 84, body 84, body no 84
+
+Andrew Mark Brookes, Andrew M Brookes, Andrew Brookes, A M Brookes, A Brookes, Brookes Andrew Mark, Brookes Andrew M, Brookes Andrew, Brookes A M, Brookes A, AM Brookes, Brookes AM, body number 50, body 50, body no 50, body 50 => Andrew Mark Brookes, Andrew M Brookes, Andrew Brookes, A M Brookes, A Brookes, Brookes Andrew Mark, Brookes Andrew M, Brookes Andrew, Brookes A M, Brookes A, AM Brookes, Brookes AM, body number 50, body 50, body no 50
+
+Carl Brown, Carl Brown, C Brown, C Brown, Brown Carl , Brown Carl, Brown C, Brown C, C Brown, Brown C, body number 46, body 46, body no 46, body 46 => Carl Brown, Carl Brown, C Brown, C Brown, Brown Carl , Brown Carl, Brown C, Brown C, C Brown, Brown C, body number 46, body 46, body no 46
+
+David Steven Brown, David S Brown, David Brown, D S Brown, D Brown, Brown David Steven, Brown David S, Brown David, Brown D S, Brown D, DS Brown, Brown DS, body number 10, body 10, body no 10, body 10, Steven Brown, Brown Steven => Steven Brown, Brown Steven, David Steven Brown, David S Brown, David Brown, D S Brown, D Brown, Brown David Steven, Brown David S, Brown David, Brown D S, Brown D, DS Brown, Brown DS, body number 10, body 10, body no 10
+
+Henry Thomas Burke, Henry T Burke, Henry Burke, H T Burke, H Burke, Burke Henry Thomas, Burke Henry T, Burke Henry, Burke H T, Burke H, HT Burke, Burke HT, body number 31, body 31, body no 31, body 31 => Henry Thomas Burke, Henry T Burke, Henry Burke, H T Burke, H Burke, Burke Henry Thomas, Burke Henry T, Burke Henry, Burke H T, Burke H, HT Burke, Burke HT, body number 31, body 31, body no 31
+
+Peter Andrew Burkett, Peter A Burkett, Peter Burkett, P A Burkett, P Burkett, Burkett Peter Andrew, Burkett Peter A, Burkett Peter, Burkett P A, Burkett P, PA Burkett, Burkett PA, body number 23, body 23, body no 23, body 23 => Peter Andrew Burkett, Peter A Burkett, Peter Burkett, P A Burkett, P Burkett, Burkett Peter Andrew, Burkett Peter A, Burkett Peter, Burkett P A, Burkett P, PA Burkett, Burkett PA, body number 23, body 23, body no 23
+
+Paul William Carlile, Paul W Carlile, Paul Carlile, P W Carlile, P Carlile, Carlile Paul William, Carlile Paul W, Carlile Paul, Carlile P W, Carlile P, PW Carlile, Carlile PW, body number 73, body 73, body no 73, body 73, Paul Carlilse, P W Carlilse, P Carlilse, Carlilse Paul William, Carlilse Paul, Carlilse P W, Carlilse P, PW Carlilse, Carlilse PW => Paul William Carlile, Paul W Carlile, Paul Carlile, P W Carlile, P Carlile, Carlile Paul William, Carlile Paul W, Carlile Paul, Carlile P W, Carlile P, PW Carlile, Carlile PW, body number 73, body 73, body no 73, Paul Carlilse, P W Carlilse, P Carlilse, Carlilse Paul William, Carlilse Paul, Carlilse P W, Carlilse P, PW Carlilse, Carlilse PW
+
+Raymond Thomas Chapman, Raymond T Chapman, Raymond Chapman, R T Chapman, R Chapman, Chapman Raymond Thomas, Chapman Raymond T, Chapman Raymond, Chapman R T, Chapman R, RT Chapman, Chapman RT, body number 67, body 67, body no 67, body 67 => Raymond Thomas Chapman, Raymond T Chapman, Raymond Chapman, R T Chapman, R Chapman, Chapman Raymond Thomas, Chapman Raymond T, Chapman Raymond, Chapman R T, Chapman R, RT Chapman, Chapman RT, body number 67, body 67, body no 67
+
+Gary Christopher Church, Gary C Church, Gary Church, G C Church, G Church, Church Gary Christopher, Church Gary C, Church Gary, Church G C, Church G, GC Church, Church GC, body number 14, body 14, body no 14, body 14 => Gary Christopher Church, Gary C Church, Gary Church, G C Church, G Church, Church Gary Christopher, Church Gary C, Church Gary, Church G C, Church G, GC Church, Church GC, body number 14, body 14, body no 14
+
+Joseph Clark, Joseph Clark, J Clark, J Clark, Clark Joseph , Clark Joseph, Clark J, Clark J, J Clark, Clark J, body number 25, body 25, body no 25, body 25, Oey Clark, Clark Oey => Oey Clark, Clark Oey, Joseph Clark, Joseph Clark, J Clark, J Clark, Clark Joseph , Clark Joseph, Clark J, Clark J, J Clark, Clark J, body number 25, body 25, body no 25
+
+Paul Clark, Paul Clark, P Clark, P Clark, Clark Paul , Clark Paul, Clark P, Clark P, P Clark, Clark P, body number 58, body 58, body no 58, body 58 => Paul Clark, Paul Clark, P Clark, P Clark, Clark Paul , Clark Paul, Clark P, Clark P, P Clark, Clark P, body number 58, body 58, body no 58
+
+Gary Collins, Gary Collins, G Collins, G Collins, Collins Gary , Collins Gary, Collins G, Collins G, G Collins, Collins G, body number 48, body 48, body no 48, body 48 => Gary Collins, Gary Collins, G Collins, G Collins, Collins Gary , Collins Gary, Collins G, Collins G, G Collins, Collins G, body number 48, body 48, body no 48
+
+Stephen Paul Copoc, Stephen P Copoc, Stephen Copoc, S P Copoc, S Copoc, Copoc Stephen Paul, Copoc Stephen P, Copoc Stephen, Copoc S P, Copoc S, SP Copoc, Copoc SP, body number 71, body 71, body no 71, body 71 => Stephen Paul Copoc, Stephen P Copoc, Stephen Copoc, S P Copoc, S Copoc, Copoc Stephen Paul, Copoc Stephen P, Copoc Stephen, Copoc S P, Copoc S, SP Copoc, Copoc SP, body number 71, body 71, body no 71
+
+Tracey Elizabeth Cox, Tracey E Cox, Tracey Cox, T E Cox, T Cox, Cox Tracey Elizabeth, Cox Tracey E, Cox Tracey, Cox T E, Cox T, TE Cox, Cox TE, body number 19, body 19, body no 19, body 19 => Tracey Elizabeth Cox, Tracey E Cox, Tracey Cox, T E Cox, T Cox, Cox Tracey Elizabeth, Cox Tracey E, Cox Tracey, Cox T E, Cox T, TE Cox, Cox TE, body number 19, body 19, body no 19
+
+James Philip Delaney, James P Delaney, James Delaney, J P Delaney, J Delaney, Delaney James Philip, Delaney James P, Delaney James, Delaney J P, Delaney J, JP Delaney, Delaney JP, body number 33, body 33, body no 33, body 33 => James Philip Delaney, James P Delaney, James Delaney, J P Delaney, J Delaney, Delaney James Philip, Delaney James P, Delaney James, Delaney J P, Delaney J, JP Delaney, Delaney JP, body number 33, body 33, body no 33
+
+Christopher Barry Devonside, Christopher B Devonside, Christopher Devonside, C B Devonside, C Devonside, Devonside Christopher Barry, Devonside Christopher B, Devonside Christopher, Devonside C B, Devonside C, CB Devonside, Devonside CB, body number 17, body 17, body no 17, body 17 => Christopher Barry Devonside, Christopher B Devonside, Christopher Devonside, C B Devonside, C Devonside, Devonside Christopher Barry, Devonside Christopher B, Devonside Christopher, Devonside C B, Devonside C, CB Devonside, Devonside CB, body number 17, body 17, body no 17
+
+Christopher Edwards, Christopher  Edwards, Christopher Edwards, C Edwards, C Edwards, Edwards Christopher , Edwards Christopher, Edwards C, Edwards C, C Edwards, Edwards C, body number 38, body 38, body no 38, body 38, Chris Edwards, Edwards Chris => Chris Edwards, Edwards Chris, Christopher Edwards, Christopher  Edwards, Christopher Edwards, C Edwards, C Edwards, Edwards Christopher , Edwards Christopher, Edwards C, Edwards C, C Edwards, Edwards C, body number 38, body 38, body no 38
+
+Vincent Michael Fitzsimmons, Vincent M Fitzsimmons, Vincent Fitzsimmons, V M Fitzsimmons, V Fitzsimmons, Fitzsimmons Vincent Michael, Fitzsimmons Vincent M, Fitzsimmons Vincent, Fitzsimmons V M, Fitzsimmons V, VM Fitzsimmons, Fitzsimmons VM, body number 21, body 21, body no 21, body 21 => Vincent Michael Fitzsimmons, Vincent M Fitzsimmons, Vincent Fitzsimmons, V M Fitzsimmons, V Fitzsimmons, Fitzsimmons Vincent Michael, Fitzsimmons Vincent M, Fitzsimmons Vincent, Fitzsimmons V M, Fitzsimmons V, VM Fitzsimmons, Fitzsimmons VM, body number 21, body 21, body no 21
+
+Thomas Steven Fox, Thomas S Fox, Thomas Fox, T S Fox, T Fox, Fox Thomas Steven, Fox Thomas S, Fox Thomas, Fox T S, Fox T, TS Fox, Fox TS, body number 66, body 66, body no 66, body 66, Steve Fox, Fox Steve => Steve Fox, Fox Steve, Thomas Steven Fox, Thomas S Fox, Thomas Fox, T S Fox, T Fox, Fox Thomas Steven, Fox Thomas S, Fox Thomas, Fox T S, Fox T, TS Fox, Fox TS, body number 66, body 66, body no 66
+
+Jon-Paul Gilhooley, Jon-Paul P Gilhooley, Jon-Paul Gilhooley, J P Gilhooley, J Gilhooley, Gilhooley Jon-Paul , Gilhooley Jon-Paul, Gilhooley J P, Gilhooley J, JP Gilhooley, Gilhooley JP, body number 83, body 83, body no 83, body 83, John-Paul Gilhooley, Gilhooley John-Paul => Jon-Paul Gilhooley, Jon-Paul P Gilhooley, Jon-Paul Gilhooley, J P Gilhooley, J Gilhooley, Gilhooley Jon-Paul , Gilhooley Jon-Paul, Gilhooley J P, Gilhooley J, JP Gilhooley, Gilhooley JP, body number 83, body 83, body no 83, John-Paul Gilhooley, Gilhooley John-Paul
+
+Barry Glover, Barry B Glover, Barry Glover, B Glover, B Glover, Glover Barry , Glover Barry, Glover B, Glover B, B Glover, Glover B, body number 62, body 62, body no 62, body 62 => Barry Glover, Barry B Glover, Barry Glover, B Glover, B Glover, Glover Barry , Glover Barry, Glover B, Glover B, B Glover, Glover B, body number 62, body 62, body no 62
+
+Ian Thomas Glover, Ian T Glover, Ian Glover, I T Glover, I  Glover, Glover Ian Thomas, Glover Ian T, Glover Ian, Glover I T, Glover I , IT Glover, Glover IT, body number 37, body 37, body no 37, body 37 => Ian Thomas Glover, Ian T Glover, Ian Glover, I T Glover, I  Glover, Glover Ian Thomas, Glover Ian T, Glover Ian, Glover I T, Glover I , IT Glover, Glover IT, body number 37, body 37, body no 37
+
+Derrick George Godwin, Derrick G Godwin, Derrick Godwin, D G Godwin, D Godwin, Godwin Derrick George, Godwin Derrick G, Godwin Derrick, Godwin D G, Godwin D, DG Godwin, Godwin DG, body number 75, body 75, body no 75, body 75 => Derrick George Godwin, Derrick G Godwin, Derrick Godwin, D G Godwin, D Godwin, Godwin Derrick George, Godwin Derrick G, Godwin Derrick, Godwin D G, Godwin D, DG Godwin, Godwin DG, body number 75, body 75, body no 75
+
+Roy Harry Hamilton, Roy H Hamilton, Roy Hamilton, R H Hamilton, R Hamilton, Hamilton Roy Harry, Hamilton Roy H, Hamilton Roy, Hamilton R H, Hamilton R, RH Hamilton, Hamilton RH, body number 12, body 12, body no 12, body 12 => Roy Harry Hamilton, Roy H Hamilton, Roy Hamilton, R H Hamilton, R Hamilton, Hamilton Roy Harry, Hamilton Roy H, Hamilton Roy, Hamilton R H, Hamilton R, RH Hamilton, Hamilton RH, body number 12, body 12, body no 12
+
+Philip Hammond, Philip Hammond, P Hammond, P Hammond, Hammond Philip , Hammond Philip, Hammond P, Hammond P, P Hammond, Hammond P, body number 93, body 93, body no 93, body 93 => Philip Hammond, Philip Hammond, P Hammond, P Hammond, Hammond Philip , Hammond Philip, Hammond P, Hammond P, P Hammond, Hammond P, body number 93, body 93, body no 93
+
+Eric Hankin, Eric Hankin, E Hankin, E Hankin, Hankin Eric , Hankin Eric, Hankin E, Hankin E, E Hankin, Hankin E, body number 29, body 29, body no 29, body 29 => Eric Hankin, Eric Hankin, E Hankin, E Hankin, Hankin Eric , Hankin Eric, Hankin E, Hankin E, E Hankin, Hankin E, body number 29, body 29, body no 29
+
+Gary Harrison, Gary Harrison, G Harrison, G Harrison, Harrison Gary , Harrison Gary, Harrison G, Harrison G, G Harrison, Harrison G, body number 3, body 3, body no 3, body 3 => Gary Harrison, Gary Harrison, G Harrison, G Harrison, Harrison Gary , Harrison Gary, Harrison G, Harrison G, G Harrison, Harrison G, body number 3, body 3, body no 3
+
+Peter Andrew Harrison, Peter A Harrison, Peter Harrison, P A Harrison, P Harrison, Harrison Peter Andrew, Harrison Peter A, Harrison Peter, Harrison P A, Harrison P, PA Harrison, Harrison PA, body number 11, body 11, body no 11, body 11 => Peter Andrew Harrison, Peter A Harrison, Peter Harrison, P A Harrison, P Harrison, Harrison Peter Andrew, Harrison Peter A, Harrison Peter, Harrison P A, Harrison P, PA Harrison, Harrison PA, body number 11, body 11, body no 11
+
+Stephen Francis Harrison, Stephen F Harrison, Stephen Harrison, S F Harrison, S Harrison, Harrison Stephen Francis, Harrison Stephen F, Harrison Stephen, Harrison S F, Harrison S, SF Harrison, Harrison SF, body number 91, body 91, body no 91, body 91 => Stephen Francis Harrison, Stephen F Harrison, Stephen Harrison, S F Harrison, S Harrison, Harrison Stephen Francis, Harrison Stephen F, Harrison Stephen, Harrison S F, Harrison S, SF Harrison, Harrison SF, body number 91, body 91, body no 91
+
+David Hawley, David Hawley, D Hawley, D Hawley, Hawley David , Hawley David, Hawley D, Hawley D, D Hawley, Hawley D, body number 8, body 8, body no 8, body 8, Dave Hawley, Hawley Dave => Dave Hawley, Hawley Dave, David Hawley, David Hawley, D Hawley, D Hawley, Hawley David , Hawley David, Hawley D, Hawley D, D Hawley, Hawley D, body number 8, body 8, body no 8
+
+James Robert Hennessy, James RM Hennessy, James Hennessy, J R Hennessy, J Hennessy, Hennessy James Robert, Hennessy James RM, Hennessy James, Hennessy J R, Hennessy J, JR Hennessy, Hennessy JR, body number 7, body 7, body no 7, body 7, James Hennessey, J R Hennessey, J Hennessey, Hennessey James Robert, Hennessey James, Hennessey J R, Hennessey J, JR Hennessey, Hennessey JR, Jimmy Hennessy, Hennessy Jimmy, Jimmy Hennessey, Hennessey Jimmy => Jimmy Hennessy, Hennessy Jimmy, Jimmy Hennessey, Hennessey Jimmy, James Robert Hennessy, James RM Hennessy, James Hennessy, J R Hennessy, J Hennessy, Hennessy James Robert, Hennessy James RM, Hennessy James, Hennessy J R, Hennessy J, JR Hennessy, Hennessy JR, body number 7, body 7, body no 7, James Hennessey, J R Hennessey, J Hennessey, Hennessey James Robert, Hennessey James, Hennessey J R, Hennessey J, JR Hennessey, Hennessey JR
+
+Paul Anthony Hewitson, Paul A Hewitson, Paul Hewitson, P A Hewitson, P Hewitson, Hewitson Paul Anthony, Hewitson Paul A, Hewitson Paul, Hewitson P A, Hewitson P, PA Hewitson, Hewitson PA, body number 42, body 42, body no 42, body 42 => Paul Anthony Hewitson, Paul A Hewitson, Paul Hewitson, P A Hewitson, P Hewitson, Hewitson Paul Anthony, Hewitson Paul A, Hewitson Paul, Hewitson P A, Hewitson P, PA Hewitson, Hewitson PA, body number 42, body 42, body no 42
+
+Carl Darren Hewitt, Carl D Hewitt, Carl Hewitt, C D Hewitt, C Hewitt, Hewitt Carl Darren, Hewitt Carl D, Hewitt Carl, Hewitt C D, Hewitt C, CD Hewitt, Hewitt CD, body number 44, body 44, body no 44, body 44 => Carl Darren Hewitt, Carl D Hewitt, Carl Hewitt, C D Hewitt, C Hewitt, Hewitt Carl Darren, Hewitt Carl D, Hewitt Carl, Hewitt C D, Hewitt C, CD Hewitt, Hewitt CD, body number 44, body 44, body no 44
+
+Nicholas Michael Hewitt, Nicholas M Hewitt, Nicholas Hewitt, N M Hewitt, N Hewitt, Hewitt Nicholas Michael, Hewitt Nicholas M, Hewitt Nicholas, Hewitt N M, Hewitt N, NM Hewitt, Hewitt NM, body number 55, body 55, body no 55, body 55, Nick Hewitt, Hewitt Nick => Nick Hewitt, Hewitt Nick, Nicholas Michael Hewitt, Nicholas M Hewitt, Nicholas Hewitt, N M Hewitt, N Hewitt, Hewitt Nicholas Michael, Hewitt Nicholas M, Hewitt Nicholas, Hewitt N M, Hewitt N, NM Hewitt, Hewitt NM, body number 55, body 55, body no 55
+
+Sarah Louise Hicks, Sarah L Hicks, Sarah Hicks, S L Hicks, S Hicks, Hicks Sarah Louise, Hicks Sarah L, Hicks Sarah, Hicks S L, Hicks S, SL Hicks, Hicks SL, body number 64, body 64, body no 64, body 64 => Sarah Louise Hicks, Sarah L Hicks, Sarah Hicks, S L Hicks, S Hicks, Hicks Sarah Louise, Hicks Sarah L, Hicks Sarah, Hicks S L, Hicks S, SL Hicks, Hicks SL, body number 64, body 64, body no 64
+
+Victoria Jane Hicks, Victoria J Hicks, Victoria Hicks, V J Hicks, V Hicks, Hicks Victoria Jane, Hicks Victoria J, Hicks Victoria, Hicks V J, Hicks V, VJ Hicks, Hicks VJ, body number 89, body 89, body no 89, body 89 => Victoria Jane Hicks, Victoria J Hicks, Victoria Hicks, V J Hicks, V Hicks, Hicks Victoria Jane, Hicks Victoria J, Hicks Victoria, Hicks V J, Hicks V, VJ Hicks, Hicks VJ, body number 89, body 89, body no 89
+
+Gordon Rodney Horn, Gordon R Horn, Gordon Horn, G R Horn, G Horn, Horn Gordon Rodney, Horn Gordon R, Horn Gordon, Horn G R, Horn G, GR Horn, Horn GR, body number 59, body 59, body no 59, body 59, Goffer Horn, Horn Goffer => Goffer Horn, Horn Goffer, Gordon Rodney Horn, Gordon R Horn, Gordon Horn, G R Horn, G Horn, Horn Gordon Rodney, Horn Gordon R, Horn Gordon, Horn G R, Horn G, GR Horn, Horn GR, body number 59, body 59, body no 59
+
+Arthur Horrocks, Arthur Horrocks, A Horrocks, A Horrocks, Horrocks Arthur , Horrocks Arthur, Horrocks A, Horrocks A, A Horrocks, Horrocks A, body number 92, body 92, body no 92, body 92 => Arthur Horrocks, Arthur Horrocks, A Horrocks, A Horrocks, Horrocks Arthur , Horrocks Arthur, Horrocks A, Horrocks A, A Horrocks, Horrocks A, body number 92, body 92, body no 92
+
+Thomas Howard, Thomas Howard, T Howard, T Howard, Howard Thomas , Howard Thomas, Howard T, Howard T, T Howard, Howard T, body number 81, body 81, body no 81, body 81 => Thomas Howard, Thomas Howard, T Howard, T Howard, Howard Thomas , Howard Thomas, Howard T, Howard T, T Howard, Howard T, body number 81, body 81, body no 81
+
+Thomas Anthony Howard, Thomas A Howard, Thomas Howard, T A Howard, T Howard, Howard Thomas Anthony, Howard Thomas A, Howard Thomas, Howard T A, Howard T, TA Howard, Howard TA, body number 1, body 1, body no 1, body 1, Tommy Howard, Howard Tommy, Tommy A Howard, Howard Tommy A, Tommy Anthony Howard, Howard Tommy Anthony => Tommy Howard, Howard Tommy, Tommy A Howard, Howard Tommy A, Tommy Anthony Howard, Howard Tommy Anthony, Thomas Anthony Howard, Thomas A Howard, Thomas Howard, T A Howard, T Howard, Howard Thomas Anthony, Howard Thomas A, Howard Thomas, Howard T A, Howard T, TA Howard, Howard TA, body number 1, body 1, body no 1
+
+Eric George Hughes, Eric G Hughes, Eric Hughes, E G Hughes, E Hughes, Hughes Eric George, Hughes Eric G, Hughes Eric, Hughes E G, Hughes E, EG Hughes, Hughes EG, body number 41, body 41, body no 41, body 41 => Eric George Hughes, Eric G Hughes, Eric Hughes, E G Hughes, E Hughes, Hughes Eric George, Hughes Eric G, Hughes Eric, Hughes E G, Hughes E, EG Hughes, Hughes EG, body number 41, body 41, body no 41
+
+Alan Johnston, Alan Johnston, A Johnston, A Johnston, Johnston Alan , Johnston Alan, Johnston A, Johnston A, A Johnston, Johnston A, body number 30, body 30, body no 30, body 30, Alan Johnson, A Johnson, Johnson Alan, Johnson A => Alan Johnston, Alan Johnston, A Johnston, A Johnston, Johnston Alan , Johnston Alan, Johnston A, Johnston A, A Johnston, Johnston A, body number 30, body 30, body no 30, Alan Johnson, A Johnson, Johnson Alan, Johnson A
+
+Christine Anne Jones, Christine A Jones, Christine Jones, C A Jones, C Jones, Jones Christine Anne, Jones Christine A, Jones Christine, Jones C A, Jones C, CA Jones, Jones CA, body number 35, body 35, body no 35, body 35 => Christine Anne Jones, Christine A Jones, Christine Jones, C A Jones, C Jones, Jones Christine Anne, Jones Christine A, Jones Christine, Jones C A, Jones C, CA Jones, Jones CA, body number 35, body 35, body no 35
+
+Gary Philip Jones, Gary P Jones, Gary Jones, G P Jones, G Jones, Jones Gary Philip, Jones Gary P, Jones Gary, Jones G P, Jones G, GP Jones, Jones GP, body number 86, body 86, body no 86, body 86 => Gary Philip Jones, Gary P Jones, Gary Jones, G P Jones, G Jones, Jones Gary Philip, Jones Gary P, Jones Gary, Jones G P, Jones G, GP Jones, Jones GP, body number 86, body 86, body no 86
+
+Richard Jones, Richard Jones, R Jones, R Jones, Jones Richard , Jones Richard, Jones R, Jones R, R Jones, Jones R, body number 63, body 63, body no 63, body 63 => Richard Jones, Richard Jones, R Jones, R Jones, Jones Richard , Jones Richard, Jones R, Jones R, R Jones, Jones R, body number 63, body 63, body no 63
+
+Nicholas Peter Joynes, Nicholas P Joynes, Nicholas Joynes, N P  Joynes, N Joynes, Joynes Nicholas Peter, Joynes Nicholas P, Joynes Nicholas, Joynes N P , Joynes N, NP Joynes, Joynes NP, body number 45, body 45, body no 45, body 45 => Nicholas Peter Joynes, Nicholas P Joynes, Nicholas Joynes, N P  Joynes, N Joynes, Joynes Nicholas Peter, Joynes Nicholas P, Joynes Nicholas, Joynes N P , Joynes N, NP Joynes, Joynes NP, body number 45, body 45, body no 45
+
+Anthony Peter Kelly, Anthony P Kelly, Anthony Kelly, A P Kelly, A Kelly, Kelly Anthony Peter, Kelly Anthony P, Kelly Anthony, Kelly A P, Kelly A, AP Kelly, Kelly AP, body number 54, body 54, body no 54, body 54 => Anthony Peter Kelly, Anthony P Kelly, Anthony Kelly, A P Kelly, A Kelly, Kelly Anthony Peter, Kelly Anthony P, Kelly Anthony, Kelly A P, Kelly A, AP Kelly, Kelly AP, body number 54, body 54, body no 54
+
+Michael David Kelly, Michael D Kelly, Michael Kelly, M D Kelly, M Kelly, Kelly Michael David, Kelly Michael D, Kelly Michael, Kelly M D, Kelly M, MD Kelly, Kelly MD, body number 72, body 72, body no 72, body 72 => Michael David Kelly, Michael D Kelly, Michael Kelly, M D Kelly, M Kelly, Kelly Michael David, Kelly Michael D, Kelly Michael, Kelly M D, Kelly M, MD Kelly, Kelly MD, body number 72, body 72, body no 72
+
+Carl David Lewis, Carl D Lewis, Carl Lewis, C D Lewis, C Lewis, Lewis Carl David, Lewis Carl D, Lewis Carl, Lewis C D, Lewis C, CD Lewis, Lewis CD, body number 85, body 85, body no 85, body 85 => Carl David Lewis, Carl D Lewis, Carl Lewis, C D Lewis, C Lewis, Lewis Carl David, Lewis Carl D, Lewis Carl, Lewis C D, Lewis C, CD Lewis, Lewis CD, body number 85, body 85, body no 85
+
+David William Mather, David W Mather, David Mather, D W Mather, D Mather, Mather David William, Mather David W, Mather David, Mather D W, Mather D, DW Mather, Mather DW, body number 56, body 56, body no 56, body 56 => David William Mather, David W Mather, David Mather, D W Mather, D Mather, Mather David William, Mather David W, Mather David, Mather D W, Mather D, DW Mather, Mather DW, body number 56, body 56, body no 56
+
+Brian Christopher Mathews, Brian C Mathews, Brian Mathews, B C Mathews, B Mathews, Mathews Brian Christopher, Mathews Brian C, Mathews Brian, Mathews B C, Mathews B, BC Mathews, Mathews BC, body number 22, body 22, body no 22, body 22 => Brian Christopher Mathews, Brian C Mathews, Brian Mathews, B C Mathews, B Mathews, Mathews Brian Christopher, Mathews Brian C, Mathews Brian, Mathews B C, Mathews B, BC Mathews, Mathews BC, body number 22, body 22, body no 22
+
+Francis Joseph McAllister, Francis J McAllister, Francis McAllister, F J  McAllister, F McAllister, McAllister Francis Joseph, McAllister Francis J, McAllister Francis, McAllister F J , McAllister F, FJ McAllister, McAllister FJ, body number 26, body 26, body no 26, body 26 => Francis Joseph McAllister, Francis J McAllister, Francis McAllister, F J  McAllister, F McAllister, McAllister Francis Joseph, McAllister Francis J, McAllister Francis, McAllister F J , McAllister F, FJ McAllister, McAllister FJ, body number 26, body 26, body no 26
+
+John McBrien, John McBrien, J McBrien, J McBrien, McBrien John , McBrien John, McBrien J, McBrien J, J McBrien, McBrien J, body number 68, body 68, body no 68, body 68 => John McBrien, John McBrien, J McBrien, J McBrien, McBrien John , McBrien John, McBrien J, McBrien J, J McBrien, McBrien J, body number 68, body 68, body no 68
+
+Marian Hazel McCabe, Marian H McCabe, Marian McCabe, M H McCabe, M McCabe, McCabe Marian Hazel, McCabe Marian H, McCabe Marian, McCabe M H, McCabe M, MH McCabe, McCabe MH, body number 20, body 20, body no 20, body 20, Marion McCabe, McCabe Marion Hazel, McCabe Marion => Marian Hazel McCabe, Marian H McCabe, Marian McCabe, M H McCabe, M McCabe, McCabe Marian Hazel, McCabe Marian H, McCabe Marian, McCabe M H, McCabe M, MH McCabe, McCabe MH, body number 20, body 20, body no 20, Marion McCabe, McCabe Marion Hazel, McCabe Marion
+
+Joseph Daniel McCarthy, Joseph D McCarthy, Joseph McCarthy, J D McCarthy, J McCarthy, McCarthy Joseph Daniel, McCarthy Joseph D, McCarthy Joseph, McCarthy J D, McCarthy J, JD McCarthy, McCarthy JD, body number 27, body 27, body no 27, body 27, Joe McCarthy, McCarthy Joe, Joe D McCarthy, McCarthy Joe D => Joe McCarthy, McCarthy Joe, Joe D McCarthy, McCarthy Joe D, Joseph Daniel McCarthy, Joseph D McCarthy, Joseph McCarthy, J D McCarthy, J McCarthy, McCarthy Joseph Daniel, McCarthy Joseph D, McCarthy Joseph, McCarthy J D, McCarthy J, JD McCarthy, McCarthy JD, body number 27, body 27, body no 27
+
+Peter McDonnell, Peter McDonnell, P McDonnell, P McDonnell, McDonnell Peter , McDonnell Peter, McDonnell P, McDonnell P, P McDonnell, McDonnell P, body number 40, body 40, body no 40, body 40 => Peter McDonnell, Peter McDonnell, P McDonnell, P McDonnell, McDonnell Peter , McDonnell Peter, McDonnell P, McDonnell P, P McDonnell, McDonnell P, body number 40, body 40, body no 40
+
+Alan McGlone, Alan McGlone, A McGlone, A McGlone, McGlone Alan , McGlone Alan, McGlone A, McGlone A, A McGlone, McGlone A, body number 70, body 70, body no 70, body 70, Gloney McGlone, McGlone Gloney => Gloney McGlone, McGlone Gloney, Alan McGlone, Alan McGlone, A McGlone, A McGlone, McGlone Alan , McGlone Alan, McGlone A, McGlone A, A McGlone, McGlone A, body number 70, body 70, body no 70
+
+Keith McGrath, Keith McGrath, K McGrath, K McGrath, McGrath Keith , McGrath Keith, McGrath K, McGrath K, K McGrath, McGrath K, body number 32, body 32, body no 32, body 32 => Keith McGrath, Keith McGrath, K McGrath, K McGrath, McGrath Keith , McGrath Keith, McGrath K, McGrath K, K McGrath, McGrath K, body number 32, body 32, body no 32
+
+Paul Brian Murray, Paul B Murray, Paul Murray, P B Murray, P Murray, Murray Paul Brian, Murray Paul B, Murray Paul, Murray P B, Murray P, PB Murray, Murray PB, body number 16, body 16, body no 16, body 16 => Paul Brian Murray, Paul B Murray, Paul Murray, P B Murray, P Murray, Murray Paul Brian, Murray Paul B, Murray Paul, Murray P B, Murray P, PB Murray, Murray PB, body number 16, body 16, body no 16
+
+Lee Nicol, Lee Nicol, L Nicol, L Nicol, Nicol Lee , Nicol Lee, Nicol L, Nicol L, L Nicol, Nicol L, body number 95, body 95, body no 95, body 95 => Lee Nicol, Lee Nicol, L Nicol, L Nicol, Nicol Lee , Nicol Lee, Nicol L, Nicol L, L Nicol, Nicol L, body number 95, body 95, body no 95
+
+Stephen Francis O'Neill, Stephen F O'Neill, Stephen O'Neill, S F O'Neill, S O'Neill, O'Neill Stephen Francis, O'Neill Stephen F, O'Neill Stephen, O'Neill S F, O'Neill S, SF O'Neill, O'Neill SF, body number 87, body 87, body no 87, body 87 => Stephen Francis O'Neill, Stephen F O'Neill, Stephen O'Neill, S F O'Neill, S O'Neill, O'Neill Stephen Francis, O'Neill Stephen F, O'Neill Stephen, O'Neill S F, O'Neill S, SF O'Neill, O'Neill SF, body number 87, body 87, body no 87
+
+Jonathon Owens, Jonathon Owens, J Owens, J Owens, Owens Jonathon , Owens Jonathon, Owens J, Owens J, J Owens, Owens J, body number 34, body 34, body no 34, body 34, Jonathan Owens, Owens Jonathan => Jonathon Owens, Jonathon Owens, J Owens, J Owens, Owens Jonathon , Owens Jonathon, Owens J, Owens J, J Owens, Owens J, body number 34, body 34, body no 34, Jonathan Owens, Owens Jonathan
+
+William Roy Pemberton, William R Pemberton, William Pemberton, W R Pemberton, W Pemberton, Pemberton William Roy, Pemberton William R, Pemberton William, Pemberton W R, Pemberton W, WR Pemberton, Pemberton WR, body number 65, body 65, body no 65, body 65, Roy Pemberton, R Pemberton, Pemberton Roy, Pemberton R => William Roy Pemberton, William R Pemberton, William Pemberton, W R Pemberton, W Pemberton, Pemberton William Roy, Pemberton William R, Pemberton William, Pemberton W R, Pemberton W, WR Pemberton, Pemberton WR, body number 65, body 65, body no 65, Roy Pemberton, R Pemberton, Pemberton Roy, Pemberton R
+
+Carl William Rimmer, Carl W Rimmer, Carl Rimmer, C W Rimmer, C Rimmer, Rimmer Carl William, Rimmer Carl W, Rimmer Carl, Rimmer C W, Rimmer C, CW Rimmer, Rimmer CW, body number 15, body 15, body no 15, body 15 => Carl William Rimmer, Carl W Rimmer, Carl Rimmer, C W Rimmer, C Rimmer, Rimmer Carl William, Rimmer Carl W, Rimmer Carl, Rimmer C W, Rimmer C, CW Rimmer, Rimmer CW, body number 15, body 15, body no 15
+
+David George Rimmer, David G Rimmer, David Rimmer, D G Rimmer, D Rimmer, Rimmer David George, Rimmer David G, Rimmer David, Rimmer D G, Rimmer D, DG Rimmer, Rimmer DG, body number 4, body 4, body no 4, body 4, Dave Rimmer, Rimmer Dave => Dave Rimmer, Rimmer Dave, David George Rimmer, David G Rimmer, David Rimmer, D G Rimmer, D Rimmer, Rimmer David George, Rimmer David G, Rimmer David, Rimmer D G, Rimmer D, DG Rimmer, Rimmer DG, body number 4, body 4, body no 4
+
+Graham John Roberts, Graham J Roberts, Graham Roberts, G J Roberts, G Roberts, Roberts Graham John, Roberts Graham J, Roberts Graham, Roberts G J, Roberts G, GJ Roberts, Roberts GJ, body number 79, body 79, body no 79, body 79 => Graham John Roberts, Graham J Roberts, Graham Roberts, G J Roberts, G Roberts, Roberts Graham John, Roberts Graham J, Roberts Graham, Roberts G J, Roberts G, GJ Roberts, Roberts GJ, body number 79, body 79, body no 79
+
+Stephen Joseph Robinson, Stephen J Robinson, Stephen Robinson, S J Robinson, S Robinson, Robinson Stephen Joseph, Robinson Stephen J, Robinson Stephen, Robinson S J, Robinson S, SJ Robinson, Robinson SJ, body number 28, body 28, body no 28, body 28 => Stephen Joseph Robinson, Stephen J Robinson, Stephen Robinson, S J Robinson, S Robinson, Robinson Stephen Joseph, Robinson Stephen J, Robinson Stephen, Robinson S J, Robinson S, SJ Robinson, Robinson SJ, body number 28, body 28, body no 28
+
+Henry Charles Rogers, Henry C Rogers, Henry Rogers, H C Rogers, H Rogers, Rogers Henry Charles, Rogers Henry C, Rogers Henry, Rogers H C, Rogers H, HC Rogers, Rogers HC, body number 24, body 24, body no 24, body 24 => Henry Charles Rogers, Henry C Rogers, Henry Rogers, H C Rogers, H Rogers, Rogers Henry Charles, Rogers Henry C, Rogers Henry, Rogers H C, Rogers H, HC Rogers, Rogers HC, body number 24, body 24, body no 24
+
+Colin Andrew Hugh William Sefton, Colin AHW Sefton, Colin Sefton, C A H W Sefton, C Sefton, Sefton Colin Andrew Hugh William, Sefton Colin AHW, Sefton Colin, Sefton C A H W, Sefton C, CAHW Sefton, Sefton CAHW, body number 61, body 61, body no 61, body 61, Andrew Sefton, A Sefton, Sefton Andrew, Sefton A => Colin Andrew Hugh William Sefton, Colin AHW Sefton, Colin Sefton, C A H W Sefton, C Sefton, Sefton Colin Andrew Hugh William, Sefton Colin AHW, Sefton Colin, Sefton C A H W, Sefton C, CAHW Sefton, Sefton CAHW, body number 61, body 61, body no 61, Andrew Sefton, A Sefton, Sefton Andrew, Sefton A
+
+Inger Shah, Inger Shah, I Shah, I Shah, Shah Inger , Shah Inger, Shah I, Shah I, I Shah, Shah I, body number 2, body 2, body no 2, body 2 => Inger Shah, Inger Shah, I Shah, I Shah, Shah Inger , Shah Inger, Shah I, Shah I, I Shah, Shah I, body number 2, body 2, body no 2
+
+Paula Anne Smith, Paula A Smith, Paula Smith, P A Smith, P Smith, Smith Paula Anne, Smith Paula A, Smith Paula, Smith P A, Smith P, PA Smith, Smith PA, body number 18, body 18, body no 18, body 18 => Paula Anne Smith, Paula A Smith, Paula Smith, P A Smith, P Smith, Smith Paula Anne, Smith Paula A, Smith Paula, Smith P A, Smith P, PA Smith, Smith PA, body number 18, body 18, body no 18
+
+Adam Edward Spearritt, Adam E Spearritt, Adam Spearritt, A E Spearritt, A Spearritt, Spearritt Adam Edward, Spearritt Adam E, Spearritt Adam, Spearritt A E, Spearritt A, AE Spearritt, Spearritt AE, body number 94, body 94, body no 94, body 94 => Adam Edward Spearritt, Adam E Spearritt, Adam Spearritt, A E Spearritt, A Spearritt, Spearritt Adam Edward, Spearritt Adam E, Spearritt Adam, Spearritt A E, Spearritt A, AE Spearritt, Spearritt AE, body number 94, body 94, body no 94
+
+Philip John Steele, Philip J Steele, Philip Steele, P J Steele, P Steele, Steele Philip John, Steele Philip J, Steele Philip, Steele P J, Steele P, PJ Steele, Steele PJ, body number 82, body 82, body no 82, body 82 => Philip John Steele, Philip J Steele, Philip Steele, P J Steele, P Steele, Steele Philip John, Steele Philip J, Steele Philip, Steele P J, Steele P, PJ Steele, Steele PJ, body number 82, body 82, body no 82
+
+David Leonard Thomas, David L Thomas, David Thomas, D L Thomas, D Thomas, Thomas David Leonard, Thomas David L, Thomas David, Thomas D L, Thomas D, DL Thomas, Thomas DL, body number 90, body 90, body no 90, body 90 => David Leonard Thomas, David L Thomas, David Thomas, D L Thomas, D Thomas, Thomas David Leonard, Thomas David L, Thomas David, Thomas D L, Thomas D, DL Thomas, Thomas DL, body number 90, body 90, body no 90
+
+Patrick John Thompson, Patrick J Thompson, Patrick Thompson, P J Thompson, P Thompson, Thompson Patrick John, Thompson Patrick J, Thompson Patrick, Thompson P J, Thompson P, PJ Thompson, Thompson PJ, body number 49, body 49, body no 49, body 49, Patrik Thompson, Patrik John Thompson, Thompson Patrik, Thompson Patrik John, Pat Thompson, Thompson Pat => Pat Thompson, Thompson Pat, Patrick John Thompson, Patrick J Thompson, Patrick Thompson, P J Thompson, P Thompson, Thompson Patrick John, Thompson Patrick J, Thompson Patrick, Thompson P J, Thompson P, PJ Thompson, Thompson PJ, body number 49, body 49, body no 49, Patrik Thompson, Patrik John Thompson, Thompson Patrik, Thompson Patrik John
+
+Peter Reuben Thompson, Peter R Thompson, Peter Thompson, P R Thompson, P Thompson, Thompson Peter Reuben, Thompson Peter R, Thompson Peter, Thompson P R, Thompson P, PR Thompson, Thompson PR, body number 78, body 78, body no 78, body 78 => Peter Reuben Thompson, Peter R Thompson, Peter Thompson, P R Thompson, P Thompson, Thompson Peter Reuben, Thompson Peter R, Thompson Peter, Thompson P R, Thompson P, PR Thompson, Thompson PR, body number 78, body 78, body no 78
+
+Stuart Paul William Thompson, Stuart PW Thompson, Stuart Thompson, S P W Thompson, S Thompson, Thompson Stuart Paul William, Thompson Stuart PW, Thompson Stuart, Thompson S P W, Thompson S, SPW Thompson, Thompson SPW, body number 53, body 53, body no 53, body 53 => Stuart Paul William Thompson, Stuart PW Thompson, Stuart Thompson, S P W Thompson, S Thompson, Thompson Stuart Paul William, Thompson Stuart PW, Thompson Stuart, Thompson S P W, Thompson S, SPW Thompson, Thompson SPW, body number 53, body 53, body no 53
+
+Peter Francis Tootle, Peter F Tootle, Peter Tootle, P F Tootle, P Tootle, Tootle Peter Francis, Tootle Peter F, Tootle Peter, Tootle P F, Tootle P, PF Tootle, Tootle PF, body number 39, body 39, body no 39, body 39 => Peter Francis Tootle, Peter F Tootle, Peter Tootle, P F Tootle, P Tootle, Tootle Peter Francis, Tootle Peter F, Tootle Peter, Tootle P F, Tootle P, PF Tootle, Tootle PF, body number 39, body 39, body no 39
+
+Christopher James Traynor, Christopher J Traynor, Christopher Traynor, C J Traynor, C Traynor, Traynor Christopher James, Traynor Christopher J, Traynor Christopher, Traynor C J, Traynor C, CJ Traynor, Traynor CJ, body number 60, body 60, body no 60, body 60 => Christopher James Traynor, Christopher J Traynor, Christopher Traynor, C J Traynor, C Traynor, Traynor Christopher James, Traynor Christopher J, Traynor Christopher, Traynor C J, Traynor C, CJ Traynor, Traynor CJ, body number 60, body 60, body no 60
+
+Martin Kevin Traynor, Martin K Traynor, Martin Traynor, M K Traynor, M Traynor, Traynor Martin Kevin, Traynor Martin K, Traynor Martin, Traynor M K, Traynor M, MK Traynor, Traynor MK, body number 57, body 57, body no 57, body 57 => Martin Kevin Traynor, Martin K Traynor, Martin Traynor, M K Traynor, M Traynor, Traynor Martin Kevin, Traynor Martin K, Traynor Martin, Traynor M K, Traynor M, MK Traynor, Traynor MK, body number 57, body 57, body no 57
+
+Kevin Tyrrell, Kevin Tyrrell, K Tyrrell, K Tyrrell, Tyrrell Kevin , Tyrrell Kevin, Tyrrell K, Tyrrell K, K Tyrrell, Tyrrell K, body number 36, body 36, body no 36, body 36, Colin Wafer, Colin Wafer, C Wafer, C Wafer, Wafer Colin , Wafer Colin, Wafer C, Wafer C, C Wafer, Wafer C, body number 13, body 13, body no 13, body 13 => Kevin Tyrrell, Kevin Tyrrell, K Tyrrell, K Tyrrell, Tyrrell Kevin , Tyrrell Kevin, Tyrrell K, Tyrrell K, K Tyrrell, Tyrrell K, body number 36, body 36, body no 36, body 36, Colin Wafer, Colin Wafer, C Wafer, C Wafer, Wafer Colin , Wafer Colin, Wafer C, Wafer C, C Wafer, Wafer C, body number 13, body 13, body no 13
+
+Ian David Whelan, Ian D Whelan, Ian Whelan, I D Whelan, I Whelan, Whelan Ian David, Whelan Ian D, Whelan Ian, Whelan I D, Whelan I, ID Whelan, Whelan ID, body number 6, body 6, body no 6, body 6, Ronnie Whelan, Whelan Ronnie => Ronnie Whelan, Whelan Ronnie, Ian David Whelan, Ian D Whelan, Ian Whelan, I D Whelan, I Whelan, Whelan Ian David, Whelan Ian D, Whelan Ian, Whelan I D, Whelan I, ID Whelan, Whelan ID, body number 6, body 6, body no 6
+
+Martin Kenneth Wild, Martin K Wild, Martin Wild, M K Wild, M Wild, Wild Martin Kenneth, Wild Martin K, Wild Martin, Wild M K, Wild M, MK Wild, Wild MK, body number 77, body 77, body no 77, body 77 => Martin Kenneth Wild, Martin K Wild, Martin Wild, M K Wild, M Wild, Wild Martin Kenneth, Wild Martin K, Wild Martin, Wild M K, Wild M, MK Wild, Wild MK, body number 77, body 77, body no 77
+
+Kevin Daniel Williams, Kevin D Williams, Kevin Williams, K D Williams, K Williams, Williams Kevin Daniel, Williams Kevin D, Williams Kevin, Williams K D, Williams K, KD Williams, Williams KD, body number 51, body 51, body no 51, body 51 => Kevin Daniel Williams, Kevin D Williams, Kevin Williams, K D Williams, K Williams, Williams Kevin Daniel, Williams Kevin D, Williams Kevin, Williams K D, Williams K, KD Williams, Williams KD, body number 51, body 51, body no 51
+
+Graham John Wright, Graham J Wright, Graham Wright, G J Wright, G Wright, Wright Graham John, Wright Graham J, Wright Graham, Wright G J, Wright G, GJ Wright, Wright GJ, body number 43, body 43, body no 43, body 43 => Graham John Wright, Graham J Wright, Graham Wright, G J Wright, G Wright, Wright Graham John, Wright Graham J, Wright Graham, Wright G J, Wright G, GJ Wright, Wright GJ, body number 43, body 43, body no 43
+
+#group 8
+#Organisation names from Organisation Lookup - Huddle version 1 (02/05/2012)
+British Broadcasting Corporation => BBC, British Broadcasting Corporation
+B B C => BBC, B B C
+Radio 1 => BBC, Radio 1
+Radio 2 => BBC, Radio 2
+Radio 3 => BBC, Radio 3
+Radio 4 => BBC, Radio 4
+Radio Merseyside => BBC, Radio Merseyside
+Radio Sheffield => BBC, Radio Sheffield
+
+A G O => Attorney General's Office, A G O
+Attorney General => Attorney General's Office, Attorney General
+
+Transport Police => British Transport Police
+
+CPS, Crown Prosecution Service => Crown Prosecution Service, CPS
+C P S => Crown Prosecution Service, CPS, C P S
+
+Dept of the Environment	=>	Department of the Environment, Dept of the Environment
+
+DPP, Director Public Prosecutions => Director of Public Prosecutions, DPP
+D P P => Director of Public Prosecutions, DPP, D P P
+
+Disaster Research Archive, National Disaster Research Archive => National Disaster Research Archive Edge Hill
+
+EMAS, E M A S, E Midlands Ambulance Service, East Midlands Ambulance Service => East Midlands Ambulance Service, E M A S, EMAS
+
+Eastwood Partners, Eastwoods, Eastwood, Eastwood Structural Engineers => Eastwood Partners Consulting Engineers, Eastwood Structural Engineers
+
+Emergency Planning College => Emergency Planning College, Easingwold
+
+FA, F A, Football Assn => Football Association, F A, FA, Football Assn
+# Covered elsewhere in synonyms file
+
+FSF, F S F, Football Supporters Federation => Football Supporters Federation, F S F, FSF
+
+#Hammond Suddards, Hammond Suddard => Hammond Suddards
+#The above would have no effect on search results
+
+Health Safety Executive, Health Safety Exec, HSE, H S E => Health Safety Executive, Health Safety Exec, HSE, H S E
+
+HM Inspectorate Constabulary, HMIC, H M I C => Her Majesty Inspectorate Constabulary, HMIC, H M I C, HM Inspectorate Constabulary
+
+Liverpool City Council, LCC, L C C => Liverpool City Council, LCC, L C C
+
+HDWP, H D W P, Hillsborough Disaster Working Party => Liverpool City Council Hillsborough Disaster Working Party, HDWP, H D W P
+
+Liverpool F C, Liverpool FC, LFC, L F C, Liverpool Football Club => Liverpool Football Club, Liverpool F C, Liverpool FC, LFC, L F C
+
+West Yorks Coroner, W Yorks Coroner, W Yorkshire Coroner, WYC => Liverpool Law Society, West Yorks Coroner, W Yorks Coroner, W Yorkshire Coroner, WYC
+
+Liverpool Police, Police Merseyside, Police Liverpool, Merseyside Police => Merseyside Police, Liverpool Police, Police Merseyside, Police Liverpool
+
+MPA, M P A, Merseyside Police Authority => Merseyside Police Authority, MPA, M P A
+
+Nottingham Forest F C, Nottingham Forest FC, Nottingham Forest, Notts Forest F C, Notts Forest FC, Notts Forest, Nottingham Forest Football Club => Nottingham Forest Football Club, Nottingham Forest F C, Nottingham Forest FC, Nottingham Forest, Notts Forest F C, Notts Forest FC, Notts Forest
+
+PCA, P C A, IPCC, I P C C, Police Complaints Authority => Police Complaints Authority, PCA, P C A, IPCC, I P C C
+
+Police Federation England Wales, Police Federation => Police Federation England Wales, Police Federation
+
+Police Superintendents Assn, Police Superintendents Ass, Police Superintendents Association => Police Superintendents Association, Police Superintendents Assn, Police Superintendents Ass
+
+PCC, P C C, Press Complaints Commission => Press Complaints Commission, PCC, P C C
+
+Sheffield CC, Sheffield C C, SCC, S C C, Sheffield City Council => Sheffield City Council, Sheffield CC, Sheffield C C, SCC, S C C
+
+Sheffield Wednesday Football Club, Sheffield Wednesday FC, Sheffield Wednesday F C, Sheffield Wednesday, Sheffield Wednesday Football Club => Sheffield Wednesday Football Club, Sheffield Wednesday Football Club, Sheffield Wednesday FC, Sheffield Wednesday F C, Sheffield Wednesday
+
+South Yorks Coroner, S Yorks Coroner, S Yorkshire Coroner, SYC, S Y C, Coroner South Yorkshire, Coroner S Yorkshire, South Yorkshire Coroner => South Yorkshire Coroner, South Yorks Coroner, S Yorks Coroner, S Yorkshire Coroner, SYC, S Y C, Coroner South Yorkshire, Coroner S Yorkshire
+
+South Yorks County Council, S Yorks County Council, S Yorkshire County Council, SYCC, S Y C C, South Yorkshire County Council => South Yorkshire County Council, South Yorks County Council, S Yorks County Council, S Yorkshire County Council, SYCC, S Y C C
+
+S Yorkshire County Fire Service, S Yorks County Fire Service, South Yorks County Fire Service, S Y County Fire Service, SY County Fire Service, SYCFS, S Y C F S, S Yorkshire Fire Service, S Yorks Fire Service, S Y Fire Service, SY Fire Service, South Yorkshire Fire Service, South Yorkshire County Fire Service => South Yorkshire County Fire Service, S Yorkshire County Fire Service, S Yorks County Fire Service, South Yorks County Fire Service, S Y County Fire Service, SY County Fire Service, SYCFS, S Y C F S, S Yorkshire Fire Service, S Yorks Fire Service, S Y Fire Service, SY Fire Service, South Yorkshire Fire Service
+
+South Yorkshire FRS, South Yorkshire F R S, S Yorkshire FRS, S Yorkshire F R S, South Yorks FRS, South Yorks F R S, S Yorks FRS, S Yorks F R S, South Yorks Fire Rescue Service, S Yorks Fire Rescue Service, S Yorkshire Fire Rescue Service, SY Fire Rescue Service, S Y Fire Rescue Service, South Yorks Fire Rescue, S Yorks Fire Rescue, S Yorkshire Fire Rescue, SY Fire Rescue, S Y Fire Rescue, South Yorkshire Fire Rescue Service, South Yorkshire Fire Rescue, SYFRS, S Y F R S => South Yorkshire FRS, South Yorkshire F R S, S Yorkshire FRS, S Yorkshire F R S, South Yorks FRS, South Yorks F R S, S Yorks FRS, S Yorks F R S, South Yorks Fire Rescue Service, S Yorks Fire Rescue Service, S Yorkshire Fire Rescue Service, SY Fire Rescue Service, S Y Fire Rescue Service, South Yorks Fire Rescue, S Yorks Fire Rescue, S Yorkshire Fire Rescue, SY Fire Rescue, S Y Fire Rescue, South Yorkshire Fire Rescue Service, South Yorkshire Fire Rescue, SYFRS, S Y F R S
+
+South Yorks Fire Authority, S Yorks Fire Authority, S Yorkshire Fire Authority, SYFA, S Y F A, South Yorkshire Joint Secretariat, S Yorks Joint Secretariat, S Yorkshire Joint Secretariat, South Yorks Joint Secretariat, SYJS, S Y J S, South Yorkshire Joint Authority, South Yorks Joint Authority, S Yorkshire Joint Authority, SYJA, S Y J A, South Yorkshire Fire Authority => South Yorks Fire Authority, S Yorks Fire Authority, S Yorkshire Fire Authority, SYFA, S Y F A, South Yorkshire Joint Secretariat, S Yorks Joint Secretariat, S Yorkshire Joint Secretariat, South Yorks Joint Secretariat, SYJS, S Y J S, South Yorkshire Joint Authority, South Yorks Joint Authority, S Yorkshire Joint Authority, SYJA, S Y J A, South Yorkshire Fire Authority
+
+S Yorkshire Metropolitan Ambulance Service, S Yorks Metropolitan Ambulance Service, South Yorks Metropolitan Ambulance Service, S Y Metropolitan Ambulance Service, SY Metropolitan Ambulance Service, South Yorkshire Ambulance, S Yorkshire Ambulance, S Yorks Ambulance, South Yorks Ambulance Service, S Y Ambulance, SY Ambulance, Yorkshire Ambulance Service, YAS, Y A S, SYMAS, S Y M A S, South Yorkshire Metropolitan Ambulance Service => S Yorkshire Metropolitan Ambulance Service, S Yorks Metropolitan Ambulance Service, South Yorks Metropolitan Ambulance Service, S Y Metropolitan Ambulance Service, SY Metropolitan Ambulance Service, South Yorkshire Ambulance, S Yorkshire Ambulance, S Yorks Ambulance, South Yorks Ambulance Service, S Y Ambulance, SY Ambulance, Yorkshire Ambulance Service, YAS, Y A S, SYMAS, S Y M A S, South Yorkshire Metropolitan Ambulance Service
+
+South Yorks Police, S Yorks Police, S Yorkshire Police, SYP, S Y P, Police South Yorkshire, Police S Yorkshire, Police South Yorks, Police S Yorks, South Yorkshire Police => South Yorks Police, S Yorks Police, S Yorkshire Police, SYP, S Y P, Police South Yorkshire, Police S Yorkshire, Police South Yorks, Police S Yorks, South Yorkshire Police
+
+SYPA, S Y P A, Police Authority South Yorkshire, Police Authority S Yorkshire, Police Authority South Yorks, Police Authority S Yorks, S Yorks Police Authority, S Yorkshire Police Authority, South Yorks Police Authority, South Yorkshire Joint Secretariat, S Yorks Joint Secretariat, S Yorkshire Joint Secretariat, South Yorks Joint Secretariat, SYJS, S Y J S, South Yorkshire Joint Authority, South Yorks Joint Authority, S Yorkshire Joint Authority, SYJA, S Y J A, South Yorkshire Police Authority => SYPA, S Y P A, Police Authority South Yorkshire, Police Authority S Yorkshire, Police Authority South Yorks, Police Authority S Yorks, S Yorks Police Authority, S Yorkshire Police Authority, South Yorks Police Authority, South Yorkshire Joint Secretariat, S Yorks Joint Secretariat, S Yorkshire Joint Secretariat, South Yorks Joint Secretariat, SYJS, S Y J S, South Yorkshire Joint Authority, South Yorks Joint Authority, S Yorkshire Joint Authority, SYJA, S Y J A, South Yorkshire Police Authority
+
+St John Ambulance, St Johns Ambulance => St John Ambulance, St Johns Ambulance
+
+Association Chief Police Officers England Wales Northern Ireland, Assn Chief Police Officers England Wales Northern Ireland, Association Chief Police Officers England Wales N Ireland, Assn Chief Police Officers England Wales N Ireland, Association Chief Police Officers England Wales N I, Assn Chief Police Officers England Wales N I, Association Chief Police Officers England Wales NI, Assn Chief Police Officers England Wales NI, ACPO, A C P O, Association Chief Police Officers => Association Chief Police Officers England Wales Northern Ireland, Assn Chief Police Officers England Wales Northern Ireland, Association Chief Police Officers England Wales N Ireland, Assn Chief Police Officers England Wales N Ireland, Association Chief Police Officers England Wales N I, Assn Chief Police Officers England Wales N I, Association Chief Police Officers England Wales NI, Assn Chief Police Officers England Wales NI, ACPO, A C P O, Association Chief Police Officers
+
+TSOL, T S O L, Treasury Solicitor Department, Treasury Solicitors Department, Treasury Solicitor Dept, Treasury Solicitors Dept, Treasury Solicitory Dept => TSOL, T S O L, Treasury Solicitor Department, Treasury Solicitors Department, Treasury Solicitor Dept, Treasury Solicitors Dept, Treasury Solicitory Dept
+
+West Midlands Police, West Mids Police, W Midlands Police, W Mids Police, W M Police, WM Police, WMP, W M P => West Midlands Police, West Mids Police, W Midlands Police, W Mids Police, W M Police, WM Police, WMP, W M P
+
+W Yorkshire Coroner, W Yorks Coroner, Coroner West Yorkshire, Coroner W Yorkshire, Coroner W Yorks, West Yorkshire Coroner => W Yorkshire Coroner, W Yorks Coroner, Coroner West Yorkshire, Coroner W Yorkshire, Coroner W Yorks, West Yorkshire Coroner
+
+#group 9
+#Person names from Person Lookup - Huddle version 2 (06/06/2012)
+Dear Geoffrey Chief Constable, Chief Constable Geoffrey Dear, Chief Constable Dear, Chief Constable G Dear, Dear Chief Constable Geoffrey, Dear Chief Constable, Dear Chief Constable G, Dear Chief Constable Geoffrey, Geoffrey Dear, G Dear, Dear Geoffrey, Dear G, Lord Dear Willsersey, Baron Dear => Dear Geoffrey Chief Constable, Chief Constable Geoffrey Dear, Chief Constable Dear, Chief Constable G Dear, Dear Chief Constable Geoffrey, Dear Chief Constable, Dear Chief Constable G, Dear Chief Constable Geoffrey, Geoffrey Dear, G Dear, Dear Geoffrey, Dear G, Lord Dear Willsersey, Baron Dear
+
+Duckenfield David Chief Superintendent, Chief Superintendent David Duckenfield, Chief Superintendent Duckenfield, Chief Superintendent D Duckenfield, Duckenfield Chief Superintendent David, Duckenfield Chief Superintendent, Duckenfield Chief Superintendent D, David Duckenfield, D Duckenfield, Duckenfield David, Duckenfield D => Duckenfield David Chief Superintendent, Chief Superintendent David Duckenfield, Chief Superintendent Duckenfield, Chief Superintendent D Duckenfield, Duckenfield Chief Superintendent David, Duckenfield Chief Superintendent, Duckenfield Chief Superintendent D, David Duckenfield, D Duckenfield, Duckenfield David, Duckenfield D
+
+Eastwood Wilfred Dr, Doctor Wilfred Eastwood, Doctor Eastwood, Doctor W Eastwood, Eastwood Doctor Wilfred, Eastwood Doctor, Eastwood Doctor W, Wilfred Eastwood, W Eastwood, Eastwood Wilfred, Eastwood W, Dr Wilfred Eastwood, Dr Eastwood, Dr W Eastwood, Eastwood Dr Wilfred, Eastwood Dr, Eastwood Dr W => Eastwood Wilfred Dr, Doctor Wilfred Eastwood, Doctor Eastwood, Doctor W Eastwood, Eastwood Doctor Wilfred, Eastwood Doctor, Eastwood Doctor W, Wilfred Eastwood, W Eastwood, Eastwood Wilfred, Eastwood W, Dr Wilfred Eastwood, Dr Eastwood, Dr W Eastwood, Eastwood Dr Wilfred, Eastwood Dr, Eastwood Dr W
+
+Hurd Douglas Home Secretary, Douglas Hurd, D Hurd, Hurd Douglas, Hurd D => Hurd Douglas Home Secretary, Douglas Hurd, D Hurd, Hurd Douglas, Hurd D
+
+Jackson Walter Assistant Chief Constable, Assistant Chief Constable Walter Jackson, Assistant Chief Constable Jackson, Assistant Chief Constable W Jackson, Jackson Assistant Chief Constable Walter, Jackson Assistant Chief Constable, Jackson Assistant Chief Constable W, Jackson Assistant Chief Constable Walter, Walter Jackson, W Jackson, Jackson Walter, Jackson W => Jackson Walter Assistant Chief Constable, Assistant Chief Constable Walter Jackson, Assistant Chief Constable Jackson, Assistant Chief Constable W Jackson, Jackson Assistant Chief Constable Walter, Jackson Assistant Chief Constable, Jackson Assistant Chief Constable W, Jackson Assistant Chief Constable Walter, Walter Jackson, W Jackson, Jackson Walter, Jackson W
+
+Jones John Meryvn Assistant Chief Constable, Assistant Chief Constable John Jones, Assistant Chief Constable John Mervyn Jones, Assistant Chief Constable John M Jones, Assistant Chief Constable JM Jones, Assistant Chief Constable Jones, Assistant Chief Constable J Jones, Jones Assistant Chief Constable John, Jones Assistant Chief Constable John Mervyn, Jones Assistant Chief Constable John M, Jones Assistant Chief Constable JM, Jones Assistant Chief Constable J M, Jones Assistant Chief Constable, Jones Assistant Chief Constable J, Jones Assistant Chief Constable John M, Jones Assistant Chief Constable, Jones Assistant Chief Constable J, Jones Assistant Chief Constable JM, Jones Assistant Chief Constable J M, J Jones, John Mervyn Jones, JM Jones, J M Jones, Jones John, Jones J, Jones John Mervyn, Jones JM, Jones J M => Jones John Meryvn Assistant Chief Constable, Assistant Chief Constable John Jones, Assistant Chief Constable John Mervyn Jones, Assistant Chief Constable John M Jones, Assistant Chief Constable JM Jones, Assistant Chief Constable Jones, Assistant Chief Constable J Jones, Jones Assistant Chief Constable John, Jones Assistant Chief Constable John Mervyn, Jones Assistant Chief Constable John M, Jones Assistant Chief Constable JM, Jones Assistant Chief Constable J M, Jones Assistant Chief Constable, Jones Assistant Chief Constable J, Jones Assistant Chief Constable John M, Jones Assistant Chief Constable, Jones Assistant Chief Constable J, Jones Assistant Chief Constable JM, Jones Assistant Chief Constable J M, J Jones, John Mervyn Jones, JM Jones, J M Jones, Jones John, Jones J, Jones John Mervyn, Jones JM, Jones J M
+
+Kelly Graham Chief Executive, Graham Kelly, G Kelly, Kelly Graham, Kelly G => Kelly Graham Chief Executive, Graham Kelly, G Kelly, Kelly Graham, Kelly G
+
+Mackrell Graham Secretary, Graham Mackrell, G Mackrell, Mackrell Graham, Mackrell G => Mackrell Graham Secretary, Graham Mackrell, G Mackrell, Mackrell Graham, Mackrell G
+
+Marshall Roger Superintendent, Superintendent Roger Marshall, Superintendent Marshall, Superintendent R Marshall, Marshall Superintendent Roger, Marshall Superintendent, Marshall Superintendent R, Roger Marshall, R Marshall, Marshall Roger, Marshall R => Marshall Roger Superintendent, Superintendent Roger Marshall, Superintendent Marshall, Superintendent R Marshall, Marshall Superintendent Roger, Marshall Superintendent, Marshall Superintendent R, Roger Marshall, R Marshall, Marshall Roger, Marshall R
+
+McGee Herbert Edward Chairman, Herbert McGee, H McGee, Herbert Edward McGee, HE McGee, H E McGee, McGee Herbert, McGee H, McGee Herbert Edward, McGee HE, McGee H E, Bert Edward McGee, Bert McGee, McGee Bert Edward, McGee Bert => McGee Herbert Edward Chairman, Herbert McGee, H McGee, Herbert Edward McGee, HE McGee, H E McGee, McGee Herbert, McGee H, McGee Herbert Edward, McGee HE, McGee H E, Bert Edward McGee, Bert McGee, McGee Bert Edward, McGee Bert
+
+Mole Brian Leonard Chief Superintendent, Chief Superintendent Brian Mole, Chief Superintendent Brian Leonard Mole, Chief Superintendent Brian L Mole, Chief Superintendent BL Mole, Chief Superintendent Mole, Chief Superintendent B Mole, Mole Chief Superintendent Brian, Mole Chief Superintendent Brian Leonard, Mole Chief Superintendent Brian L, Mole Chief Superintendent BL, Mole Chief Superintendent B L, Mole Chief Superintendent, Mole Chief Superintendent B, B Mole, Brian Leonard Mole, BL Mole, B L Mole, Mole Brian, Mole B, Mole Brian Leonard => Mole Brian Leonard Chief Superintendent, Chief Superintendent Brian Mole, Chief Superintendent Brian Leonard Mole, Chief Superintendent Brian L Mole, Chief Superintendent BL Mole, Chief Superintendent Mole, Chief Superintendent B Mole, Mole Chief Superintendent Brian, Mole Chief Superintendent Brian Leonard, Mole Chief Superintendent Brian L, Mole Chief Superintendent BL, Mole Chief Superintendent B L, Mole Chief Superintendent, Mole Chief Superintendent B, B Mole, Brian Leonard Mole, BL Mole, B L Mole, Mole Brian, Mole B, Mole Brian Leonard
+
+Moynihan Colin 4th Baron Berkley Minster Sport, Colin Moynihan, C Moynihan, Moynihan Colin, Moynihan C => Moynihan Colin 4th Baron Berkley Minster Sport, Colin Moynihan, C Moynihan, Moynihan Colin, Moynihan C
+
+Murray Bernard Dean Superintendent, Superintendent Bernard Murray, Superintendent Bernard Dean Murray, Superintendent Bernard D Murray, Superintendent BD Murray, Superintendent Murray, Superintendent B Murray, Murray Superintendent Bernard, Murray Superintendent Bernard Dean, Murray Superintendent Bernard D, Murray Superintendent BD, Murray Superintendent B D, Murray Superintendent, Murray Superintendent B, B Murray, Bernard Dean Murray, BD Murray, B D Murray, Murray Bernard, Murray B, Murray Bernard Dean, Murray BD, Murray B D => Murray Bernard Dean Superintendent, Superintendent Bernard Murray, Superintendent Bernard Dean Murray, Superintendent Bernard D Murray, Superintendent BD Murray, Superintendent Murray, Superintendent B Murray, Murray Superintendent Bernard, Murray Superintendent Bernard Dean, Murray Superintendent Bernard D, Murray Superintendent BD, Murray Superintendent B D, Murray Superintendent, Murray Superintendent B, B Murray, Bernard Dean Murray, BD Murray, B D Murray, Murray Bernard, Murray B, Murray Bernard Dean, Murray BD, Murray B D
+
+Patnick Sir Ivine MP, Sir Irvine Patnick, Sir Patnick, Sir I Patnick, Patnick Sir Irvine, Patnick Sir, Patnick Sir I, Irvine Patnick, I Patnick, Patnick Irvine, Patnick I => Patnick Sir Ivine MP, Sir Irvine Patnick, Sir Patnick, Sir I Patnick, Patnick Sir Irvine, Patnick Sir, Patnick Sir I, Irvine Patnick, I Patnick, Patnick Irvine, Patnick I
+
+Popper Dr Stefan, Doctor Stefan Popper, Doctor Popper, Doctor S Popper, Popper Doctor Stefan, Popper Doctor, Popper Doctor S, Popper Doctor S, Stefan Popper, S Popper, Popper Stefan, Popper S, Dr Stefan Leopold, Dr Leopold, Dr S Leopold, Leopold Dr Stefan, Leopold Dr, Leopold Dr S => Popper Dr Stefan, Doctor Stefan Popper, Doctor Popper, Doctor S Popper, Popper Doctor Stefan, Popper Doctor, Popper Doctor S, Popper Doctor S, Stefan Popper, S Popper, Popper Stefan, Popper S, Dr Stefan Leopold, Dr Leopold, Dr S Leopold, Leopold Dr Stefan, Leopold Dr, Leopold Dr S
+
+Sharp Leslie Chief Constable, Chief Constable Leslie Sharp, Chief Constable Sharp, Chief Constable L Sharp, Sharp Chief Constable Leslie, Sharp Chief Constable, Sharp Chief Constable L, Sharp Chief Constable Leslie, Leslie Sharp, L Sharp, Sharp Leslie, Sharp L => Sharp Leslie Chief Constable, Chief Constable Leslie Sharp, Chief Constable Sharp, Chief Constable L Sharp, Sharp Chief Constable Leslie, Sharp Chief Constable, Sharp Chief Constable L, Sharp Chief Constable Leslie, Leslie Sharp, L Sharp, Sharp Leslie, Sharp L
+
+Straw Jack Home Secretary, Jack Straw, J Straw, Straw Jack, Straw J, Home Secretary Jack Straw => Straw Jack Home Secretary, Jack Straw, J Straw, Straw Jack, Straw J, Home Secretary Jack Straw
+
+Stuart Smith Lord Justice Sir Murray, Sir Murray Stuart Smith, Sir Stuart Smith, Sir M Stuart Smith, Stuart Smith Sir Murray, Stuart Smith Sir, Stuart Smith Sir M, Stuart Smith Sir Murray, Stuart Smith Sir, Stuart Smith Sir M, Murray Stuart Smith, M Stuart Smith, Stuart Smith Murray, Stuart Smith M, Lord Justice Stuart Smith, LJ Stuart Smith => Stuart Smith Lord Justice Sir Murray, Sir Murray Stuart Smith, Sir Stuart Smith, Sir M Stuart Smith, Stuart Smith Sir Murray, Stuart Smith Sir, Stuart Smith Sir M, Stuart Smith Sir Murray, Stuart Smith Sir, Stuart Smith Sir M, Murray Stuart Smith, M Stuart Smith, Stuart Smith Murray, Stuart Smith M, Lord Justice Stuart Smith, LJ Stuart Smith
+
+Taylor Peter Lord Justice, Peter Taylor, P Taylor, Taylor Peter, Taylor P, Taylor LJ, Taylor L J => Taylor Peter Lord Justice, Peter Taylor, P Taylor, Taylor Peter, Taylor P, Taylor LJ, Taylor L J
+
+Thatcher Margaret Prime Minister, Margaret Thatcher, M Thatcher, Thatcher Margaret, Thatcher M, Thatcher => Thatcher Margaret Prime Minister, Margaret Thatcher, M Thatcher, Thatcher Margaret, Thatcher M, Thatcher
+
+Wells Richard Burton Chief Constable, Chief Constable Richard Wells, Chief Constable Richard Burton Wells, Chief Constable Richard B Wells, Chief Constable RB Wells, Chief Constable Wells, Chief Constable R Wells, Wells Chief Constable Richard, Wells Chief Constable Richard Burton, Wells Chief Constable Richard B, Wells Chief Constable RB, Wells Chief Constable R B, Wells Chief Constable, Wells Chief Constable R, Wells Chief Constable Richard, Wells Chief Constable Richard Burton, R Wells, Richard Burton Wells, RB Wells, R B Wells, Wells Richard, Wells R, Wells Richard Burton, Wells RB, Wells R B => Wells Richard Burton Chief Constable, Chief Constable Richard Wells, Chief Constable Richard Burton Wells, Chief Constable Richard B Wells, Chief Constable RB Wells, Chief Constable Wells, Chief Constable R Wells, Wells Chief Constable Richard, Wells Chief Constable Richard Burton, Wells Chief Constable Richard B, Wells Chief Constable RB, Wells Chief Constable R B, Wells Chief Constable, Wells Chief Constable R, Wells Chief Constable Richard, Wells Chief Constable Richard Burton, R Wells, Richard Burton Wells, RB Wells, R B Wells, Wells Richard, Wells R, Wells Richard Burton, Wells RB, Wells R B
+
+Wright Peter Chief Constable, Chief Constable Peter Wright, Chief Constable Wright, Chief Constable P Wright, Wright Chief Constable Peter, Wright Chief Constable, Wright Chief Constable P, Wright Chief Constable, Peter Wright, P Wright, Wright Peter, Wright P => Wright Peter Chief Constable, Chief Constable Peter Wright, Chief Constable Wright, Chief Constable P Wright, Wright Chief Constable Peter, Wright Chief Constable, Wright Chief Constable P, Wright Chief Constable, Peter Wright, P Wright, Wright Peter, Wright P

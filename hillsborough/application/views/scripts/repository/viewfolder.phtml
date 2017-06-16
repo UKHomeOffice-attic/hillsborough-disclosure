@@ -1,0 +1,178 @@
+<?php 
+
+function wordTidy($string)
+{
+ 
+  // Replace Single Curly Quotes
+
+  $search[] = chr(0x91);
+  $search[] = chr(0x92);
+  $replace[] = "'";
+  $replace[] = "'";
+
+  // Replace Smart Double Curly Quotes
+  $search[] = chr(0x93);
+  $search[] = chr(0x94);
+  $replace[] = '"';
+  $replace[] = '"';
+
+  $search[] = chr(0x97);
+  $replace[] = '-';
+  
+  $search[] = chr(0x85);
+  $replace[] = '...';
+  
+  // Apply Replacements
+  $string = str_replace($search, $replace, $string);
+	
+  
+  
+//	var_dump($string);
+  $string = htmlentities(substr($string, 3));
+//  	var_dump($string);
+  
+  	return $string;
+}
+
+
+function format_file_fize_size( $size, $display_bytes=false )
+{
+	if( $size < 1024 )
+		$filesize = $size . ' bytes';
+	elseif( $size >= 1024 && $size < 1048576 )
+		$filesize = round( $size/1024, 2 ) . ' KB';
+
+	elseif( $size >= 1048576 )
+		$filesize = round( $size/1048576, 2 ) . ' MB';
+
+	if( $size >= 1024 && $display_bytes )
+		$filesize = $filesize . ' (' . $size . ' bytes)';
+
+	return $filesize;
+}
+
+?>
+
+<header>
+<h1><?php if (empty($this->document->short_title)) { echo "Blank title field"; } else { echo $this->document->short_title; } ?></h1>
+</header>
+<div role="main">
+<?php if (!empty($this->document->description)) : ?>
+<p><?php echo nl2br($this->document->description); ?></p>
+<?php endif; ?>
+
+<table border="0" cellspacing="0" cellpadding="0">
+
+<tr>
+<th scope="row">Unique ID:</th>
+<td><span class="spaced"><?php echo $this->document->begin_doc_id ?></span></td>
+</tr>
+
+<?php
+if ($this->document->archive_ref_id!=""): 
+?>
+
+<tr>
+<th scope="row">Contributor reference:</th>
+<td>
+<?php
+echo $this->document->archive_ref_id;
+ ?>
+</td>
+</tr>
+
+ <?php
+endif;
+?>
+
+<!-- 
+<tr>
+<th scope="row">Date(s):</th>
+<td>
+<?php
+/* 
+$ds = Hillsborough_Functions::convertDateWithWildcard($this->document->date_start, $this->document->date_start_accuracy);
+echo $ds;
+if (($this->document->date_end!=0)&&(!empty($this->document->date_end)))
+{
+	$de = Hillsborough_Functions::convertDateWithWildcard($this->document->date_end, $this->document->date_end_accuracy);
+	
+	if ($ds!=$de) // Only show if not the same day/month/year for the start and end date range
+	{
+?>
+<br /> to <br />
+<?php
+		echo $de;
+	} 		
+}
+*/
+?>
+</td>
+</tr>
+ -->
+
+<tr>
+<th scope="row">Contributor:</th>
+<td><?php echo $this->document->owning_organisation;?></td>
+</tr>
+
+<tr>
+<th scope="row">Folder title:</th>
+<td><?php echo $this->document->series_title;?></td>
+</tr>
+
+<tr>
+<th scope="row">Sub-folder title:</th>
+<td><?php echo $this->document->sub_series_title;?></td>
+</tr>
+
+<!-- 
+<tr>
+<th scope="row">Original format:</th>
+<td><?php echo $this->document->originalformat;?></td>
+</tr>
+-->
+
+ <?php if (!empty($this->document->out_of_scope_reason)):?>
+	 <?php if ($this->document->formatted_outofscope!="Duplicate"): ?>
+		 <tr>
+			<th scope="row">Out of scope reason:</th>
+			<td><?php echo $this->document->out_of_scope_reason; ?></td>
+		</tr>
+	<?php else: ?>
+		 <tr>
+			<th scope="row">Out of scope reason:</th>
+			<td>
+			<?php 
+				$docID = Hillsborough_Functions::findDocumentId($this->document->out_of_scope_reason);
+
+				if ($docID!="")
+				{
+					$formattedLink = "<a href=\"/repository/" . $docID . "\">" . $docID . "</a>";
+					echo str_replace($docID, $formattedLink, $this->document->out_of_scope_reason);
+				}
+				else 
+					echo $this->document->out_of_scope_reason;
+			?>
+			</td>
+		</tr>
+		
+	<?php endif; ?>
+<?php endif; ?>
+
+
+</table>
+
+<!-- 
+<p>Redactions appear in documents as a white box with a black border, as in this example:<br/>
+	<img src="/img/redactionexample.gif" />
+</p>
+ -->
+</div>
+
+<div role="complementary">
+
+
+</div>
+</div>
+</div>

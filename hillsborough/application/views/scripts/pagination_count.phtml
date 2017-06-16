@@ -1,0 +1,3 @@
+<?php if ($this->pageCount): ?>
+<?php echo Zend_Locale_Format::toNumber($this->firstItemNumber)?> - <?php echo Zend_Locale_Format::toNumber($this->lastItemNumber)?> of <?php echo Zend_Locale_Format::toNumber($this->totalItemCount)?> disclosed items
+<?php endif; ?>

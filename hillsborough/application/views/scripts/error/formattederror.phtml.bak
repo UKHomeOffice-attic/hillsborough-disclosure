@@ -1,0 +1,9 @@
+<h1><?php echo $this->pagetitle; ?></h1>
+
+<div role="main">
+
+<?php echo nl2br($this->message); ?>
+
+<p><a href="#" onclick="Javascript:history.back()">&lt; Back to previous page</a></p>
+
+</div>

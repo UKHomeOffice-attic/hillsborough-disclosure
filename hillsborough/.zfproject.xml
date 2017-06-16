@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.11.10">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <apisDirectory enabled="false"/>
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Browse">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="vieworganisation"/>
+          <actionMethod actionName="selectOrganisation"/>
+          <actionMethod actionName="listDocuments"/>
+          <actionMethod actionName="viewdocument"/>
+          <actionMethod actionName="date"/>
+          <actionMethod actionName="daterange"/>
+          <actionMethod actionName="video"/>
+          <actionMethod actionName="audio"/>
+          <actionMethod actionName="populatedcontent"/>
+          <actionMethod actionName="populatedcontentlookup"/>
+          <actionMethod actionName="victimname"/>
+          <actionMethod actionName="corporatebody"/>
+          <actionMethod actionName="victimnamelookup"/>
+          <actionMethod actionName="corporatebodylookup"/>
+          <actionMethod actionName="person"/>
+          <actionMethod actionName="personlookup"/>
+          <actionMethod actionName="photographs"/>
+        </controllerFile>
+        <controllerFile controllerName="Application">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Catalogue">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Repository">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="view"/>
+        </controllerFile>
+      </controllersDirectory>
+      <formsDirectory enabled="false"/>
+      <layoutsDirectory>
+        <layoutScriptsDirectory>
+          <layoutScriptFile layoutName="layout"/>
+        </layoutScriptsDirectory>
+      </layoutsDirectory>
+      <modelsDirectory>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Organisations"/>
+          <dbTableFile dbTableName="DisclosedMaterial"/>
+          <dbTableFile dbTableName="DisclosedMaterialOrganisation"/>
+          <dbTableFile dbTableName="SeriesLookup"/>
+          <dbTableFile dbTableName="Autopopulatelookup"/>
+        </dbTableDirectory>
+        <modelFile modelName="Schema"/>
+        <modelFile modelName="Organisation"/>
+        <modelFile modelName="Series"/>
+        <modelFile modelName="SubSeries"/>
+        <modelFile modelName="ContributingOrganisation"/>
+      </modelsDirectory>
+      <modulesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="vieworganisation"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="selectOrganisation"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Application">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Catalogue">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="listDocuments"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Repository">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Repository">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="viewdocument"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="date"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="daterange"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="video"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="audio"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="populatedcontent"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="populatedcontentlookup"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="victimname"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="corporatebody"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="victimnamelookup"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="corporatebodylookup"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="person"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="personlookup"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Browse">
+            <viewScriptFile forActionName="photographs"/>
+          </viewControllerScriptsDirectory>
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
+      <testApplicationDirectory>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile forControllerName="Index"/>
+        </testApplicationControllerDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory/>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

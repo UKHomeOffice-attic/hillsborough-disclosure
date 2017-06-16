@@ -1,0 +1,430 @@
+<?php 
+
+function displayLink($url, $title, $urlmatches = null)
+{
+	$strengthOn = "";
+	$strengthOff = "";
+	$currenturl = $_SERVER['REQUEST_URI'];
+
+	if (is_array($urlmatches))
+	{
+		for($i=0; $i<sizeof($urlmatches); $i++)
+		{
+			if (!(strpos($currenturl,$urlmatches[$i])===false))
+			{
+				$strengthOn = "<strong>";
+				$strengthOff = "</strong>";
+				break;
+			}
+		}	
+	}
+	else 
+	{
+		if ((strpos($currenturl,$url)===false))
+		{
+			$strengthOn = "<strong>";
+			$strengthOff = "</strong>";
+		}	
+	}
+	$ret = $strengthOn."<a href=\"".$url."\">" . $title . "</a>" . $strengthOff;
+	return $ret;
+}
+
+?>
+
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8'); ?>
+<!DOCTYPE html>
+
+<!--[if IEMobile 7]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 7]><html class="no-js ie6" lang="en"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+
+<meta charset="utf-8">
+<head>
+<title><?php echo $this->pagetitle ?> | Hillsborough Independent Panel</title>
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;">  
+
+<!-- For all browsers -->
+<link rel="stylesheet" media="screen" href="/error/assets/css/style.css">
+<link rel="stylesheet" media="print" href="/error/assets/css/print.css">
+<!-- For progressively larger displays -->
+<link rel="stylesheet" media="only screen and (min-width: 480px)" href="/error/assets/css/480.css">
+<link rel="stylesheet" media="only screen and (min-width: 768px)" href="/error/assets/css/768.css">
+<link rel="stylesheet" media="only screen and (min-width: 992px)" href="/error/assets/css/992.css">
+<link rel="stylesheet" media="only screen and (min-width: 1382px)" href="/error/assets/css/1382.css">
+<!-- For Retina displays -->
+<link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)" href="/error/assets/css/2x.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" media="screen" href="/error/assets/css/480.css">
+<link rel="stylesheet" media="screen" href="/error/assets/css/768.css">
+<link rel="stylesheet" media="screen" href="/error/assets/css/992.css">
+<![endif]-->
+
+<!-- Scripts -->
+<script src="/error/assets/js/libs/jquery-1.5.1.min.js"></script>
+<script src="/error/assets/js/libs/modernizr-custom.js"></script>
+<?php if (strpos($_SERVER['REQUEST_URI'], "/repository/")!==FALSE) : ?>
+<script src="/error/assets/js/mylibs/jquery.lightbox-0.5.js"></script>
+<?php endif; ?>
+<script src="/error/assets/js/plugins.js"></script>
+
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<script src="/error/assets/js/libs/jquery-extended-selectors.js"></script>
+<script src="/error/assets/js/libs/selectivizr-min.js"></script>
+<script src="/error/assets/js/libs/imgsizer.js"></script>
+<script src="/error/assets/js/utils.js"></script>
+<![endif]-->
+
+<?php if (isset($this->perpage)) : // include per page for catalogue ?>
+<script type="text/javascript">
+var perpage = <?php echo $this->perpage ?>;
+</script>
+<?php endif; ?>
+
+<!-- For iPhone 4 -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/error/assets/img/h/apple-touch-icon.png">
+<!-- For iPad 1-->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/error/assets/img/m/apple-touch-icon.png">
+<!-- For iPhone 3G, iPod Touch and Android -->
+<link rel="apple-touch-icon-precomposed" href="/error/assets/img/l/apple-touch-icon-precomposed.png">
+<!-- For Nokia -->
+<link rel="shortcut icon" href="/error/assets/img/l/apple-touch-icon.png">
+<!-- For everything else -->
+<link rel="shortcut icon" href="/error/assets/favicon.ico">
+
+<!--iOS. Delete if not required -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-startup-image" href="/error/assets/img/splash.png">
+
+<!--Microsoft. Delete if not required -->
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<link rel="canonical" href="/">
+
+<script>
+
+</script>
+
+
+<?php echo $this->headMeta(); ?>
+<?php //echo $this->headTitle(); ?>
+
+<!-- Google analytics tracking code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', ga_tc]);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.' + ga_domain + '/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body class="clearfix">
+<a id="pagetop"></a>
+<header role="banner" class="clearfix">
+<a href="/">
+	<hgroup class="clearfix">
+		<h1>Hillsborough Independent Panel</h1>
+		<h2>Disclosure and Report</h2>
+	</hgroup>
+</a>
+<nav class="clearfix">
+	<ul>
+		<li><a href="/">Home</a></li>
+<?php if (!isset($this->suppressnav))
+		{ ?>
+		<li><a href="/contact-us/">Contact</a></li>
+		<li><a href="/glossary/">Glossary</a></li>
+		<li><a href="/site-map/">Site map</a></li>
+		<li><a href="/help/">Help</a></li>
+<?php	} ?>
+	</ul>
+<form method="get" action="/search/select" role="search">
+<p>
+<input name="rows" type="hidden" value="10" />
+<input name="fq" type="hidden" value="-hip_outofscope_reason:['' TO *]" />
+<input name="q" type="text" placeholder="Search everything" autocomplete="off" list="search-list" />
+<button>Search</button>
+<datalist id="search-list">
+<option value="Disaster">
+<option value="Football">
+<option value="Hillsborough">
+<option value="Liverpool">
+<option value="Sheffield">
+</datalist></p>
+<p>
+<a href="/advancedsearch/">Advanced search</a></p>
+</form>
+</nav>
+</header>
+
+<?php
+
+$organisation_title = (isset($this->organisation)) ? $this->organisation->getTitle() : "";
+$series_title = (isset($this->series)) ? $this->series : "";
+$document_title = (isset($this->document_title)) ? $this->document_title : "";
+$daterange_title = (isset($this->daterange)) ? $this->daterange : "";
+$corpbodyname = (isset($this->corporateBody)) ? $this->corporateBody : "";
+$personname = (isset($this->personname)) ? $this->personname : "";
+$victimname = (isset($this->victimname)) ? $this->victimname : "";
+$reportref  = (isset($this->chaptername )) ? $this->chaptername  : "";
+
+$organisation_url = (isset($this->organisation)) ? $this->organisation->getUrl() : "";
+$series_url = (isset($this->series)) ? $this->series : "";
+$document_url = (isset($this->document_title)) ? $this->document_title : "";
+$daterange_url = (isset($this->daterange)) ? $this->daterange : "";
+$corpbodyname_url = (isset($this->corporateBody)) ? $this->corporateBody : "";
+$personname_url = (isset($this->personname)) ? $this->personname : "";
+$victimname_url = (isset($this->victimname)) ? $this->victimname : "";
+$reportref_url = (isset($this->reportref)) ? $this->reportref : "";
+
+
+$search = array(
+	"[orgtitle]", 
+	"[seriestitle]", 
+	"[doctitle]", 
+	"[daterange]",
+	"[corporatebodyname]",
+	"[personname]", 
+	"[victimname]",
+	"[reportref]");
+
+$urlsearch = array(
+	"\">[orgtitle]<", 
+	"\">[seriestitle]<", 
+	"\">[doctitle]<", 
+	"\">[daterange]<",
+	"\">[corporatebodyname]<",
+	"\">[personname]<", 
+	"\">[victimname]<",
+	"\">[reportref]<");
+
+
+$urlreplace = array(
+	"/" . $organisation_url. "\">[orgtitle]<", 
+	"\">[seriestitle]<", 
+	"\">[doctitle]<", 
+	"\">[daterange]<",
+	"\">[corporatebodyname]<",
+	"\">[personname]<", 
+	"\">[victimname]<",
+	"\">[reportref]<");
+
+
+$replace = array($organisation_title, $series_title, $document_title, $daterange_title, $corpbodyname, $personname, $victimname, $reportref);
+
+$breadcrumb = explode("&gt;", $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render());
+//var_dump($this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0));
+
+if (!isset($this->nobreadcrumb))
+{
+	
+	if (isset($this->backbutton)) : ?>
+	<div class="breadcrumb">
+	<p class="backbutton">
+	<noscript>&lt; Use the back button in your browser to go back to the previous page</noscript>
+	</p>
+	</div>
+	<?php else : ?>
+	<div class="breadcrumb">
+	<p><a href="/">Home</a> &gt; 
+	
+	
+	<?php 
+		$bc = str_replace($urlsearch, $urlreplace, $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render());
+		$bc = str_replace($search, $replace, $bc);		
+		echo $bc; 	
+	?>
+	</p>
+	</div>
+	<?php endif; 
+}
+?>
+
+<div class="clearfix">
+
+
+<nav role="navigation">
+<ul class="menu">
+<?php if (!isset($this->suppressnav))
+	{ ?>
+<li><a href="/report/">The report</a></li>
+<?php } ?>
+
+<li><?php echo displayLink("/browse/", "Browse the disclosed material", array("/browse/","/repository/"))?>
+<?php if (($this->inBrowse) || (strpos($_SERVER["REQUEST_URI"], "repository/")==1)): ?>
+<ul>
+<li><?php echo displayLink("/browse/by-material/", "Material referenced in the report", array("/by-material"))?></li>
+<li><?php echo displayLink("/browse/by-contributor/", "Contributor", array("/by-contributor"))?></li>
+<li><?php echo displayLink("/browse/by-person/", "Person", array("/by-person"))?></li>
+<li><?php echo displayLink("/browse/by-corporate-body/", "Organisation", array("/by-corporate-body"))?></li>
+<li><?php echo displayLink("/browse/by-date/", "Date", array("/by-date"))?></li>
+<li><?php echo displayLink("/browse/by-name-of-deceased/", "Name of those who died", array("/by-name-of-deceased"))?></li>
+</ul>
+<?php endif; ?>
+</li>
+<li><?php echo displayLink("/catalogue/index/organisation/all/outofscope/all/perpage/20/page/1", "Catalogue of all material considered for disclosure",array("/catalogue/")); ?></li>
+<?php if (!isset($this->suppressnav))
+	{ ?>
+<li><a href="/disclosure-process/">The disclosure process</a></li>
+<li><a href="/the-independent-panel/">The Independent Panel</a></li>
+<?php } ?>
+</ul>
+</nav>
+
+<div class="content clearfix">
+
+<?php echo $this->layout()->content; ?>
+
+
+<?php 
+if (strpos($_SERVER['REQUEST_URI'], "/repository/")===false) 
+{
+?>
+
+
+<div role="complementary">
+
+<?php if ($this->showOrganisationDropdown) : ?>
+<form>
+<fieldset>
+<p class="two-col"><select title="Choose an organisation" id="browseorg" name="browseorg">
+<option>Choose organisation:</option>
+<option>--------------------</option>
+<?php foreach ($this->allOrganisations as $org) : ?>
+
+<option value="<?php echo $org->dir_name ?>"><?php echo $org->owning_organisation ?></option>
+
+<?php endforeach; ?>
+
+</select>
+<button type="submit">Go</button>
+</p>
+</fieldset>
+</form>
+
+<?php endif; ?>
+<?php if ($this->showReportDownload) : ?>
+<div class="action">
+<h4><a href="/repository/report.pdf" target="_blank">Download The Report</a> <a href="/help/" target="_blank" class="help" title="Help with PDFs">?</a></h4>
+</div>
+
+<?php endif; ?>
+
+<?php if ($this->showDocKey) : ?>
+<div class="box">
+<ul class="tools">
+<li class="options"><b>Show:</b>  
+
+<?php 
+
+	// Work out where we are and then create URL variable	
+
+	$url = $_SERVER['REQUEST_URI'];
+	$rowCount = 20;
+	
+	$urlParts = explode("/", $url);
+	
+	for($i=sizeof($urlParts)-1; $i>0; $i--)
+	{
+		if ($urlParts[$i]=="perpage")
+		{
+			$rowCount = $urlParts[$i+1];
+			$url = "";
+			for ($y = 1; $y<$i; $y++)
+				$url .= "/" . $urlParts[$y]; 
+			break;
+		}
+	}
+	
+	if (!( substr( $url, strlen( $url ) - strlen( "/" ) ) == "/" ))
+		$url .= "/";
+?>
+
+<?php 
+
+	$pc20 = "";
+	$pc50 = "";
+	$pc100 = "";
+	switch($rowCount)
+	{
+		case "50":
+			$pc50 = " class=\"selectedoptions\"";
+			break;
+		case "100":
+			$pc100 = " class=\"selectedoptions\"";
+			break;
+		default:
+			$pc20 = " class=\"selectedoptions\"";
+	}		
+
+?>
+<a href="<?php echo $url."perpage/20/page/1" ?>" title="20 results"<?php echo $pc20;?>>20</a> 
+<a href="<?php echo $url."perpage/50/page/1" ?>" title="50 results"<?php echo $pc50;?>>50</a>
+<a href="<?php echo $url."perpage/100/page/1" ?>" title="100 results"<?php echo $pc100;?>>100</a>
+</li>
+</ul>
+</div>
+
+
+<div class="box">
+<ul class="key">
+<li class="key-audio"><abbr>Audio</abbr></li>
+<li class="key-camera"><abbr>Image</abbr></li>
+<li class="key-doc"><abbr>Page</abbr></li>
+<li class="key-pdf"><abbr>PDF</abbr></li>
+<li class="key-telly"><abbr>Video</abbr></li>
+</ul>
+</div>
+<?php endif; ?>
+
+<?php if (($this->showBrowseRHB)&&(!isset($this->suppressnav))) : ?>
+<div class="box">
+<?php echo $this->rightHandBlockText; ?>
+</div>
+<?php endif; ?>
+
+</div>
+
+
+</div>
+</div>
+
+<?php }; ?>
+
+<footer role="contentinfo" class="clearfix">
+
+<?php if (!isset($this->suppressnav))
+	{ ?>
+<nav>
+<ul>
+<li><a href="/website-accessibility/">Accessibility</a></li>
+<li><a href="/terms-conditions/">Terms and conditions</a></li>
+<li><a href="/cookies/">Cookies</a></li>
+<li><a href="/opendata/">Open data</a></li>
+</ul>
+</nav>
+<?php } ?>
+
+<small>&#169; Crown Copyright 2012</small>
+</footer>
+
+</body>
+</html>

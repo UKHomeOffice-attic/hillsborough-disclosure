@@ -1,0 +1,8 @@
+<?php
+
+foreach ($this->container as $page) 
+{
+    // this just prints a "<a>" or "<span>" tag
+    // depending on whether the page has a uri
+    echo $this->menu()->htmlify($page), PHP_EOL;
+}

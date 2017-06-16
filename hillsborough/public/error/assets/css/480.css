@@ -1,0 +1,310 @@
+/* 480 
+
+_____________________________________________________
+
+320 and Up boilerplate extension
+
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup/
+License: http://creativecommons.org/licenses/MIT/
+_____________________________________________________
+
+1.ROOT
+2.HEADINGS
+3.TYPOGRAPHY
+4.LINKS
+5.FIGURES & IMAGES
+6.TABLES
+7.FORMS (See css/mylibs/forms.css)
+8.BANNER header[role="banner"]
+9.NAVIGATION nav[role="navigation"]
+10.CONTENT
+11.MAIN div[role="main"]
+12.COMPLIMENTARY div[role="complementary"]
+13.CONTENTINFO  footer[role="contentinfo"]
+14.GLOBAL OBJECTS
+15.VENDOR-SPECIFIC 
+16.TEMPLATE SPECIFICS
+17.MODERNIZR
+
+*/
+
+/* 1.ROOT */
+
+body { 
+width : 90%; }
+
+/* 2.HEADINGS */
+/* 3.TYPOGRAPHY */
+/* 4.LINKS */
+/* 5.FIGURES & IMAGES */
+/* 6.TABLES */
+/* 7.FORMS (See css/mylibs/forms.css) */
+/* 8.BANNER */
+/* 9.NAVIGATION */
+/* 10.CONTENT */
+/* 11.MAIN */
+
+ol.supporters li img { 
+display : none; }
+
+
+/* 12.COMPLIMENTARY */
+/* 13.CONTENTINFO */
+/* 14.GLOBAL OBJECTS */
+
+/* group */
+
+.group {
+margin-bottom : 1.5em;
+padding-bottom : 1.5em;
+border-bottom : 1px solid rgb(225,219,211); }
+
+.group:last-child {
+margin-bottom : 0; 
+padding-bottom : 0; 
+border-bottom-width : 0; }
+
+.group p {
+margin-bottom : 0; }
+
+.ico-search {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/ico-search.png) no-repeat 100% 0; }
+
+.ico-camera {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/ico-camera.png) no-repeat 100% 0; }
+
+.ico-telly {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/ico-telly.png) no-repeat 100% 0; }
+
+.ico-doc {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/ico-doc.png) no-repeat 100% 0; } 
+
+.ico-docs {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/ico-docs.png) no-repeat 100% 0; }
+
+.ico-case {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/ico-case.png) no-repeat 100% 0; } 
+
+/* social */
+
+.social {
+padding : 0; 
+border : none; }
+
+.social h3,
+.social p {
+display : inline; 
+margin-bottom : 0; }
+
+.social h3 {
+margin-right : 10px; }
+
+a.facebook,
+a.twitter {
+position : relative;
+top : -3px;
+display : inline-block;
+width : 64px;
+height : 24px; 
+background-repeat : no-repeat;
+text-indent : -9999px; }
+
+a.facebook {
+background-image : url(/error/assets/img/a-social.png);
+background-position : 0 0; }
+
+a.facebook:hover {
+background-position : 0 -25px; }
+
+a.twitter {
+background-image : url(/error/assets/img/a-social.png);
+background-position : -65px 0; }
+
+a.twitter:hover {
+background-position : -65px -25px; }
+
+/* formats */
+
+.format-audio {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/format-audio.png) no-repeat 100% 25px; } 
+
+.format-img {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/format-img.png) no-repeat 100% 25px; } 
+
+.format-page {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/format-page.png) no-repeat 100% 25px; } 
+
+.format-pdf {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/format-pdf.png) no-repeat 100% 25px; } 
+
+.format-video {
+padding-right : 40px; 
+background : transparent url(/error/assets/img/format-video.png) no-repeat 100% 25px; } 
+
+.result:first-child {
+background-position : 100% 5px; }
+
+/* key */
+
+.key {
+margin-bottom : 0; }
+
+.key-audio,
+.key-camera,
+.key-doc,
+.key-camera,
+.key-pdf,
+.key-telly {
+height : 30px;
+margin-bottom : .5em;
+padding-left : 40px; 
+line-height : 30px; }
+
+.key-audio {
+background : transparent url(/error/assets/img/key-audio.png) no-repeat 0 50%; }
+
+.key-camera {
+background : transparent url(/error/assets/img/key-camera.png) no-repeat 0 50%; }
+
+.key-doc {
+background : transparent url(/error/assets/img/key-doc.png) no-repeat 0 50%; }
+
+.key-camera {
+background : transparent url(/error/assets/img/key-camera.png) no-repeat 0 50%; }
+
+.key-pdf {
+background : transparent url(/error/assets/img/key-pdf.png) no-repeat 0 50%; }
+
+.key-telly {
+background : transparent url(/error/assets/img/key-telly.png) no-repeat 0 50%; }
+
+/* browse */
+
+section.browse + section.browse {
+margin-top : 1.5em; 
+padding-top : 1.5em;
+border-top : 1px solid rgb(225,219,211); }
+
+section.browse {
+padding-right : 40px; 
+position:relative;}
+
+section.browse a.folder { 
+display : block;
+position : absolute; 
+top : 25px; 
+right : 0; 
+width : 25px;
+height : 18px;
+background : transparent url(/error/assets/img/ico-folder-closed.png) no-repeat left top; }
+
+section.browse.open a.folder { 
+position : absolute; 
+top : 25px; 
+right : 0; 
+background : transparent url(/error/assets/img/ico-folder-open.png) no-repeat left top; }
+
+section.browse.open article.browse { 
+position : relative; }
+
+section.browse.open article.browse a.folder { 
+display : block;
+position : absolute; 
+top : 0; 
+right : -40px; 
+background : transparent url(/error/assets/img/ico-folder-closed.png) no-repeat left top;
+width : 25px;
+height : 18px; }
+
+section.browse:first-child a.folder {
+top : 0; }
+
+article.result { 
+position : relative; }
+
+article.result a.pdf-icon { 
+display: block;
+position : absolute; 
+top : 25px; 
+right : 0; 
+width : 25px;
+height : 28px;
+background : transparent url(/error/assets/img/key-pdf.png) no-repeat left top; }
+
+article.result a.audio-icon { position: absolute; top: 25px; right: 0; background : transparent url(/error/assets/img/key-audio.png) no-repeat left top; display: block; width: 25px;height: 28px;}
+article.result a.video-icon { position: absolute; top: 25px; right: 0; background : transparent url(/error/assets/img/key-telly.png) no-repeat left top; display: block; width: 25px;height: 28px;}
+article.result a.page-icon { position: absolute; top: 25px; right: 0; background : transparent url(/error/assets/img/key-doc.png) no-repeat left top; display: block; width: 25px;height: 28px;}
+article.result a.image-icon { position: absolute; top: 25px; right: 0; background : transparent url(/error/assets/img/key-camera.png) no-repeat left top; display: block; width: 25px;height: 28px;}
+
+article.result:first-child a.pdf-icon { 
+top : 0; }
+
+section.browse > header {
+margin-bottom : 1em; }
+
+section.browse > header h1,
+section.browse.open h1 {
+margin-bottom : .25em;
+font-size : 1.15em; /* 20 / 16 = 1.25 */
+line-height : 1.2; }
+
+/* browse inner */
+
+article.browse {
+padding-left : 40px; 
+border-left : 1px solid rgb(225,219,211); }
+
+article.browse > header {
+margin-bottom : 1em; }
+
+/* folder */
+
+.ico-folder li {
+list-style-type : none; margin-bottom: 1.5em;}
+
+.ico-folder li a {
+display : block;
+height : 30px;
+padding-left : 40px;
+background : transparent url(/error/assets/img/ico-folder-closed.png) no-repeat 0 50%; 
+line-height : 30px; }
+
+/* panel */
+
+figure.vcard h3 {
+margin-bottom : 0; }
+
+figure.vcard .fn {
+font-weight : 700; }
+
+/* 15.VENDOR-SPECIFIC */
+/* 16.TEMPLATE SPECIFICS */
+
+.index .group:last-child {
+margin-bottom : 1.5em;
+padding-bottom : 1.5em;
+border-bottom : 1px solid rgb(225,219,211); }
+
+/* result */
+
+.result + .result {
+margin-top : 1.5em; 
+padding-top : 1.5em;
+border-top : 1px solid rgb(225,219,211); }
+
+.result header {
+margin-bottom : 1em; }
+
+/* 17.MODERNIZR */

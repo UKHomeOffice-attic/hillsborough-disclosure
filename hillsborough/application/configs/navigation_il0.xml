@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+  <nav>
+    <browse>
+      <label>Browse war poetry</label>
+      <route>browse</route>
+      <controller>browse</controller>
+      <module>default</module>
+      <action>index</action>
+      <pages>
+        <contributingOrganisation>
+          <label>Contributing organisation</label>
+          <route>selectorganisation</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>selectOrganisation</action>
+          <pages>
+            <viewOrganisation>
+              <label>[orgtitle]</label>
+              <route>vieworganisation</route>
+              <controller>browse</controller>
+              <module>default</module>
+              <action>vieworganisation</action>
+              <params>
+                <organisation />
+              </params>
+              <pages>
+                <listDocs>
+                  <label>[seriestitle]</label>
+                  <route>listdocs</route>
+                  <controller>browse</controller>
+                  <module>default</module>
+                  <action>listdocuments</action>
+                  <params>
+                    <organisation />
+                    <series />
+                  </params>
+                  <pages>
+                    <viewDocument>
+                      <label>[doctitle]</label>
+                      <route>casper</route>
+                      <controller>browse</controller>
+                      <module>default</module>
+                      <action>viewdocument</action>
+                      <params>
+                        <organisation />
+                        <series />
+                        <document />
+                      </params>
+                    </viewDocument>
+                  </pages>
+                </listDocs>
+              </pages>
+            </viewOrganisation>
+          </pages>
+        </contributingOrganisation>
+        <browseDate>
+          <label>Date</label>
+          <route>date</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>date</action>
+          <params>
+            <start />
+            <end />
+          </params>
+          <pages>
+            <dateRange>
+              <label>[daterange]</label>
+              <route>daterange</route>
+              <controller>browse</controller>
+              <module>default</module>
+              <action>daterange</action>
+              <params>
+                <start />
+                <end />
+              </params>
+            </dateRange>
+          </pages>
+        </browseDate>
+        <browseVictim>
+          <label>Victim name</label>
+          <route>victimname</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>populatedcontent</action>
+        </browseVictim>
+        <browseVideo>
+          <label>Video</label>
+          <route>video</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>video</action>
+        </browseVideo>
+        <browseAudio>
+          <label>Audio</label>
+          <route>audio</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>audio</action>
+        </browseAudio>
+      </pages>
+    </browse>
+  </nav>
+</configdata>

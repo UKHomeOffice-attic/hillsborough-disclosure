@@ -1,0 +1,120 @@
+<h1><?php echo $this->pagetitle ?></h1>
+
+<div role="main">
+
+<?php if ($this->description) { ?>
+<p><?php echo $this->description; ?></p>
+<?php }; ?>
+
+<?php 
+if ($this->pagetitle=="Browse by organisation involved")
+{
+?>
+	<p><strong>Find documents that refer to organisations frequently mentioned in the Report.</strong></p>
+	<p>If the organisation you are looking for is not mentioned here, it may be because it has changed its name, merged with another organisation, or, it may have disbanded and its functions transferred to a successor organisation.</p>
+	<p>Organisations are listed alphabetically; documents are also listed alphabetically and by date.</p>
+<?php 
+}
+?>
+
+<?php 
+if ($this->pagetitle=="Browse by material referred to in the report")
+{
+?>
+	<!-- <p>You can look for material that has been referred to or discussed in the report using this method. Documents are grouped alphabetically under chapter headings. </p>  -->
+<?php 
+}
+?>
+
+<?php 
+if ($this->pagetitle=="Browse by person involved")
+{
+?>
+<p><strong>View material that refers to individuals frequently mentioned in the Report.</strong></p>
+<p>This is not a list of all individuals involved, nor does it include those who died.</p>
+<p>Names are listed alphabetically by last name.</p>
+
+<?php 
+}
+?>
+
+<?php 
+if ($this->pagetitle=="Browse by name of those who died")
+{
+?>
+	<p><strong>View material that refers to those who died.</strong></p>
+	<p>Names are listed alphabetically by last name.</p>
+<?php 
+}
+?>
+
+
+  <ol class="alphabet clearfix">
+    <li><a href="#definitions-number" title="Definitions beginning with a number">#</a></li>
+    <?php 
+  // output a-z select
+    foreach ($this->alpha as $alpha) : ?>
+    <li><a href="#definitions-<?php echo strtolower($alpha) ?>" title="Definitions beginning with <?php echo $alpha ?>"><?php echo $alpha ?></a></li>
+    <?php endforeach; ?>
+  </ol>
+
+
+<!-- Numbers -->
+
+<h2 id="definitions-number">#</h2>
+<?php 
+$found = FALSE; 
+foreach ($this->full_titles as $title)
+{
+	if ((strtolower(substr($title->presentation_format, 0, 1)) < 'a')||(strtolower(substr($title->presentation_format, 0, 1)) > 'z')) 
+	{
+		$found = TRUE;
+?>
+<p><a href="<?php echo $this->baseUrl('browse/' . $this->linkref . '/' . $title->url_name . '/perpage/20/page/1')?>"><?php echo $title->presentation_format ?></a></p>
+<?php 
+	}
+} 
+
+if (!$found): 
+?>
+<p>No entries under this letter.</p>
+<?php endif; ?>
+<p><a class="back" href="#pagetop">Back to top</a></p>
+
+
+<?php 
+
+// output list
+$current_letter = "";
+
+foreach ($this->alpha as $alpha) : ?>
+<h2 id="definitions-<?php echo strtolower($alpha) ?>"><?php echo $alpha ?></h2>
+<?php $found = FALSE; ?>
+
+<?php foreach ($this->full_titles as $title) : 
+
+
+if (strtolower(substr($title->presentation_format, 0, 1)) == strtolower($alpha)) : 
+
+$found = TRUE;
+
+?>
+
+
+<p><a href="<?php echo $this->baseUrl('browse/' . $this->linkref . '/' . $title->url_name . '/perpage/20/page/1')?>"><?php echo $title->presentation_format ?></a></p>
+
+
+
+<?php endif; ?>
+
+<?php endforeach; ?>
+
+<?php if (!$found): ?>
+<p>No entries under this letter.</p>
+<?php endif; 
+?>
+<p><a class="back" href="#pagetop">Back to top</a></p>
+
+<?php endforeach; ?>
+
+</div>

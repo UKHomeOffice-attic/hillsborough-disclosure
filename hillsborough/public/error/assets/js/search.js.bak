@@ -1,0 +1,468 @@
+/*		
+ *		search.js
+ * 		Manipulate the user input to match the search format
+ */
+
+
+ 
+function reformatdate(origday, origmonth, origyear)
+{
+	// Check for only partial date
+	if (origday!="-" || origmonth!="-" || origyear!="-")
+	{
+		// Something is selected
+		if ((origday!="-" && origmonth!="-" && origyear!="-") ||			// d/m/y
+			(origday=="-" && origmonth!="-" && origyear!="-") ||			// m/y
+			(origday=="-" && origmonth=="-" && origyear!="-"))				// y
+		{
+			// All selected
+			if (origday=="-") 
+				origday = "*";
+			if (origmonth=="-") 
+				origmonth = "*";
+			
+			newdate = origyear + "-" + origmonth + "-" + origday;
+			//alert(newdate);
+			return newdate;
+		}
+		else	// Only partial select
+			return "invalid_date";				
+	}
+		
+	return "";
+}
+
+function SetValidationMessage(text)
+{
+	document.getElementById("validationmessage").innerHTML = text;
+}
+
+function DateFixWildCardEarliest(originalDate)
+{
+	breakdown = originalDate.toString().split("-");
+	if (breakdown[1]=="*")
+		breakdown[1] = "01";
+	if (breakdown[2]=="*")
+		breakdown[2] = "01";
+	
+	return breakdown[0]+"-"+breakdown[1]+"-"+breakdown[2];
+}
+
+function DateFixWildCardLatest(originalDate)
+{
+	breakdown = originalDate.split("-");
+	if (breakdown[1]=="*")
+		breakdown[1] = "12";
+	if (breakdown[2]=="*")
+	{
+		switch(breakdown[1])
+		{
+			case 	"04", 
+					"06", 
+					"09", 
+					"11":
+				breakdown[2] = "30";
+				break;
+			case 	"02":		
+				if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+					breakdown[2] = "29";
+				else
+					breakdown[2] = "28";
+				break;
+			default:
+				breakdown[2] = "31";
+				break;
+		}
+	}
+	
+	return breakdown[0]+"-"+breakdown[1]+"-"+breakdown[2];
+}
+
+function searchsubmit()
+{
+	
+	startTime = "T00:00:00.000Z";
+	endTime = "T23:59:59.999Z";
+	
+	errormessage = "The following form errors need to be corrected:<ul>";
+	
+	querystring = "";
+	error = false; 
+		
+	enddate = reformatdate(
+			document.getElementById("enddateday").value,
+			document.getElementById("enddatemonth").value, 
+			document.getElementById("enddateyear").value);
+
+	startdate = reformatdate(
+			document.getElementById("startdateday").value,
+			document.getElementById("startdatemonth").value, 
+			document.getElementById("startdateyear").value);
+
+	
+	if (startdate=="invalid_date")
+	{
+		errormessage = errormessage + "<li>You must enter a) the day, month and year or b) the month and year or c) just the year for your start date.</li>";
+		error= true;
+	}
+
+	if (enddate=="invalid_date")
+	{
+		errormessage += "<li>You must enter a) the day, month and year or b) the month and year or c) just the year for your end date.</li>";
+		error= true;
+	}
+	
+	//TODO: Check date order so that start is earlier than last date
+	params = "";
+	
+
+	//Process dates
+	if ((startdate!="")&&(startdate!="invalid_date"))
+	{
+		if ((enddate != "") && (enddate != "invalid_date"))		// We have an end date so use that for the end range
+		{
+
+			startdate = DateFixWildCardEarliest(startdate);
+			enddate = DateFixWildCardLatest(enddate);
+
+			startdate += startTime;
+			enddate += endTime;
+
+			params += "&fq=hip_date:[" + startdate + " TO " + enddate + "] OR " +
+				"hip_enddate:[" + startdate + " TO " + enddate + "]";
+		}
+		else	// No end date specified so look at start date wild cards to calculate
+		{
+			enddate = startdate;
+
+			startdate = DateFixWildCardEarliest(startdate);
+			enddate = DateFixWildCardLatest(enddate);
+
+			startdate += startTime;
+			enddate += endTime;
+			params += "&fq=hip_date:[" + startdate + " TO " + enddate + "] OR " +
+				"hip_enddate:[" + startdate + " TO " + enddate + "]";
+
+		}
+	}
+
+	if ((startdate=="")||(startdate=="invalid_date"))	// Only end date specified so default start date
+	{
+		if ((enddate != "") && (enddate != "invalid_date"))		// We have an end date so use that for the end range
+		{
+
+			startdate = DateFixWildCardEarliest(startdate);
+			enddate = DateFixWildCardLatest(enddate);
+
+			startdate += startTime;
+			enddate += endTime;
+
+			params += "&fq=hip_date:[1980-01-01T00:00:00.000Z TO " + enddate + "] OR " +
+				"hip_enddate:[1980-01-01T00:00:00.000Z TO " + enddate + "]";
+		}
+	}
+
+	// keywords
+	keywords = document.getElementById("keywords").value;
+	if ((keywords==null)||(keywords=="")||(keywords=="keywords"))
+		keywords="";
+	
+	//filters
+	barcode = document.getElementById("uid").value;
+	if ((barcode!=null)&&(barcode!="")&&(barcode!="unique ID"))
+		params += "&fq=hip_uid:" + barcode + "*";
+
+	orgref = document.getElementById("orgref").value;
+	if ((orgref!=null)&&(orgref!="")&&(orgref!="contributor reference"))
+		params += "&fq=hip_archive_ref:" + orgref;
+
+	
+	organisation = document.getElementById("organisation").value;
+	if (organisation!="-")
+		params += "&fq=hip_contrib_org:\"" + organisation + "\"";
+
+	person = document.getElementById("person").value;
+	if (person!="-")
+		params += "&fq=hip_person:\"" + person + "\"";
+
+	victim = document.getElementById("victim").value;
+	if (victim!="-")
+		params += "&fq=hip_victim:\"" + victim + "\"";
+
+	corpbody = document.getElementById("corpbody").value;
+	if (corpbody!="-")
+		params += "&fq=hip_corporate:\"" + corpbody + "\"";
+
+	alldisclosed = document.getElementById("alldisclosed").checked;
+	if (alldisclosed==true)
+		params += "&fq=hip_uid:[\"\" TO *]";
+
+	reportspecific = document.getElementById("reportspecific").checked;
+	if (reportspecific==true)
+		params += "&fq=hip_chapter:[\"\" TO *]";
+
+	
+	if ((!error) && (params=="")&&(keywords==""))
+	{
+		errormessage += "<li>No search keywords or filters have been entered</li>";
+		error= true;
+	}
+	errormessage += "</ul>";
+	
+	if (error)
+	{
+		SetValidationMessage(errormessage);
+		location.hash = "validationmessage";
+	}
+	else
+	{
+		// To be here we are using filters so wildcard the query
+		if (keywords=="")
+			keywords="*:*";
+		
+		// Further filter processing of results (but not main criteria)
+		////////////////////////////////////////////////////////////////////
+		
+		// Out of scope
+		alloos = document.getElementById("alloos").checked;
+		if (alloos!=true)
+			params += "&fq=-hip_outofscope_reason:[\"\" TO *]";
+			
+		photo 	= "hip_format:Photograph";
+		av 		= "hip_format:AV";
+		doc 	= "hip_format:Document";	
+		
+		// Media format
+//		alldocs = document.getElementById("alldocs").checked;
+//		if (alldocs==true)
+//			params += "&fq=" + doc;
+
+		// Redirect
+		location.href = "/search/select?q="+keywords+params+"&rows=10";
+	}	
+}
+
+function catsearchsubmit()
+{
+	
+	startTime = "T00:00:00.000Z";
+	endTime = "T23:59:59.999Z";
+	
+	errormessage = "The following form errors need to be corrected:<ul>";
+	
+	querystring = "";
+	error = false;
+		
+	enddate = reformatdate(
+			document.getElementById("enddateday").value,
+			document.getElementById("enddatemonth").value, 
+			document.getElementById("enddateyear").value);
+
+	startdate = reformatdate(
+			document.getElementById("startdateday").value,
+			document.getElementById("startdatemonth").value, 
+			document.getElementById("startdateyear").value);
+
+	
+	if (startdate=="invalid_date")
+	{
+		errormessage = errormessage + "<li>You must enter a) the day, month and year or b) the month and year or c) just the year for your start date.</li>";
+		error= true;
+	}
+
+	if (enddate=="invalid_date")
+	{
+		errormessage += "<li>You must enter a) the day, month and year or b) the month and year or c) just the year for your end date.</li>";
+		error= true;
+	}
+
+	if ((startdate=="invalid_date")&&(enddate!="invalid_date"))
+	{
+		errormessage += "<li>Before you can specfy an end date, you must first provide a start date.</li>";
+		error= true;
+	}
+
+	//TODO: Check date order so that start is earlier than last date
+	params = "";
+	keywords = "";
+	
+
+	//Process dates
+	if ((startdate!="")&&(startdate!="invalid_date"))
+	{
+		if ((enddate != "") && (enddate != "invalid_date"))		// We have an end date so use that for the end range
+		{
+
+			startdate = DateFixWildCardEarliest(startdate);
+			enddate = DateFixWildCardLatest(enddate);
+
+			startdate += startTime;
+			enddate += endTime;
+
+			params += "&fq=hip_date:[" + startdate + " TO " + enddate + "] OR " +
+				"hip_enddate:[" + startdate + " TO " + enddate + "]";
+		}
+		else	// No end date specified so look at start date wild cards to calculate
+		{
+			enddate = startdate;
+
+			startdate = DateFixWildCardEarliest(startdate);
+			enddate = DateFixWildCardLatest(enddate);
+
+			startdate += startTime;
+			enddate += endTime;
+			params += "&fq=hip_date:[" + startdate + " TO " + enddate + "]  OR " +
+				"hip_enddate:[" + startdate + " TO " + enddate + "]";
+		}
+	}
+	
+	//filters
+	barcode = document.getElementById("uid").value;
+	if ((barcode!=null)&&(barcode!="")&&(barcode!="unique ID"))
+		params += "&fq=hip_uid:" + barcode + "*";
+
+	orgref = document.getElementById("orgref").value;
+	if ((orgref!=null)&&(orgref!="contributor reference")&&(orgref!=""))
+		params += "&fq=hip_archive_ref:" + orgref + "*";
+	
+	organisation = document.getElementById("organisation").value;
+	if (organisation!="-")
+		params += "&fq=hip_contrib_org:\"" + organisation+"\"";
+
+	series = document.getElementById("series").value;
+	if ((series!=null)&&(series!="folder")&&(series!=""))
+		params += "&fq=hip_series_title:\"" + series+"\"";
+
+	subseries = document.getElementById("subseries").value;
+	if ((subseries!=null)&&(subseries!="sub-folder")&&(subseries!=""))
+		params += "&fq=hip_series_subtitle:\"" + subseries+"\"";
+
+	title = document.getElementById("title").value;
+	if ((title!="")&&(title!="title of the document"))
+		params += "&fq=hip_title:\"" + title+"\"";
+
+	description = document.getElementById("description").value;
+	if ((description!="")&&(description!="description"))
+		params += "&fq=hip_description:\"" + description+"\"";
+
+	// Out of scope
+	alloos = document.getElementById("incoos").checked;
+	if (alloos==true)
+	{
+		oosreason = document.getElementById("oosreason").value;
+		if ((oosreason!="")&&(oosreason!="Out of Scope reason")&&(oosreason!="-"))
+		{
+			if ((oosreason!="")&&(oosreason!="Out of Scope reason"))
+				params += "&fq=hip_outofscope_reason:" + oosreason;
+		}
+	}
+	else
+	{
+		params += "&fq=-hip_outofscope_reason:[\"\" TO *]";		
+	}	
+	
+	// Redacted
+	allred = document.getElementById("incred").checked;
+	if (allred==true)
+	{
+		redreason = document.getElementById("redreason").value;
+		if ((redreason!="")&&(redreason!="Redacted reason")&&(redreason!="-"))
+		{
+			if ((redreason!="")&&(redreason!="Redacted reason"))
+				params += "&fq=hip_redacted:" + redreason;
+		}
+	}
+	else
+	{
+		params += "&fq=-hip_redacted:[\"\" TO *]";		
+	}	
+
+
+	if ((!error) && (params==""))
+	{
+		errormessage += "<li>No search criteria has been entered</li>";
+		error= true;
+	}
+	errormessage += "</ul>";
+	
+	if (error)
+	{
+		SetValidationMessage(errormessage);
+		location.hash = "validationmessage";
+	}
+	else
+	{
+		// To be here we are using filters so wildcard the query
+		if (keywords=="")
+			keywords="*:*";
+		
+		// Further filter processing of results (but not main criteria)
+		////////////////////////////////////////////////////////////////////
+		
+		// Redirect
+		location.href = "/search/select?q="+keywords+params+"&rows=10";
+	}	
+}
+
+/***************************************************************************
+    SEARCH RESULTS MANIPULATION
+***************************************************************************/
+	
+function getParam(querystring, key)
+{
+	start=querystring.indexOf(key+"="); 
+	if (start>=0)
+	{		
+		end=querystring.indexOf("&", start+1); 
+		
+		if (end<1)
+			end = querystring.length;
+			
+		originalparam=querystring.substring(start + key.length + 1, end); 
+		
+		return originalparam;
+	}
+	return null;
+}	
+
+function setParam(querystring, key, value)
+{
+	start=querystring.indexOf(key+"="); 
+	if (start>=0)
+	{		
+		end=querystring.indexOf("&", start+1); 
+		
+		if (end<1)
+			end = querystring.length;
+			
+		originalparam=querystring.substring(start, end); 
+		
+		
+		return querystring.replace(originalparam, key+"="+value);
+	}
+	return querystring+"&"+key+"="+value;
+}	
+	
+function pageResults(startResult) 
+{ 
+	querystring = location.search;  
+	rows=getParam(querystring, "rows");
+	if (rows==null)
+		rows=10;
+	startResult = ((startResult - 1) * parseInt(rows));
+	querystring = location.search;  
+
+	querystring = setParam(querystring, "start", startResult);
+	
+	location.search = querystring;  
+}
+	
+function pageResultCount(perpage) 
+{ 
+	querystring = location.search;  
+	
+	querystring = setParam(querystring, "rows", perpage);
+	querystring = setParam(querystring, "start", 0);
+	
+	location.search = querystring;  
+}

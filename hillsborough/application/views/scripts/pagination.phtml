@@ -1,0 +1,71 @@
+<?php if ($this->pageCount): ?>
+
+<?php
+	$currentPage = "";
+	$currentPage = $_SERVER["REQUEST_URI"];
+	$dirpaths = explode("/", $currentPage);
+	
+	$perpage = "/perpage/20";
+	
+	if (in_array("perpage", $dirpaths))
+	{
+		for($tl = 0; $tl<sizeof($dirpaths); $tl++)
+		{
+			if ($dirpaths[$tl]=="perpage")
+			{
+				$perpage = "/perpage/" . $dirpaths[$tl+1];
+				break;
+			}	
+		}
+	}
+	
+	if (in_array("page", $dirpaths))
+	{
+		for($tl = 0; $tl<sizeof($dirpaths); $tl++)
+		{
+			if ($dirpaths[$tl]=="page")
+			{
+				$dirpaths[$tl+1] = "{pagenumber}";
+				break;
+			}	
+		}
+		$currentPage = "";
+		for ($i=0; $i<sizeof($dirpaths); $i++)
+			$currentPage .= $dirpaths[$i] . "/";
+			
+		$currentPage = substr($currentPage, 0, strlen($currentPage)-1);
+	}
+	else 
+	{
+		$currentPage = $currentPage . $perpage . "/page/{pagenumber}";
+	}
+	
+?>
+
+<ol class="pagination clearfix">
+  <?php if (isset($this->previous)): ?>
+  <li><a href="<?php echo str_replace("{pagenumber}", $this->previous, $currentPage); ?>" class="page-mover"> &lt; Previous </a></li>
+  <?php endif; ?>
+  <?php //Now put the first page link
+ 
+                if($this->current > 1 && $this->firstPageInRange > 1){ ?>
+  <li><a href="<?php echo str_replace("{pagenumber}", "1", $currentPage); ?>" class="page-mover page-mover-numeric"><?php echo Zend_Locale_Format::toNumber(1)?></a></li>
+  <?php } ?>
+  <!-- Numbered page links -->
+  <?php foreach ($this->pagesInRange as $page): ?>
+  <?php if ($page != $this->current): ?>
+  <li> <a href="<?php echo str_replace("{pagenumber}", $page, $currentPage); ?>" class="page-mover-numeric page-mover"> <?php echo Zend_Locale_Format::toNumber($page); ?> </a></li>
+  <?php else: ?>
+  <li class="active"> <a href="#"><?php echo Zend_Locale_Format::toNumber($page); ?></a></li>
+  <?php endif; ?>
+  <?php endforeach; ?>
+  <?php //Now put the last page link
+  if($this->current != $this->last && $this->last > $this->lastPageInRange){ ?>
+  <li><a href="<?php echo str_replace("{pagenumber}", $this->last, $currentPage) ?>" class="page-mover-numeric"><?php echo Zend_Locale_Format::toNumber($this->last); ?></a></li>
+  <?php } ?>
+  <!-- Next page link -->
+  <?php if (isset($this->next)): ?>
+  <li> <a href="<?php echo str_replace("{pagenumber}", $this->next, $currentPage) ?>" class="page-mover"> Next &gt; </a></li>
+  <?php endif; ?>
+</ol>
+<?php endif; ?>

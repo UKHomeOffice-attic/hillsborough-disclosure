@@ -1,0 +1,33 @@
+
+<?php if ($this->pageCount): ?>
+
+<ol class="pagination clearfix">
+  <?php if (isset($this->previous)): ?>
+  <li><a href="<?php echo $this->url(array('page' => $this->previous)); ?>" class="page-mover"> &lt; Previous </a></li>
+  <?php endif; ?>
+  <?php //Now put the first page link
+ 
+                if($this->current > 1 && $this->firstPageInRange > 1){ ?>
+  <li><a href="<?php echo $this->url(array('page' => 1)); ?>" class="page-mover page-mover-numeric"><?php echo Zend_Locale_Format::toNumber(1)?></a></li>
+  <?php } ?>
+  <!-- Numbered page links -->
+  <?php foreach ($this->pagesInRange as $page): ?>
+  <?php if ($page != $this->current): ?>
+  <li> <a href="<?php echo $this->url(array('page' => $page)); ?>" class="page-mover-numeric page-mover"> <?php echo Zend_Locale_Format::toNumber($page); ?> </a></li>
+  <?php else: ?>
+  <li class="active"> <a href="#"><?php echo Zend_Locale_Format::toNumber($page); ?></a></li>
+  <?php endif; ?>
+  <?php endforeach; ?>
+  <?php //Now put the last page link
+ 
+                if($this->current != $this->last && $this->last > $this->lastPageInRange){ ?>
+  <li><a href="<?php echo $this->url(array('page' => $this->last)); ?>" class="page-mover-numeric"><?php echo Zend_Locale_Format::toNumber($this->last); ?></a></li>
+  <?php } ?>
+  <!-- Next page link -->
+  <?php if (isset($this->next)): ?>
+  <li> <a href="<?php echo $this->url(array('page' => $this->next)); ?>" class="page-mover"> Next &gt; </a></li>
+  <?php endif; ?>
+</ol>
+<?php endif; ?>
+
+

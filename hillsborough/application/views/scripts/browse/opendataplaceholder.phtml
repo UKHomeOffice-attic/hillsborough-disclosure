@@ -1,0 +1,54 @@
+<?php
+
+function format_file_fize_size( $size, $display_bytes=false )
+{
+	if( $size < 1024 )
+		$filesize = $size . ' bytes';
+	elseif( $size >= 1024 && $size < 1048576 )
+		$filesize = round( $size/1024, 2 ) . ' KB';
+
+	elseif( $size >= 1048576 )
+		$filesize = round( $size/1048576, 2 ) . ' MB';
+
+	if( $size >= 1024 && $display_bytes )
+		$filesize = $filesize . ' (' . $size . ' bytes)';
+
+	return $filesize;
+}
+
+?>
+
+<h1>Open data place holder</h1>
+
+
+
+<div role="main">
+
+<p>This is a temporary place holder page.  Not to be deployed.</p>
+
+</div>
+
+<div role="complementary">
+
+<div class="actionChapter">
+<a href="/opendata/files/Hillsborough-Disclosure.csv">
+<h3>Download the catalogue in CSV (<?php echo format_file_fize_size($this->csvfilesize) ?>)</h3>
+</a>
+</div>
+
+<div class="actionChapter">
+<a href="/opendata/files/Hillsborough-Disclosure.xml">
+<h3>Download the catalogue in XML (<?php echo format_file_fize_size($this->xmlfilesize) ?>)</h3>
+</a>
+</div>
+
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td scope="row"><a href="">Open Data Taxonomy Reference</a></td>
+</tr>
+
+</table>
+
+
+
+</div>

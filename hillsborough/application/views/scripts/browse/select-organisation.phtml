@@ -1,0 +1,67 @@
+<h1>Browse by contributor</h1>
+
+
+<div role="main">
+
+<p><strong>A contributor's name will appear in the list below if they supplied material that has been disclosed, or if their material was supplied by another contributor.</strong></p>
+<p>Contributors may not have created all the material they have supplied and some contributors may have contributed material from other organisations or individuals. For example, South Yorkshire Police supplied material produced by West Midlands Police and Eastwood & Partners.</p>
+<p>Contributors are listed alphabetically.  Documents from each contributor are grouped into folders and sub folders.</p>
+
+  <ol class="alphabet clearfix" id="definitions-index">
+    <?php 
+  // output a-z select
+  foreach ($this->alpha as $alpha) : ?>
+    <li><a href="#definitions-<?php echo strtolower($alpha) ?>" title="Definitions beginning with <?php echo $alpha ?>"><?php echo $alpha ?></a></li>
+    <?php endforeach; ?>
+  </ol>
+  <?php 
+
+// output list
+$current_letter = "";
+
+
+
+foreach ($this->alpha as $alpha) : ?>
+<h2 id="definitions-<?php echo strtolower($alpha) ?>"><?php echo $alpha ?></h2>
+
+<?php 
+
+$foundorg = FALSE;
+
+
+
+foreach ($this->allOrganisations as $organisation)
+{	
+	if (strtolower(substr($organisation->owning_organisation, 0, 1)) == strtolower($alpha))
+	{
+		if ($organisation->non_contributing==0)
+		{
+		?>
+        <dl>
+            <dt><a href="<?php echo "/browse/by-contributor/" . $organisation->dir_name; ?>"><?php echo $organisation->owning_organisation ?></a></dt>
+        </dl>
+        
+        <?php
+		}
+		else 
+		{
+?>
+        <dl>
+            <dt><?php echo $organisation->owning_organisation ?></dt>
+        </dl>
+<?php 
+		}
+        $foundorg = TRUE;
+	}
+}
+
+?>
+
+<?php if (!$foundorg) : ?>
+<p>No organisations beginning with <?php echo $alpha ?>.</p>
+<?php endif; ?>
+
+<p><a class="back" href="#pagetop">Back to top</a></p>
+<?php endforeach; ?>
+
+</div>

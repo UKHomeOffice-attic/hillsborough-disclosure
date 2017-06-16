@@ -1,0 +1,119 @@
+<?php
+
+
+if (!empty($this->selectedOrg))
+{
+	$perPageOrg = '/organisation/' . $this->selectedOrg;
+}
+else
+{
+	$perPageOrg = '/organisation/all';
+}
+
+?>
+
+
+<h1>Catalogue of all material considered for disclosure</h1>
+<p>This is a complete list of material that was inspected during the disclosure process, whether or not it is available on this website. Where documents have not been made available, an explanation is given.
+To review details of audio visual material not available through this website <a href="/catalogue/audiovisual/">follow this link</a>.</p>
+<p>You can filter the list by Contributor and Disclosure status. Alternatively, use the <a href="/cataloguesearch/">Catalogue search</a> if you want more search options, or <a href="/open-data/">download the entire catalogue</a> as a dataset file.</p>
+
+<ul class="inline">
+  <li><?php echo $this->paginationControl($this->paginator, 'sliding', 'pagination_count_catalogue.phtml'); ?></li>
+  <li class="options"><b>Items per page:</b> 
+  <?php 
+  $curUrl = $_SERVER['REQUEST_URI'];
+  $curParts = explode("/", $curUrl);
+  
+  if (empty($curParts[4]))
+	throw new Exception("No organisation specified");
+
+  if (empty($curParts[6]))
+	throw new Exception("No out of scope reason specified");
+
+  $pagingationURL = "/catalogue/index/organisation/".$curParts[4]."/outofscope/".$curParts[6]."/perpage/[PERPAGE]/page/1";
+  ?>
+  <a href="<?php echo str_replace("[PERPAGE]", "20", $pagingationURL); ?>" title="20 results"<?php if ($this->perpage=="20") echo " class=\"selectedoptions\""; ?>>20</a> 
+  <a href="<?php echo str_replace("[PERPAGE]", "100", $pagingationURL); ?>" title="100 results"<?php if ($this->perpage=="100") echo " class=\"selectedoptions\""; ?>>100</a> 
+  <a href="<?php echo str_replace("[PERPAGE]", "500", $pagingationURL); ?>" title="500 results"<?php if ($this->perpage=="500") echo " class=\"selectedoptions\""; ?>>500</a> </li>
+  
+  <li><a href="/catalogue/index/organisation/all/outofscope/all/perpage/20">Reset all sorting and filtering</a></li>
+</ul>
+<form method="" action="">
+  <table border="0" cellspacing="0" cellpadding="0" summary="">
+    <colgroup>
+    <col style="width:14%;" />
+    <col style="width:22%;" />
+    <col style="width:14%;" />
+    <col style="width:30%;" />
+    <col style="width:20%;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Unique ID<br/>(click to view more information)</th>
+        <th scope="col"><label for="organisation">Contributor</label><br/>
+          <select name="organisation" id="organisation">
+            <option value="all">Unfiltered (all items)</option>
+            <option value="all">-------------------</option>
+            <?php foreach ($this->allOrganisations as $organisation) : ?>
+            <option value="<?php echo $organisation->dir_name ?>"<?php if ($this->selectedOrg == $organisation->dir_name) { ?> selected="selected"<?php } ?>><?php echo $organisation->owning_organisation ?></option>
+            <?php endforeach; ?>
+          </select>
+        </th>
+        <th scope="col">Contributor reference</th>
+        <th scope="col">Title</th>
+        <th scope="col"><label for="outofscope">Disclosure status</label>
+          <select name="outofscope" id="outofscope">
+            <option value="all">Unfiltered (all items)</option>
+            <option value="all">-------------------</option>
+            <?php 
+			
+			if (count($this->outofscopereasons > 0)) 
+			{
+				foreach ($this->outofscopereasons as $outofscopes) : ?>
+	          	  <option value="<?php echo $outofscopes->out_of_scope_url; ?>"<?php if ($this->outofscopelookup == $outofscopes->out_of_scope_url) { ?> selected="selected"<?php } ?>><?php echo $outofscopes->out_of_scope_group_name ?></option>
+	            <?php endforeach;  
+			}
+			else
+			{
+				?>
+                <option value="all">No out of scope reasons for this organisation</option>
+                <?php
+			}
+			?>
+            <?php /* <option value="yes"<?php if ($this->outofscopelookup == "yes") { echo " selected=\"selected\""; } ?>>Out of scope only</option> */ ?>
+          </select>
+        </th>
+      </tr>
+    </thead>
+    <?php if (count($this->paginator) == 0) : ?>
+  </table>
+  <p>No results were returned.</p>
+  <?php else : ?>
+  <tbody>
+    <?php foreach ($this->paginator as $document) : ?>
+    <tr>
+      <th scope="row">
+   
+<?php if ($document['out_of_scope_reason']=="OOS_ORG"):?>
+		<a href="<?php echo '/repository/outofscopeorg/' . $document['begin_doc_id']?>" class="view" title="View"><?php echo $document['begin_doc_id'] ?>  </a>      			     			    
+<?php elseif ($document['out_of_scope_reason']=="FOLDER"):?>
+		<a href="<?php echo '/repository/outofscopefolder/' . $document['begin_doc_id']?>" class="view" title="View"><?php echo $document['begin_doc_id'] ?>  </a>
+<?php else:?>
+		<a href="<?php echo '/repository/' . $document['begin_doc_id']?>" class="view" title="View"><?php echo $document['begin_doc_id'] ?>  </a>
+<?php endif;?>
+      </th>
+      <td><?php echo $document['owning_organisation'] ?></td>
+      <td><?php echo $document['archive_ref_id'] ?></td>
+      <td><?php echo $document['short_title'] ?></td>
+      <td><?php echo $document['formatted_outofscope'] ?></td>   
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+  </table>
+  <?php endif; ?>
+  <?php if ($this->totalReturn == 0) : ?>
+  <p>You query did not return any results.</p>
+  <?php endif; ?>
+</form>
+<?php echo $this->paginationControl($this->paginator, 'sliding', 'pagination_catalogue.phtml'); ?>

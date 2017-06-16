@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+  <nav>
+    <browse>
+      <label>Browse disclosed material</label>
+      <route>browse</route>
+      <controller>browse</controller>
+      <module>default</module>
+      <action>index</action>
+      <pages>
+        <contributingOrganisation>
+          <label>Contributor</label>
+          <route>selectorganisation</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>selectOrganisation</action>
+          <pages>
+            <viewOrganisation>
+              <label>[orgtitle]</label>
+              <route>vieworganisation</route>
+              <controller>browse</controller>
+              <module>default</module>
+              <action>vieworganisation</action>
+              <params>
+                <organisation />
+              </params>
+              <pages>
+                <listDocs>
+                  <label>[seriestitle]</label>
+                  <route>listdocs</route>
+                  <controller>browse</controller>
+                  <module>default</module>
+                  <action>listdocuments</action>
+                  <params>
+                    <organisation />
+                    <series />
+                  </params>
+                  <pages>
+                    <viewDocument>
+                      <label>[doctitle]</label>
+                      <route>casper</route>
+                      <controller>browse</controller>
+                      <module>default</module>
+                      <action>viewdocument</action>
+                      <params>
+                        <organisation />
+                        <series />
+                        <document />
+                      </params>
+                    </viewDocument>
+                  </pages>
+                </listDocs>
+              </pages>
+            </viewOrganisation>
+          </pages>
+        </contributingOrganisation>
+        
+        <browseDate>
+          <label>Date or date range</label>
+          <route>date</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>date</action>
+          <params>
+            <start />
+            <end />
+          </params>
+          <pages>
+            <dateRange>
+              <label>[daterange]</label>
+              <route>daterange</route>
+              <controller>browse</controller>
+              <module>default</module>
+              <action>daterange</action>
+              <params>
+                <start />
+                <end />
+              </params>
+            </dateRange>
+          </pages>
+        </browseDate>
+        
+		<browseCorporateBody>
+          <label>Organisation</label>
+          <route>corporatebody</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>corporatebody</action>
+          <pages>
+			<browseCorporateBodyLookup>
+	          <label>[corporatebodyname]</label>
+	          <route>corporatebody</route>
+	          <controller>browse</controller>
+	          <module>default</module>
+	          <action>corporatebodylookup</action>
+	        </browseCorporateBodyLookup>
+		  </pages>
+        </browseCorporateBody>
+
+
+		<browsePerson>
+          <label>Person</label>
+          <route>person</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>person</action>
+          <pages>
+			<browsePersonLookup>
+	          <label>[personname]</label>
+	          <route>personlookup</route>
+	          <controller>browse</controller>
+	          <module>default</module>
+	          <action>personlookup</action>
+	        </browsePersonLookup>
+          </pages>
+        </browsePerson>
+	
+
+		<browseVictim>
+          <label>Names of those who died</label>
+          <route>victimname</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>victimname</action>
+			<pages>
+				<browseVictimLookup>
+		          <label>[victimname]</label>
+		          <route>victimnamelookup</route>
+		          <controller>browse</controller>
+		          <module>default</module>
+		          <action>victimnamelookup</action>
+		        </browseVictimLookup>			
+			</pages>
+        </browseVictim>
+		
+		<browseMaterial>
+          <label>Material referenced in the report</label>
+          <route>material1</route>
+          <controller>browse</controller>
+          <module>default</module>
+          <action>chapter</action>
+        	<pages>
+				<browseMaterialLookup>
+		          <label>[reportref]</label>
+		          <route>materialref</route>
+		          <controller>browse</controller>
+		          <module>default</module>
+		          <action>chapterlookup</action>
+		        </browseMaterialLookup>			
+			</pages>
+        </browseMaterial>
+       	
+ 
+      </pages>
+    </browse>
+  </nav>
+</configdata>

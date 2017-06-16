@@ -1,0 +1,13 @@
+<?php
+require_once("library/database.php");
+require_once("library/hillsboroughlog.php");
+require_once("library/schema.php");
+require_once("library/config.php");
+require_once("library/functions.php");
+$db = new Database( DB_HOSTNAME, DB_NAME, DB_USER, DB_PASS );function GetDocumentIDs($inscope = FALSE){	global $db;		$sql = 	"SELECT begin_doc_id " .			"FROM disclosed_material ";	if ($inscope) 		$sql .= "WHERE out_of_scope_reason = ''";	else		$sql .= "WHERE out_of_scope_reason != ''";		$ids = $db->dbFetch($sql);		$allDocs = array();		foreach($ids as $id)		$allDocs[] = $id['begin_doc_id'];		return $allDocs;}function GetDuplicateDocuments(){	global $db;		$sql = 	"SELECT begin_doc_id, out_of_scope_reason " .			"FROM disclosed_material " .			"WHERE out_of_scope_reason like '%duplicate%'";		$duplicates = $db->dbFetch($sql);		return $duplicates;}
+echo "Additional validation\r\n";
+$start_time = microtime(true);$row = 0;
+$buildrow = 0;
+$build = array();
+echo "Started\r\n";
+// 1. Check for items marked as duplicate, with a barcode ID but not in the database //$record = GetDuplicateDocuments();//$ids = GetDocumentIDs(FALSE);//foreach($record as $duplicate)//{//	echo $duplicate['begin_doc_id'] . "\r\n";//	$references = getAllDocumentIds($duplicate['out_of_scope_reason']);////	if (isset($references))//	{//		foreach($references as $ref)//		{//			if (!in_array($ref['begin_doc_id'], $ids))//				echo "  - ERROR: No match for " . $ref . "\r\n";//		}//	}//}// 2. Check for items marked as duplicate, with a barcode ID but master is out ofscope $record = GetDuplicateDocuments();$outscope = GetDocumentIDs(FALSE);$inscope = GetDocumentIDs(TRUE);foreach($record as $duplicate){	$error = false;	$msg = array();		$references = getAllDocumentIds($duplicate['out_of_scope_reason']);	if (isset($references))	{		foreach($references as $ref)		{					if (!in_array($ref, $inscope))			{				$error = true;				if (!in_array($ref, $outscope))				{					$msg[] = "Reference \"" . $ref . "\" does not exist in webapp.";				}				else				{					$msg[] = "Reference \"" . $ref . "\" is to an out of scope document.";				}			}		}	}	else 	{		$error = true;		$msg[] = "No references found in out of scope reason.";	}//	if ((!isset($references))||(sizeof($references)==0))//	{//		$error = true;//		echo "  - No barcode references found in out of scope reason\r\n";//	}	if ($error)	{		foreach($msg as $row)		{			echo $duplicate["begin_doc_id"] . ":  " . $row . "\r\n"; 		}	}	}echo "Validation completed in " . (microtime(true) - $start_time) . " seconds.\r\n";

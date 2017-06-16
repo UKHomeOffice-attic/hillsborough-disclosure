@@ -1,0 +1,390 @@
+/* 768 
+
+_____________________________________________________
+
+320 and Up boilerplate extension
+
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup/
+License: http://creativecommons.org/licenses/MIT/
+_____________________________________________________
+
+1.ROOT
+2.HEADINGS
+3.TYPOGRAPHY
+4.LINKS
+5.FIGURES & IMAGES
+6.TABLES
+7.FORMS (See css/mylibs/forms.css)
+8.BANNER header[role="banner"]
+9.NAVIGATION nav[role="navigation"]
+10.CONTENT
+11.MAIN div[role="main"]
+12.COMPLIMENTARY div[role="complementary"]
+13.CONTENTINFO  footer[role="contentinfo"]
+14.GLOBAL OBJECTS
+15.VENDOR-SPECIFIC 
+16.TEMPLATE SPECIFICS
+17.MODERNIZR
+
+*/
+
+/* 1.ROOT */
+
+html {
+border-top-width : 0; }
+
+body {
+width : 95%;
+padding-top : 0; }
+
+/* 2.HEADINGS */
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+font-weight : 700; }
+
+h2 { 
+font-size : 1.5em; /* 28 / 16 = 1.75 */
+padding-bottom : .25em;
+border-bottom : 3px solid rgb(221,218,209); }
+
+h3 { 
+font-size : 1.25em; /* 20 / 16 = 1.25 */ }
+
+h4, h5 { 
+font-size : 1.0625em; /* 17 / 16 = 1.0625 */ }
+
+/* 3.TYPOGRAPHY */
+
+blockquote  { 
+margin : 0 0 1.5em 0px; 
+padding-left : 60px; 
+background : #F6F6F3 transparent url(/img/furniture-blockquote.png) no-repeat 15px 15px; 
+border-left-width : 0;
+font-style : normal; }
+
+/* 4.LINKS */
+
+/* 5.FIGURES & IMAGES */
+
+h1 img {
+display : inline-block; 
+margin-right : 20px; }
+
+/* 6.TABLES */
+/* 7.FORMS (See css/mylibs/forms.css) */
+div.victim-box { width: 62%;}
+
+/* 8.BANNER */
+
+header[role="banner"] li {
+display : inline-block; 
+margin-right : 10px;
+padding-right : 10px; 
+border-right : 1px solid rgb(118,146,158); }
+
+header[role="banner"] li:last-child {
+margin-right : 0;
+padding-right : 0; 
+border-right-width : 0; }
+
+header[role="banner"] li a,
+header[role="banner"] li a:visited {
+float : left; }
+
+header[role="banner"] hgroup {float: left; 
+}
+
+header[role="banner"] hgroup h1 {
+font-size : 2em /* 32 / 16 = 2 */; 
+font-weight : 700; margin-bottom: 0; }
+
+header[role="banner"] hgroup h2 {
+clear: left; margin-bottom: 2em; }
+
+header[role="banner"] nav  { clear: both;
+}
+
+
+
+/* 9.NAVIGATION */
+/* 10.CONTENT */
+
+/* 11.MAIN */
+
+*[role="main"] {
+float : left;
+width : 61%; }
+
+#[role="main-full"] {
+float : none;
+width : 100%; }
+
+.hfeed article {
+margin-bottom : .75em;
+padding-bottom : 1.5em;
+border-bottom : 1px solid rgb(221,218,209); }
+
+.hfeed article:last-child {
+padding-bottom : 0;
+/*border-bottom-width : 0;*/ }
+
+.hfeed article p {
+margin-bottom : 0; }
+
+.hfeed .clearfix:last-child article:last-child {
+padding-bottom : 0;
+border-bottom-width : 0; }
+
+.hfeed .clearfix:nth-of-type(3) article.hentry{ border: none;}
+
+
+ol.supporters {margin: 0 padding: 0;}
+ol.supporters li {float: left; width: 38%; margin: 0 5% 1.5em 0; background-color : rgb(238,235,229); 
+border : 1px solid rgb(221,218,209); padding : .75em 24px;}
+ol.supporters li img { display: block;  float: left; margin-right: 5%;border-bottom: 1px solid #333333;
+    border-right: 1px solid #333333; max-height: 100px;}
+ol.supporters li span.fn { display: block;}
+ol.supporters li span.age { display: block; float: left;}
+
+ol.no-pic li { min-height: 1px; }
+
+/* 12.COMPLIMENTARY */
+
+*[role="complementary"] {
+float : right;
+width : 35%; }
+
+.extra { display: block;}
+.grayBox{ 
+    position: fixed; 
+    top: 0%; 
+    left: 0%; 
+    width: 100%; 
+    height: 100%; 
+    background-color: black; 
+    z-index:1001; 
+    -moz-opacity: 0.8; 
+    opacity:.80; 
+    filter: alpha(opacity=80); 
+} 
+.box_content { 
+    position: fixed; 
+    top: 5%; 
+    left: 10%; 
+    right: 10%; 
+    width: 80%; 
+    padding: 16px; 
+    z-index:1002; 
+    overflow: auto; 
+}
+.victim-names { background-color: #ffffff; padding: 20px;}
+.victim-names ul { }
+.victim-names ul li { float: left; margin: 0 30px 2px 0; font-size: 0.875em; width: 27%;}
+
+/* 13.CONTENTINFO */
+
+footer[role="contentinfo"] nav li {
+display : inline-block; 
+margin-right : 25px; }
+
+footer[role="contentinfo"] small {
+padding-bottom : 1.5em; }
+
+/* 14.GLOBAL OBJECTS */
+
+.box.nocolor {
+margin-bottom : 1.5em; 
+padding : 0em ; 
+background: none; 
+border : none; }
+
+/* callout */
+
+.callout .main p {
+margin-bottom : .75em;
+font-size : 1.25em; /* 18 / 16 = 1.125 */ 
+font-weight : 400; }
+
+.callout .sub .action { 
+float : left; 
+margin-right : 24px; }
+
+.callout .sub h3 { 
+font-size : 1em; /* 16 / 16 = 1 */
+margin-top : 1.5em;
+margin-bottom : .5em; }
+
+.callout .sub .social {
+top : 3px; }
+
+/* .index .callout .download-btn { width: 100%;} */
+.btn-download.page { padding : 5px; }
+.btn-download h3 span { display : block;}
+.btn-download .icon-pdf{ top: 8px;  }
+.btn-download.secondary { padding : 5px;}
+.btn-download .external-link{ top: 8px; }
+
+/* box/col */
+
+.col figure {
+display : block;
+float : right;
+width : 28.12%; /* 252 / 896 = .2812 */ }
+
+.col h2,
+.col ul {
+margin-right : 38.9%; /* 277 / 896 = .389 */ }
+
+.box.nocolor { width: 61%;}
+
+
+/* direction */
+
+.direction .next {
+right : -10px; }
+
+.direction .previous {
+left : -10px; }
+
+/* pagination */
+
+.pagination li { 
+margin-right : 2px; }
+
+.pagination li a { 
+display : block;
+float : left;
+border : 1px solid rgb(221,218,209); 
+padding : 2px 7px 3px; 
+text-decoration : none; }
+
+.pagination .active a { 
+background-color : rgb(66,111,132); 
+border-color : rgb(66,111,132);
+color : rgb(255,255,255); }
+
+/* alphabet */
+
+.alphabet li a { 
+display : block;
+float : left;
+border : 1px solid rgb(221,218,209); 
+padding : 1px 5px 2px; 
+font-size : .75em;
+text-decoration : none; }
+
+.alphabet .active a { 
+background-color : rgb(66,111,132); 
+border-color : rgb(66,111,132);
+color : rgb(255,255,255); }
+
+/* inline */
+
+.inline li {
+display : inline-block;
+margin-right : 10px; 
+padding-right : 10px;
+border-right : 1px solid rgb(221,218,209); }
+
+.inline li:last-child {
+margin-right : 0; 
+padding-right : 0;
+border-right-width : 0; }
+
+/* 15.VENDOR-SPECIFIC */
+
+/* 16.TEMPLATE SPECIFICS */
+
+.index .hfeed .clearfix {
+margin-bottom : .5em; 
+border-bottom: none;
+/*border-bottom : 1px solid rgb(221,218,209);*/ }
+
+.index .hfeed .clearfix:last-child {
+margin-bottom : 0; 
+border-bottom-width : 0; }
+
+.index .hfeed article {
+float : left;
+width : 47%; /* 252 / 528 = .4772 */
+margin-right : 4% ; /* 25 / 528 = .0473 */ 
+padding-bottom : .5em;
+/*border-width : 0; */}
+
+.index .hfeed article.wide {
+float : none;
+width : 100%;
+margin-right : 0; }
+
+.index .hfeed article p {
+margin-bottom : 0; }
+
+.index .hfeed article:last-child {
+float : right;
+margin-right : 0 ; }
+
+.index .hfeed article h1 {
+margin-left : -20px;
+padding-left : 10px;
+border-left : 10px solid rgb(221,218,209); }
+
+.index .group:last-child {
+margin-bottom : 0;
+padding-bottom : 0;
+border-bottom-width : 0; }
+
+/* article */
+
+.article *[role="main"] p a,
+.article *[role="main"] blockquote a {
+text-decoration : underline; }
+
+.article *[role="main"] blockquote p {
+margin-bottom : 0;
+padding : 5px 12px 1.5em 12px;
+background-color : rgb(246,246,243); }
+
+.article *[role="main"] blockquote p:last-child {
+padding : 5px 12px 0em 12px;}
+
+/* vcards */
+
+.vcards .vcard {
+float : left;
+width : 47%; /* 252 / 528 = .4772 */
+margin-right : 4% ; /* 25 / 528 = .0473 */  }
+
+.vcards .vcard:last-child {
+float : right;
+margin-right : 0 ; }
+
+/* 17.MODERNIZR */
+
+/* borderimage */
+
+.borderradius .direction .next,
+.borderradius .direction .previous {
+-webkit-border-radius : 0;
+-moz-border-radius : 0;
+border-radius : 0; }
+
+.borderimage .direction .next {
+-webkit-border-image : url(/img/furniture-right.png) 1 21 1 1 stretch;
+-moz-border-image : url(/img/furniture-right.png) 1 21 1 1 stretch;
+-o-border-image : url(/img/furniture-right.png) 1 21 1 1 stretch;
+border-image : url(/img/furniture-right.png) 1 21 1 1 stretch;
+border-width : 1px 21px 1px 1px; }
+
+.borderimage .direction .previous {
+-webkit-border-image : url(/img/furniture-left.png) 1 1 1 21 stretch;
+-moz-border-image : url(/img/furniture-left.png) 1 1 1 21 stretch;
+-o-border-image : url(/img/furniture-left.png) 1 1 1 21 stretch;
+border-image : url(/img/furniture-left.png) 1 1 1 21 stretch;
+border-width : 1px 1px 1px 21px; }

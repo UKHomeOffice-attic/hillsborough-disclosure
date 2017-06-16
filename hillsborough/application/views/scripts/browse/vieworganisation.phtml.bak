@@ -1,0 +1,125 @@
+<?php
+
+$series_count = 0;
+
+?>
+
+<h1><?php echo $this->organisation->getTitle() ?></h1>
+<p><?php echo $this->organisation->getDescription() ?></p>
+ <div role="main">
+  <?php
+
+if ($this->nonDisclosedDocument != null)
+{
+	?>
+  <p>This organisation has not contributed any material.</p>
+
+  <?php
+}
+else
+{
+	$isFirst = TRUE;
+	
+	foreach ($this->organisation->getSeries() as $series) 
+	{
+		if ($isFirst)
+		{
+			$sectionClass=" firstsection";
+			$isFirst = FALSE;
+		}
+		else 
+			$sectionClass="";
+		?>
+  <section class="browse">
+    <header>
+      <?php if ($series->getOutOfScope()) : ?>
+      <h1><?php echo $series->getTitle() ?></h1>
+      <?php else :       
+      ?>
+      
+      <h1><a href="<?php if ($series->hasSubSeries()) { ?>#series<?php echo $series_count; } else { echo $series->getHref() . "/perpage/20/page/1"; } ?>" id="series<?php echo $series_count ?>">
+	  
+		<?php 
+			echo $series->getTitle(); 
+			if ($series->hasSubSeries()) 
+				echo " (contains " . count($series->getSubSeries()) . " sub-folders)"; 
+			else 
+			{
+				// $docCount = $sub_series->getDocumentCount($this->organisation->getTitle(), $series->getTitle());
+				// $docMessage = "(contains ".$docCount." document";
+				// if ($docCount!=1)
+				// 		$docMessage .= "s";
+				// $docMessage .= ")";
+				// echo ""; 
+			}
+		?>
+		  
+	  </a></h1>
+      
+      <?php endif; ?>
+      <time><?php echo $series->getStartDate() ?> <?php echo $series->getEndDate() ?></time>
+    <a href="<?php if ($series->hasSubSeries()) { ?>#series<?php echo $series_count; } else { echo $series->getHref() . "/perpage/20/page/1"; } ?>" id="fseries<?php echo $series_count ?>" class="folder"></a>
+    </header>
+    <?php 
+    if ($series->hasDescription()) : ?>
+    <p><?php echo $series->getSeriesDescription() ?></p>
+    <?php endif;
+		
+		// check if this series has subs
+		if ($series->hasSubSeries())
+		{
+			?>
+    <div class="sub-series" id="sub-series<?php echo $series_count ?>">
+      <?php
+			
+			foreach ($series->getSubSeries() as $sub_series)
+			{
+				?>
+      <article class="browse">
+        <header>
+          <?php if ($sub_series->getOutOfScope()) : ?>
+          <h1><?php echo $sub_series->getTitle() ?></h1>
+          <?php else : 
+          
+          $docCount = $sub_series->getDocumentCount($this->organisation->getTitle(), $series->getTitle());
+          $docMessage = "(contains ".$docCount." document";
+          if ($docCount!=1)
+          	$docMessage .= "s";
+          $docMessage .= ")";
+          	
+          
+          ?>
+          <h1><a href="<?php echo $sub_series->getHref() ?>/perpage/20/page/1"><?php echo $sub_series->getTitle() . " ". $docMessage; ?></a></h1>
+          
+          <?php 
+          
+          //var_dump($sub_series);
+          
+          endif; ?>
+          <time><?php echo $sub_series->getStartDate() ?> <?php echo $sub_series->getEndDate() ?></time>
+        </header>
+        
+        <a href="<?php echo $sub_series->getHref() ?>/perpage/20/page/1" class="folder"></a>
+        
+        
+        <?php if ($sub_series->hasDescription()) : ?>
+        <p><?php echo $sub_series->getSeriesDescription() ?></p>
+        <?php endif; ?>
+      </article>
+      <?php
+			}
+			
+			?>
+    </div>
+    <?php
+		}
+		
+		?>
+  </section>
+  <?php
+		// increment series count
+		$series_count++;
+	}
+}
+?>
+</div>

@@ -1,0 +1,150 @@
+<?php
+
+//
+// Move the PDFs with Doc IDs that start with the specified prefixes to the PDF_OUTPUT directory
+//
+// USAGE:
+//		Pass space separated prefixes as parameters
+//		e.g. php exportExpertPDFs.php HOM SCC SYC
+//
+// n.b. THIS SCRIPT DELETES ANY PRE-EXISTING FILES IN THE PDF_OUTPUT DIRECTORY!!!
+//      *************************************************************************
+
+define("MASTERLIST_FILE", "c:\\hillsborough_extracts\\csv\\masterlist.csv");			// Location of the masterlist.csv file
+define("PDF_OUTPUT_DIR", "c:\\builds\\temp\\pdf\\");			// Destination directory for expert-specific PDFs
+
+
+require_once("library/config.php");
+require_once("library/masterlist.php");
+
+
+$prefixes = null;
+
+if ($argc > 1)
+{
+	$prefixes = array();
+	
+	for($i = 1; $i < $argc; $i++)
+	{
+		$prefixes[] = $argv[$i];
+	}
+}
+
+export($prefixes);
+
+
+function export($prefixes)
+{
+// A.S. TEMP
+//	prepareOutputDirectory();
+
+	$noPDFs = 0;
+	$noMissingPDFs = 0;
+	$noOutOfScopePDFs = 0;
+	$noUnreferencedPDFs = 0;
+
+	$masterlist = new masterlist(MASTERLIST_FILE, $prefixes);
+
+	// Copy across the documents we're after
+	$docs = $masterlist->inScopeDocs();
+	foreach($docs as $doc)
+	{
+		$file = $doc[0].".pdf";
+		if (file_exists(PDF_DIR.$file))
+		{
+// A.S. TEMP
+//			if (!file_exists(PDF_OUTPUT_DIR.$file))
+//				copy(PDF_DIR.$file, PDF_OUTPUT_DIR.$file);
+			$noPDFs++;
+		}
+		else
+		{
+			echo $file, ", missing PDF\r\n";
+			$noMissingPDFs++;
+		}
+	}
+	
+	// Check for the existence of PDFs for out of scope docs
+	$docs = $masterlist->outOfScopeDocs();
+	foreach($docs as $doc)
+	{
+		$file = $doc[0].".pdf";
+		if (file_exists(PDF_DIR.$file))
+		{
+			echo $file, ", PDF for out of scope doc\r\n";
+			$noOutOfScopePDFs++;
+		}
+	}	
+
+	// Check for PDFs without corresponding masterlist entries
+	if (isset($prefixes))
+	{
+		foreach($prefixes as $prefix)
+		{
+			chdir(PDF_DIR);
+			$files = glob($prefix."*.pdf");
+			foreach($files as $file)
+			{
+				if (!$masterlist->inMasterlist(substr($file, 0, -4)))
+				{
+					echo $file, ", PDF without a corresponding masterlist entry\r\n";
+					$noUnreferencedPDFs++;
+				}
+			}
+		}
+	}
+	else
+	{
+		chdir(PDF_DIR);
+		$files = glob("*.pdf");
+		foreach($files as $file)
+		{
+			if (!$masterlist->inMasterlist(substr($file, 0, -4)))
+			{
+				echo $file, ", PDF without a corresponding masterlist entry\r\n";
+				$noUnreferencedPDFs++;
+			}
+		}
+	}
+	
+	// Report the stats
+	echo "\r\n";
+	echo "Prefix(es) processed: ";
+	if (!isset($prefixes))
+	{
+		echo "*** All files ***";
+	}
+	else
+	{
+		foreach($prefixes as $prefix)
+		{
+			echo $prefix, " ";
+		}
+	}
+	echo "\r\n";
+	echo "Number of PDF files copied: $noPDFs\r\n";
+	echo "Number of masterlist entries missing PDF files: $noMissingPDFs\r\n";
+	echo "Number of PDF files for out of scope masterlist entries (not copied): $noOutOfScopePDFs\r\n";
+	echo "Number of PDF files without masterlist entries (not copied): $noUnreferencedPDFs\r\n";
+}
+
+function prepareOutputDirectory()
+{
+	if (!is_dir(PDF_OUTPUT_DIR))
+	{
+		mkdir(PDF_OUTPUT_DIR);
+	}
+	else
+	{
+		$dirContents = scandir(PDF_OUTPUT_DIR);
+		foreach($dirContents as $file)
+		{
+			if (is_file(PDF_OUTPUT_DIR.$file))
+			{
+				unlink(PDF_OUTPUT_DIR.$file);
+			}
+		}
+	}
+}
+
+?>

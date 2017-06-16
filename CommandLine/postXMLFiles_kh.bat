@@ -1,0 +1,1 @@
+java.exe -jar -Durl=http://localhost:84/solr/update c:\Drupal\hip\Disclosure2.0\CommandLine\post.jar C:\hillsborough_extracts\searchdata\*.xml

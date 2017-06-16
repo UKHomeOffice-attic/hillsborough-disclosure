@@ -1,0 +1,124 @@
+<?php 
+
+function wordTidy($string)
+{
+ 
+  // Replace Single Curly Quotes
+
+  $search[] = chr(0x91);
+  $search[] = chr(0x92);
+  $replace[] = "'";
+  $replace[] = "'";
+
+  // Replace Smart Double Curly Quotes
+  $search[] = chr(0x93);
+  $search[] = chr(0x94);
+  $replace[] = '"';
+  $replace[] = '"';
+
+  $search[] = chr(0x97);
+  $replace[] = '-';
+  
+  $search[] = chr(0x85);
+  $replace[] = '...';
+  
+  // Apply Replacements
+  $string = str_replace($search, $replace, $string);
+	
+  
+  
+//	var_dump($string);
+//  $string = htmlentities(substr($string, 3));
+//  	var_dump($string);
+  
+  	return $string;
+}
+
+
+function format_file_fize_size( $size, $display_bytes=false )
+{
+	if( $size < 1024 )
+		$filesize = $size . ' bytes';
+	elseif( $size >= 1024 && $size < 1048576 )
+		$filesize = round( $size/1024, 2 ) . ' KB';
+
+	elseif( $size >= 1048576 )
+		$filesize = round( $size/1048576, 2 ) . ' MB';
+
+	if( $size >= 1024 && $display_bytes )
+		$filesize = $filesize . ' (' . $size . ' bytes)';
+
+	return $filesize;
+}
+
+?>
+
+<header>
+<h1><?php if (empty($this->document->title)) { echo "Blank title field"; } else { echo $this->document->title; } ?></h1>
+</header>
+<div role="main">
+<?php if (!empty($this->document->description)) : ?>
+<p><?php echo nl2br($this->document->description); ?></p>
+<?php endif; ?>
+
+<!-- jwplayer mediaplayer -->
+<figure>
+<div id="mediaplayer">This video requires <a href="http://get.adobe.com/flashplayer">a flash player</a> for your browser.</div>
+<figcaption>
+<?php
+if (!empty($this->document->av_title_memo))
+	echo $this->document->av_title_memo; 
+?>
+</figcaption>
+
+<script type="text/javascript" src="/media/jwplayer.js"></script>
+<script type="text/javascript">
+	jwplayer("mediaplayer").setup({
+		flashplayer: "/media/player.swf",
+		file: "/repository/av/<?php echo $this->document->document_id ?>.mp4",
+		image: "/repository/thumbnail/<?php echo $this->document->document_id ?>.jpg",
+		provider: "http",
+		startparam: "start",
+		__heretrix_dummy: "http://hillsborough.independent.gov.uk/repository/av/<?php echo $this->document->document_id ?>.mp4",
+	});
+
+</script>
+</figure>
+<!-- / jwplayer mediaplayer -->
+
+<?php 
+
+if (file_exists($this->transcriptpath . $this->document->document_id . ".txt"))
+{
+	$transcription = file_get_contents($this->transcriptpath . $this->document->document_id . ".txt");
+	
+	$transcription = wordTidy($transcription);
+	//Do LINK processing with regex to detect [[LINK:url()]]Text[[LINKEND]]
+	$transcription = str_replace("[[LINK:url('", "<a href=\"", $transcription);
+	$transcription = str_replace("[[LINK:item('", "<a href=\"/repository/", $transcription);
+	$transcription = str_replace("')]]", "\" target=\"new\">", $transcription);
+	
+	$transcription = str_replace("[[LINKEND]]", "</a>", $transcription);
+	
+?>
+<h4>Transcript (<a href="#" class="expand-transcript">Expand</a>)</h4>
+<div class="transcript" id="<?php echo $this->document->document_id; ?>">
+<p><?php echo nl2br($transcription); ?></p>
+</div>
+
+<?php 
+}
+?>
+
+
+<?php if (!empty($this->document->related_material)):?>
+<h3>Related items:</h3>
+
+<ul class="related">
+<li><?php echo htmlspecialchars($this->document->related_material) ?></li>
+</ul>
+<?php endif;?>
+</div>
+
+</div>
+</div>

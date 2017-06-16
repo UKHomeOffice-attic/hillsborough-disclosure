@@ -1,0 +1,198 @@
+<?php
+
+// Move the following defines to the library\config file
+define("CMS_DATA_DIR", 'C:\\builds\\temp\\cms_html\\'); // CMS HTML files
+define("CMS_OUTPUT_DIR", 'c:\\hillsborough_extracts\\cms\\'); // CMS Solr index files (XML)
+
+define("CMS_FILE_PREFIX", 'CMX'); // Filename prefix for CMS Solr index files
+define("CMS_FILE_EXT", '.xml'); // File extension for CMS Solr index files
+
+define("MAX_DESCRIPTION_LEN", 160);  //Defines how many characters of the main paragraph text are used for the description
+
+// Iterate through the CMS_DATA_DIR and for each HTML file prepare an XML Solr index file, in the CMS_OUTPUT_DIR directory 
+require_once("library/database.php");
+require_once("library/hillsboroughlog.php");
+require_once("library/schema.php");
+require_once("library/config.php");
+require_once("library/functions.php");
+require_once("library/solrIndex.php");
+
+$error_count = 0;
+$file_count = 0;
+$file_counter = 1;
+
+function crawlDirectory($dir) {
+	$dirs = scandir($dir);
+
+	foreach($dirs as $val) {
+		if (($val == ".") || ($val == "..")) {
+			continue;
+		}
+		
+		$file = $dir.$val;
+		if (is_dir($file)) {
+			crawlDirectory($file."\\");
+		}
+		else if (is_file($file)) {
+			// .html and .htm files only
+			if ((substr($val, -4, 4) == ".htm") || (substr($val, -5, 5) == ".html")) {
+				processFile($file);
+			}
+		}
+	}
+}
+
+// xmlentities utility function 'cos the ENT_XML1 flag for htmlentities wasn't introduced until PHP 5.4
+if(!function_exists('xmlentities')) { 
+    function xmlentities($string) { 
+		$not_in_list = "A-Z0-9a-z\s_,-.,:@"; 
+        return preg_replace_callback("/[^{$not_in_list}]/" , 'get_xml_entity_at_index_0' , $string); 
+    } 
+    function get_xml_entity_at_index_0($CHAR) { 
+        if(!is_string($CHAR[0]) || (strlen( $CHAR[0] ) > 1)) { 
+            die("function: 'get_xml_entity_at_index_0' requires data type: 'char' (single character). '{$CHAR[0]}' does not match this type."); 
+        } 
+        switch($CHAR[0]) { 
+            case "'":    case '"':    case '&':    case '<':    case '>': 
+                return htmlspecialchars($CHAR[0], ENT_QUOTES);
+				break; 
+            default: 
+                return $CHAR[0]; // numeric_entity_4_char($CHAR[0]);  
+                //KH This is only search so not fussed on chars which will be treated as whitespace anyway
+                //   also the &# values were breaking SOLR on import
+				break; 
+        }        
+    } 
+    function numeric_entity_4_char($char) { 
+        return "&#".str_pad(ord($char), 3, '0', STR_PAD_LEFT).";"; 
+    }    
+} 
+
+function processFile($file) {
+//	echo "Processing: ", $file, "\r\n";
+	$GLOBALS['file_count']++;
+	
+	// Load HTML file
+	$dom = new DOMDocument;
+	
+	// WARNING! Too many (irrelevant) malformed HTML warnings so I'm going to disable errors whilst loading the file
+	$use_errors = libxml_use_internal_errors(true);
+	$dom->loadHTMLFile($file);
+	libxml_use_internal_errors($use_errors);
+
+	unset($contents);
+	unset($title);
+	unset($description);
+	
+	// Loop through the <div> elements looking for those where class = "content clearfix" or "main"
+	// Note: content of the inner div element will appear twice if the above classes are nested
+	foreach ($dom->getElementsByTagName("div") as $div) {
+		$class = $div->getAttribute("class");
+		if ((strcasecmp($class, "content hnews clearfix") == 0) || (strcasecmp($class, "content clearfix") == 0) || (strcasecmp($class, "main") == 0) || (strcasecmp($class, "entry-content") == 0)) {
+			if (isset($contents)) {
+				$contents = $contents . " " . $div->textContent;
+			} else {
+				$contents = $div->textContent;
+			}
+			
+			//Loop through the child <h1> nodes, taking the first one
+			foreach ($div->getElementsByTagName("h1") as $h1) 
+			{
+				$title = $h1->textContent;
+				break;
+			}
+
+			// and cos the HTML from the CMS site is a mess...
+			if (!isset($title))
+			{
+				//Loop through the child <h2> nodes, taking the first one
+				foreach ($div->getElementsByTagName("h2") as $h1) {
+					$title = $h1->textContent;
+					break;
+				}
+			}
+						
+			//Loop through the child <p> nodes, grabbing the first 80 characters for the description
+			foreach ($div->getElementsByTagName("p") as $p) {
+				if (isset($description)) {
+					if (strlen($description) < MAX_DESCRIPTION_LEN) {
+						$description = $description . " " . trim($p->textContent);
+					}
+				} else {
+					$description = trim($p->textContent);
+				}
+			}
+		}
+	}
+
+	// Report missing content and move on to the next file
+	if (!isset($contents)) {
+		echo "Warning: Index file not generated for HTML file. No <div> elements of interest in $file\r\n";
+		return;
+	}
+	else
+	{
+		$contents = preg_replace('/[^\x0A\x0D\x20-\x7F]/', ' ', $contents);
+	}
+
+	// Report a missing title but carry on regardless
+	if (!isset($title)) {
+		echo "Warning: Missing Title. No <h1> or <h2> elements within <div> of interest in $file\r\n";
+	}
+	else
+	{
+		$title = preg_replace('/[^\x0A\x0D\x20-\x7F]/', ' ', $title);
+	}
+
+	// Report a missing description but carry on regardless
+	if (!isset($description)) {
+		echo "Warning: Missing Description. No <p> elements within <div> of interest in $file\r\n";
+	}
+	else
+	{
+		$description = preg_replace('/[^\x0A\x0D\x20-\x7F]/', ' ', $description);
+	}
+	
+	// Separate the multi-line 'contents' string into an array of single line stings then remove white space and empty lines
+	$string_array = explode("\r\n", trim($contents));
+	$new_string_array = array();
+	foreach ($string_array as $line) {
+		$new_line = trim($line);
+		if (strlen($new_line) > 0) {
+			array_push($new_string_array, $new_line);
+		}
+	}
+	
+	// Create Solr Index XML file
+	$solrInd = new solrIndex();
+	$location = str_replace("\\", "/", substr($file, strlen(CMS_DATA_DIR) - 1));
+	$solrInd->setLocation($location);
+	$solrInd->setUid($location);	//For now we're using the page location as the unique ID
+	$solrInd->setContent(xmlentities(implode(" ", $new_string_array)));
+	if (isset($title)) {
+		$solrInd->setTitle(xmlentities(trim($title)));
+	}
+	if (isset($description)) {
+		$solrInd->setDescription(xmlentities(substr($description, 0, MAX_DESCRIPTION_LEN)));
+	}
+	// Set the 'hip_report' flag if the file lives under a /report/ or /glossary/ branch of the directory tree
+	if ((stripos($file, "\\report\\") !== false) || (stripos($file, "\\glossary\\") !== false)) {
+		$solrInd->setReport("true");
+	}
+	$filename = CMS_OUTPUT_DIR.CMS_FILE_PREFIX.str_pad($GLOBALS['file_counter']++, 12, "0", STR_PAD_LEFT).CMS_FILE_EXT;
+	$res = $solrInd->writeToFile($filename);
+
+	if ($res === false) {		
+		$GLOBALS['error_count']++;
+		echo "Error: Failed to create ", $filename, "\r\n";
+		return;
+	}
+
+}
+
+crawlDirectory(CMS_DATA_DIR);
+
+echo "\r\nNumber of files: ", $file_count, "\r\n";
+echo "Number of files with errors: ", $error_count, "\r\n";
+
+?>

@@ -1,0 +1,55 @@
+/* Buttons
+
+_____________________________________________________
+
+320 and Up boilerplate extension
+
+Author: Andy Clarke
+Version: 0.9b
+URL: http://stuffandnonsense.co.uk/projects/320andup/
+_____________________________________________________ */
+
+button {  
+display : block;
+padding : 8px 20px 10px 20px;
+width : auto;
+overflow : visible; 
+background-color : rgb(58,111,91);
+border : 1px solid rgb(58,111,91);
+font-family : "Helvetica Neue", Helvetica, Arial;
+font-size : 1em;
+font-weight : 700;
+text-align : center; 
+line-height : 1; 
+color : rgb(255,255,255);
+border-radius : 6px; }
+
+.cssgradients button,
+.cssgradients input[type="button"] {
+
+/* IE10 Consumer Preview */ 
+background-image: -ms-linear-gradient(top, #55A686 0%, #3B725D 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #55A686 0%, #3B725D 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #55A686 0%, #3B725D 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #55A686), color-stop(1, #3B725D));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #55A686 0%, #3B725D 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to bottom, #55A686 0%, #3B725D 100%); }
+
+/* .borderimage button {
+border-style : solid;
+border-width : 4px; }
+
+.no-borderimage button {
+-webkit-border-radius : 2px;
+-moz-border-radius : 2px;
+border-radius : 2px; } */

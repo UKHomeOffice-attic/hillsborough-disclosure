@@ -1,0 +1,44 @@
+<h1>Browse by date or date range</h1>
+<div role="main">
+<p><strong>View material by the date it was created.</strong></p>
+<p>Material has been grouped together under the following date ranges. It will then appear in date order (most recent first). Because some of the date ranges below contain large numbers of documents, when you click on the link it will expand, offering you a set of narrower sub-ranges.  For example, if you select June 1989, you will be offered a choice of all dates in that month.</p>
+<p>In some cases it was not possible to date a document. These can be found under 'undated documents'.</p>
+
+<?php 
+$counter=0;
+foreach ($this->dateRanges as $daterange) 
+{    
+	
+	echo "<section class=\"browse\">\r\n";
+	if (!isset($daterange['breakdown']))
+	{
+		  
+		echo "<header>\r\n";
+		echo "<h1><a href=\"/browse/by-date/start/" . $daterange['start'] . "/end/" . $daterange['end'] . "/perpage/20/page/1\">" . $daterange['title'] . "</a></h1>\r\n";
+		echo "</header>\r\n";
+	}
+	else
+	{		
+		echo "<header>\r\n";
+		echo "<h1><a id=\"series". $counter . "\" href=\"#series". $counter . "\">" . $daterange['title'] . "</a></h1>\r\n";
+		echo "</header>\r\n";
+		
+		echo "<div class=\"sub-series\" id=\"sub-series" . $counter . "\">\r\n";
+		foreach($daterange['breakdown'] as $subrange)
+		{
+			echo "<article>\r\n";
+			echo "<header>\r\n";
+			echo "<h1><a href=\"/browse/by-date/start/" . $subrange['start'] . "/end/" . $subrange['end'] . "/perpage/20/page/1\">" . $subrange['title'] . "</a></h1>\r\n";
+			echo "</header>\r\n";
+			echo "</article>\r\n";
+		}
+		echo "</div>\r\n";		
+		
+
+	}	
+	$counter++;
+	echo "</section>\r\n";
+	
+} 
+?>
+</div>

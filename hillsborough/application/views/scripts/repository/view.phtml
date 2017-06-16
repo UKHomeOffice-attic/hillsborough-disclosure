@@ -1,0 +1,341 @@
+<?php 
+
+function wordTidy($string)
+{
+ 
+  // Replace Single Curly Quotes
+
+  $search[] = chr(0x91);
+  $search[] = chr(0x92);
+  $replace[] = "'";
+  $replace[] = "'";
+
+  // Replace Smart Double Curly Quotes
+  $search[] = chr(0x93);
+  $search[] = chr(0x94);
+  $replace[] = '"';
+  $replace[] = '"';
+
+  $search[] = chr(0x97);
+  $replace[] = '-';
+  
+  $search[] = chr(0x85);
+  $replace[] = '...';
+  
+  // Apply Replacements
+  $string = str_replace($search, $replace, $string);
+	
+  
+  
+//	var_dump($string);
+  $string = htmlentities(substr($string, 3));
+//  	var_dump($string);
+  
+  	return $string;
+}
+
+
+function format_file_fize_size( $size, $display_bytes=false )
+{
+	if( $size < 1024 )
+		$filesize = $size . ' bytes';
+	elseif( $size >= 1024 && $size < 1048576 )
+		$filesize = round( $size/1024, 2 ) . ' KB';
+
+	elseif( $size >= 1048576 )
+		$filesize = round( $size/1048576, 2 ) . ' MB';
+
+	if( $size >= 1024 && $display_bytes )
+		$filesize = $filesize . ' (' . $size . ' bytes)';
+
+	return $filesize;
+}
+
+?>
+
+<header>
+<h1><?php if (empty($this->document->short_title)) { echo "Blank title field"; } else { echo $this->document->short_title; } ?></h1>
+</header>
+<div role="main">
+<?php if (!empty($this->document->description)) : ?>
+<p><?php echo nl2br($this->document->description); ?></p>
+<?php endif; ?>
+
+<table border="0" cellspacing="0" cellpadding="0">
+
+
+<tr>
+<th scope="row">Unique ID:</th>
+<td><span class="spaced"><?php echo $this->document->begin_doc_id ?></span></td>
+</tr>
+
+<?php
+if ($this->document->archive_ref_id!=""): 
+?>
+
+<tr>
+<th scope="row">Contributor reference:</th>
+<td>
+<?php
+echo $this->document->archive_ref_id;
+ ?>
+</td>
+</tr>
+
+ <?php
+endif;
+?>
+
+<tr>
+<th scope="row">Date(s):</th>
+<td>
+<?php 
+$ds = Hillsborough_Functions::convertDateWithWildcard($this->document->date_start, $this->document->date_start_accuracy);
+echo $ds;
+if (($this->document->date_end!=0)&&(!empty($this->document->date_end)))
+{
+	$de = Hillsborough_Functions::convertDateWithWildcard($this->document->date_end, $this->document->date_end_accuracy);
+	
+	if ($ds!=$de) // Only show if not the same day/month/year for the start and end date range
+	{
+?>
+<br /> to <br />
+<?php
+		echo $de;
+	} 		
+}
+?>
+</td>
+</tr>
+
+<?php if (empty($this->document->out_of_scope_reason)):?>
+<tr>
+<th scope="row">Name(s)&nbsp;of&nbsp;the deceased:</th>
+<td>
+<?php if (!empty($this->victim_names)) : 
+$victims = $this->victim_names;
+//foreach ($this->victim_names as $victim)
+for($i=0; $i<count($victims); $i++)
+{
+	echo trim($victims[$i]->presentation_format);
+	//echo "<a href=\"/browse/by-victim-name/". $victims[$i]->url_name . "/perpage/20/page/1\">" . trim($victims[$i]->presentation_format) . "</a>";
+	if ($i<(count($victims)-2))
+		echo "; ";
+	elseif ($i==(count($victims)-2))
+		echo "; and ";
+	else
+		echo ".";
+}
+endif; ?>
+</td>
+</tr>
+
+
+
+<tr>
+<th scope="row">Person(s) involved:</th>
+<td>
+<?php if (!empty($this->persons)) : ?>
+<?php 
+$persons = $this->persons;
+for($i=0; $i<count($persons); $i++)
+{
+	echo trim($persons[$i]->presentation_format);
+	//echo "<a href=\"/browse/by-person/". $persons[$i]->url_name . "/perpage/20/page/1\">" . trim($persons[$i]->presentation_format) . "</a>";
+	if ($i<(count($persons)-2))
+		echo "; ";
+	elseif ($i==(count($persons)-2))
+		echo "; and ";
+	else
+		echo ".";
+}
+?>
+<?php endif; ?>
+</td>
+</tr>
+
+<tr>
+<th scope="row">Organisation(s) involved:</th>
+<td>
+<?php if (!empty($this->corporate_bodies)) :
+$corporate_bodies = $this->corporate_bodies;
+for($i=0; $i<count($corporate_bodies); $i++)
+{
+	echo trim($corporate_bodies[$i]->presentation_format);
+	//echo "<a href=\"/browse/by-corporate-body/". $corporate_bodies[$i]->url_name . "/perpage/20/page/1\">" . trim($corporate_bodies[$i]->presentation_format) . "</a>";
+	if ($i<(count($corporate_bodies)-2))
+		echo "; ";
+	elseif ($i==(count($corporate_bodies)-2))
+		echo "; and ";
+	else
+		echo ".";
+}
+endif; ?>
+</td>
+</tr>
+
+<?php endif; ?>
+
+<tr>
+<th scope="row">Contributor:</th>
+<td><?php echo $this->document->owning_organisation;?></td>
+</tr>
+
+<tr>
+<th scope="row">Folder title:</th>
+<td><?php echo $this->document->series_title;?></td>
+</tr>
+
+<tr>
+<th scope="row">Sub-folder title:</th>
+<td><?php echo $this->document->series_sub_title;?></td>
+</tr>
+
+<tr>
+<th scope="row">Original format:</th>
+<td><?php echo $this->document->originalformat;?></td>
+</tr>
+
+ <?php if (!empty($this->document->out_of_scope_reason)):?>
+	 <?php if ($this->document->formatted_outofscope=="Duplicate - other copy available"): ?>
+		 <tr>
+			<th scope="row">Reason not disclosed on this site:</th>
+			<td>
+			<?php 
+				$docID = Hillsborough_Functions::findDocumentId($this->document->out_of_scope_reason);
+
+				if ($docID!="")
+				{
+					$formattedLink = "<a href=\"/repository/" . $docID . "\">" . $docID . "</a>";
+					echo str_replace($docID, $formattedLink, $this->document->out_of_scope_reason);
+				}
+				else 
+					echo $this->document->out_of_scope_reason;
+ 				?>
+			</td>
+		</tr>
+		
+	<?php elseif ($this->document->formatted_outofscope=="Other - seen by Panel"): ?>
+		 <tr>
+			<th scope="row">Reason not disclosed on this site:</th>
+			<td>
+				This document has been seen and reviewed by the Panel but has not been published on this website. Reasons why some documents have not been published on this website are: 
+				<ul class="oosreasons">
+				<li>They are already available in the public domain.</li>
+ 				<li>They are of low relevance to the disaster, including administrative documents.</li>
+ 				<li>They include sensitive medical or other information relating to the deceased or injured, or other members of the public.</li>
+ 				</ul>
+	</td>
+		</tr>
+	<?php else: ?>
+		 <tr>
+			<th scope="row">Reason not disclosed on this site:</th>
+			<td><?php echo $this->document->out_of_scope_reason; ?></td>
+		</tr>
+	<?php endif; ?>
+<?php endif; ?>
+
+
+</table>
+<?php if ($this->is_av) : // this is an av record ?>
+<!-- jwplayer mediaplayer -->
+<figure>
+<div id="mediaplayer">This video requires <a href="http://get.adobe.com/flashplayer">a flash player</a> for your browser.</div>
+<figcaption>
+<?php echo $this->document->av_title_memo; ?>
+</figcaption>
+
+<!-- HTML 5 Version
+
+<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+
+<video height="300" width="400" id="myVideo">
+  <source src="<?php echo $this->mediapath . $this->document->begin_doc_id ?>.mp4" type="video/mp4">
+</video>
+
+<script type="text/javascript>
+  jwplayer("mediaplayer").setup({
+    modes: [
+        { type: 'html5' },
+        { type: 'flash', src: '/media/player.swf' }
+    ]
+  });
+</script>
+
+--> 
+
+
+<script type="text/javascript" src="/media/jwplayer.js"></script>
+<script type="text/javascript">
+	jwplayer("mediaplayer").setup({
+		flashplayer: "/media/player.swf",
+		file: "/repository/av/<?php echo $this->document->begin_doc_id ?>.mp4",
+		image: "/repository/thumbnail/<?php echo $this->document->begin_doc_id ?>.jpg",
+	});
+</script>
+</figure>
+<!-- / jwplayer mediaplayer -->
+
+<?php 
+
+if (file_exists($this->transcriptpath . $this->document->begin_doc_id . ".txt"))
+{
+	$transcription = file_get_contents($this->transcriptpath . $this->document->begin_doc_id . ".txt");
+	$transcription = wordTidy($transcription);
+	//Do LINK processing with regex to detect [[LINK:url()]]Text[[LINKEND]]
+	$transcription = str_replace("[[LINK:url('", "<a href=\"", $transcription);
+	$transcription = str_replace("[[LINK:item('", "<a href=\"/repository/", $transcription);
+	$transcription = str_replace("')]]", "\" target=\"new\">", $transcription);
+	
+	$transcription = str_replace("[[LINKEND]]", "</a>", $transcription);
+	
+?>
+<h4>Transcript (<a href="#" class="expand-transcript">Expand</a>)</h4>
+<div class="transcript" id="<?php echo $this->document->begin_doc_id; ?>">
+<p><?php echo nl2br($transcription); ?></p>
+</div>
+
+<?php 
+}
+?>
+
+<?php endif; ?>
+
+
+<?php if (!empty($this->relatedItems)):?>
+
+<h3>Related items:</h3>
+
+<ul class="related">
+<?php echo $this->relatedItems; ?>
+</ul>
+
+
+<?php endif;?>
+
+</div>
+
+<div role="complementary">
+
+ <?php if ((!$this->is_av)&&(empty($this->document->out_of_scope_reason))) : // this is not an av record ?>
+	<div class="btn-download download-btn page clearfix">
+	<div class="icon-pdf"></div>
+	<h3>
+		<a href="<?php echo $this->downloadpath . $this->document->begin_doc_id . '.pdf'; ?>" target="_blank"> Download the document <span>(<?php echo format_file_fize_size($this->pdffilesize) ?>)</span></a>
+	</h3>
+	<div class="external-link"></div>
+	</div>
+	<div class="caption-small"><p>Most computers will open PDF documents automatically, but you may need <a target="_self" href="http://get.adobe.com/reader/">Adobe Reader</a>.</p>
+	</div>
+	<br/>
+	<h3>Redacted content</h3>
+	<p>Redactions appear as a white box with a black border:</p>
+	<div class="box">
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing <span class="exampleredaction">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> elit. A <span class="exampleredaction">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> donec a diam lectus. Sed sit amet ipsum mauris.</p>
+	</div>
+	<!-- img src="/img/redactionexample.gif" / -->
+ <?php endif; ?>
+
+</div>
+</div>
+</div>
